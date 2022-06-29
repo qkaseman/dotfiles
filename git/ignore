@@ -1,0 +1,60 @@
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+
+# Packages (unpack and commit raw source)
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.msi
+*.bz
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS Files
+
+## MacOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+## Windows
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Temporary files 
+*.bak
+*.swp
+*.swo
+*~
+*#
+
+# IDE files
+.vscode
+.idea
+.iml
+*.sublime-workspace
+
+# LaTeX
+*.synctex
+*.aux
+
+# TODO files
+*.todo
