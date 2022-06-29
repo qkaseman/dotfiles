@@ -11,4 +11,5 @@ import:
   - ~/.config/alacritty/core.yml
   - ~/.config/alacritty/env.yml
   - ~/.config/alacritty/visual.yml
+  - ~/.config/alacritty/debug.yml
   - ~/.local/share/alacritty/config.yml
