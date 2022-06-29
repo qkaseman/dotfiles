@@ -1,0 +1,14 @@
+[core]
+    autocrlf = input
+
+[apply]
+    whitespace = fix
+
+[merge]
+    conflictstyle = diff3
+
+[color]
+    ui = auto
+
+[push]
+    default = simple
