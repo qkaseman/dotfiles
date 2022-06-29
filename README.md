@@ -6,11 +6,13 @@ Yeah, that's really it. I'm sure I'll have more to add later.
 
 ### Local Configuration
 
-The local configuration file `~/.local/share/alacritty/config.yml` is loaded last and will override any configurations in this repo.
+The local configuration file `~/.local/share/alacritty/config.yml` is loaded
+last and will override any configurations in this repo.
 
 ### Window Decoration
 
-For non-tiling window managers (or if you want to be able to drag with the mouse), add the following to the local configuration:
+For non-tiling window managers (or if you want to be able to drag with the
+mouse), add the following to the local configuration:
 
 ```
 window:
@@ -43,7 +45,9 @@ instructions](https://asdf-vm.com/guide/getting-started.html#_3-install-asdf).
 
 ## Git
 
-The core git configurations are within the `git` directory here. However, as the name and email might change (for example, when using work email) so that information should be added to `~/.gitconfig` as:
+The core git configurations are within the `git` directory here. However, as
+the name and email might change (for example, when using work email) so that
+information should be added to `~/.gitconfig` as:
 
 ```
 [user]
