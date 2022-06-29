@@ -31,3 +31,19 @@ bell:
   # Death to bells.
   duration: 0
   command: None
+
+# Starting shell directory, if `None` the working directory of the parent
+# is used.
+working_directory: ~
+
+selection:
+  # All characters used as separators for "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+  # If selected text should be copied to the primary clipboard.
+  save_to_clipboard: false
+
+# To be replaced with `tmux` eventually.
+scrolling:
+  # `0` disables scrollback.
+  history: 50000
