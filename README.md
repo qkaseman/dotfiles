@@ -2,7 +2,22 @@
 
 Yeah, that's really it. I'm sure I'll have more to add later.
 
-## Fonts
+## Alacritty
+
+### Local Configuration
+
+The local configuration file `~/.local/share/alacritty/config.yml` is loaded last and will override any configurations in this repo.
+
+### Window Decoration
+
+For non-tiling window managers (or if you want to be able to drag with the mouse), add the following to the local configuration:
+
+```
+window:
+  decorations: full
+```
+
+### Fonts
 
 Install fonts into `~/.local/share/fonts/`.
 
