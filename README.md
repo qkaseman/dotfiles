@@ -21,6 +21,26 @@ window:
 
 Install fonts into `~/.local/share/fonts/`.
 
+## `asdf`
+
+[`asdf`](https://asdf-vm.com/) is a terribly named runtime manager.
+
+### Installation
+
+#### Core
+
+Follow their [installation
+instructions](https://asdf-vm.com/guide/getting-started.html#_3-install-asdf).
+
+#### Plugins
+
+##### NodeJS
+
+```
+> asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+> asdf install nodejs lts-gallium
+```
+
 ## Git
 
 The core git configurations are within the `git` directory here. However, as the name and email might change (for example, when using work email) so that information should be added to `~/.gitconfig` as:
