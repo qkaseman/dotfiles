@@ -2,6 +2,9 @@
     autocrlf = input
     editor = vim
 
+[init]
+    defaultBranch = mainline
+
 [apply]
     whitespace = fix
 
