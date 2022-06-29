@@ -1,0 +1,4 @@
+bell:
+  # Death to bells.
+  duration: 0
+  command: None
