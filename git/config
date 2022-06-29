@@ -4,6 +4,23 @@
 [apply]
     whitespace = fix
 
+[alias]
+    # Less typing is good.
+    d = diff
+    ds = diff --staged
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    r = !"r() { git rebase -i HEAD~$1; }; r"
+    # Always verbose tags.
+    tags = tag -l
+    # Pull **all** repos.
+    p = !"git pull; git submodule foreach git pull origin master"
+    # Pretty logs.
+    lg = log --pretty=oneline --abbrev-commit --graph --decorate --all
+    last = log -1 HEAD
+
 [merge]
     conflictstyle = diff3
 
