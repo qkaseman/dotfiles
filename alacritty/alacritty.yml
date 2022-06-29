@@ -9,5 +9,6 @@ live_config_reload: true
 
 import:
   - ~/.config/alacritty/core.yml
+  - ~/.config/alacritty/env.yml
   - ~/.config/alacritty/text.yml
   - ~/.local/share/alacritty/config.yml
