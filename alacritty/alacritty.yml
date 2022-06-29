@@ -8,4 +8,5 @@
 live_config_reload: true
 
 import:
+  - ~/.config/alacritty/text.yml
   - ~/.local/share/alacritty/config.yml

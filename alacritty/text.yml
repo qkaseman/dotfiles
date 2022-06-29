@@ -1,0 +1,21 @@
+font:
+  # All font types (bold, italic, etc...) fallback to `normal`.
+  normal:
+    family: Gintronic
+    style: Regular
+  size: 11.0
+
+  # Extra spacing, `x` is letter spacing, `y` is line spacing.
+  offset:
+    x: 0
+    y: 0
+
+  # Glyph offset inside the glyph cell, (0,0) is bottom left.
+  glyph_offset:
+    x: 0
+    y: 0
+
+  # Thin stroke font rendering (only use on retina displays).
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: true
