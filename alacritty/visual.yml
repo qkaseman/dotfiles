@@ -1,3 +1,19 @@
+cursor:
+  style:
+    # Cursor Shape: [ Block | Underline | Beam ]
+    shape: Block
+
+    # Cursor Blinking State: [ Never | Off | On | Always ]
+    blinking: Off
+
+  # Blink interval in milliseconds.
+  blink_interval: 750
+
+  unfocused_hollow: true
+
+# Usees cursor.foreground & cursor.background if set.
+custom_cursor_colors: true
+
 font:
   # All font types (bold, italic, etc...) fallback to `normal`.
   normal:
