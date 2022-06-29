@@ -31,7 +31,11 @@ font:
     x: 0
     y: 0
 
-  # Thin stroke font rendering (only use on retina displays).
+  # MacOS-only, if thin stroke rendering should be used. Only turn on for
+  # retina displays.
   use_thin_strokes: true
+
+import:
+  - ~/.config/alacritty/color/color.yml
 
 draw_bold_text_with_bright_colors: true
