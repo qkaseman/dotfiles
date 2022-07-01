@@ -5,9 +5,9 @@
 --  'x' - visual block mode
 --  't' - term mode
 --  'c' - command mode
---  ''  - equivalent of ':map'
+--  ''  - equivalent of ':map' (nvo)
 --  '!' - equivalent of ':map!'
-local keymap = require 'lib.utils'.keymap
+local keymap = require 'lib.keymap'.keymap
 
 -- Make semicolon into colon, because lazy.
 keymap('', ';', ':')
