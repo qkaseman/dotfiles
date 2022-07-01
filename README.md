@@ -1,6 +1,35 @@
-# Configurations
+# Command Line Application Configurations
 
-Yeah, that's really it. I'm sure I'll have more to add later.
+XDG-compliant (as much as possible) configuration files.
+
+## Installation
+
+1. Clone into `.config` (make sure to backup anything that is already there!)
+1. Setup root zshenv from `scripts`
+1. Install fonts, or override the config to use different fonts
+1. Profit?
+
+## Local Configuration
+
+Local configurations go into `$XDG_CONFIG_LOCAL_HOME`, which is set by default
+in the scripts provided to `${HOME}/.local/config`. This allows for computer or
+work-specific files to be self-contained and even a repo set up like this one.
+
+Some configuration files don't allow for shell variables or variable expansion,
+so those will directly reference the default location. These configurations are
+generally the last thing loaded into the particular configuration and will
+therefore override the default configurations in this repo.
+
+## Scripts
+
+### `etc-zsh-zshenv`
+
+This sets up `zsh` to have XDG variables defined and make `zsh` itself follow the spec.
+
+The exports in this script should be added to `/etc/zsh/zshenv`. Eventually
+this might get automated, but manual is fine for now.
+
+# Applications
 
 ## Local Configuration
 
@@ -12,11 +41,6 @@ Some configuration files don't allow for shell variables or variable expansion,
 so those will directly reference the default location.
 
 ## Alacritty
-
-### Local Configuration
-
-The local configuration file `~/.local/share/alacritty/config.yml` is loaded
-last and will override any configurations in this repo.
 
 ### Window Decoration
 
