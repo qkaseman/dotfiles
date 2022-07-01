@@ -2,6 +2,15 @@
 
 Yeah, that's really it. I'm sure I'll have more to add later.
 
+## Local Configuration
+
+Local configurations go into `$XDG_CONFIG_LOCAL_HOME`, which is set by default
+in the scripts provided to `${HOME}/.local/config`. This allows for computer or
+work-specific files to be self-contained and even a repo set up like this one.
+
+Some configuration files don't allow for shell variables or variable expansion,
+so those will directly reference the default location.
+
 ## Alacritty
 
 ### Local Configuration
