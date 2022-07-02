@@ -1,0 +1,2 @@
+LOCAL_CFG=${XDG_CONFIG_LOCAL_HOME:-~/.local/config/}/zsh/zshenv
+[ -f ${LOCAL_CFG} ] && . ${LOCAL_CFG}
