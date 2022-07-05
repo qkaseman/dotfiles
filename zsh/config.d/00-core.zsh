@@ -1,8 +1,9 @@
 # All bells must die.
 unsetopt beep nomatch notify
 
-# If a pattern has no matches, pass glob to program.
-unsetopt nomatch
+# Expansion & Globbing
+unsetopt nomatch            # If a pattern has no matches, pass glob along.
+setopt extendedglob
 
 setopt autocd
 setopt auto_name_dirs
