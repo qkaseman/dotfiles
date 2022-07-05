@@ -25,6 +25,9 @@ setopt histverify           # When user enters a line with history.
 setopt incappendhistory     # Append to global history immediately.
 # setopt appendhistory      # Append to global history on exit.
 
+setopt autolist             # Immediately list ambiguous completion choices.
+setopt autoremoveslash      # Remove slash from completion if redundant.
+
 setopt longlistjobs
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
