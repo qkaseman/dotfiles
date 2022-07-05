@@ -6,6 +6,3 @@ alias ls='ls -G'
 #
 # So we have to define/source them here again :( 
 source ${ZDOTDIR}/env.d/**/*history.zsh
-
-# Stop zsh and homebrew fighing over permissions.
-export ZSH_DISABLE_COMPFIX="true"
