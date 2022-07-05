@@ -5,24 +5,26 @@ unsetopt beep nomatch notify
 unsetopt nomatch            # If a pattern has no matches, pass glob along.
 setopt extendedglob
 
-setopt autocd
-setopt auto_name_dirs
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushd_minus
-setopt pushd_silent
+setopt autocd               # cd into valid dir names automatically.
+setopt cdablevars           # cd $var, if $var is a valid dir, cd into it.
+setopt autonamedirs
+setopt autopushd            # cd pushes direcotry onto dir stack.
+setopt pushdignoredups      # Don't push multiple copies of dir onto stack.
+setopt pushdminus           # Use `-` to traverse dir stack.
+setopt pushdsilent          # Don't print stack after push/pop.
+setopt pushdtohome          # pushd w/no args acts like cd w/no args.
 
-setopt extended_history         # Add timestamp and duration.
-setopt hist_expire_dups_first   # Remove duplicates first.
-setopt hist_ignore_dups         # But don't even store if dupe of previous command.
-setopt hist_reduce_blanks       # Remove superflous blanks from commands.
-setopt hist_ignore_space        # Don't save commands starting with a space.
-setopt hist_verify              # When user enters a line with history.
-                                # expansion, put into editing buffer rather
-                                # than execute.
-setopt inc_append_history       # Append to global history immediately.
-# setopt append_history         # Append to global history on exit.
+setopt extendedhistory      # Add timestamp and duration.
+setopt histexpiredupsfirst  # Remove duplicates first.
+setopt histignoredups       # But don't even store if dupe of previous cmd.
+setopt histreduceblanks     # Remove superflous blanks from commands.
+setopt histignorespace      # Don't save commands starting with a space.
+setopt histverify           # When user enters a line with history.
+                            # expansion, put into editing buffer rather
+                            # than execute.
+setopt incappendhistory     # Append to global history immediately.
+# setopt appendhistory      # Append to global history on exit.
 
-setopt long_list_jobs
+setopt longlistjobs
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
