@@ -23,3 +23,5 @@ setopt inc_append_history       # Append to global history immediately.
 # setopt append_history         # Append to global history on exit.
 
 setopt long_list_jobs
+
+[[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
