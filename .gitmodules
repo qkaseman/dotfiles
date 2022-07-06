@@ -2,3 +2,7 @@
 	path = zsh/plugin/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "zsh/plugin/history-substring-search"]
+	path = zsh/plugin/history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+	shallow = true
