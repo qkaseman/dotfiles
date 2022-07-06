@@ -40,6 +40,17 @@ work-specific files to be self-contained and even a repo set up like this one.
 Some configuration files don't allow for shell variables or variable expansion,
 so those will directly reference the default location.
 
+## ZSH
+
+### Aliases
+
+I don't generally rely on plugins for my aliases as I add them too piecemeal for a plugin that provides a large number to be useful. But, here are some places to look for inspiration if desired:
+
+* [Common Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases)
+* [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
+* [MacOS Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos)
+
+
 ## Alacritty
 
 ### Window Decoration
@@ -60,16 +71,19 @@ Install fonts into `~/.local/share/fonts/`.
 
 [`asdf`](https://asdf-vm.com/) is a terribly named runtime manager.
 
+TODO: Decide if `asdf` should be a submodule and have a `bin` directory in
+`.config` that is symlinked inside `${XDG_BIN_HOME}` for each dir. This would
+keep the version the same across computers which is maybe good, maybe bad?
+
 ### Installation
 
-#### Core
+Install `asdf` into `${XDG_BIN_HOME}`:
 
-Follow their [installation
-instructions](https://asdf-vm.com/guide/getting-started.html#_3-install-asdf).
+```
+> git clone https://github.com/asdf-vm/asdf.git ${XDG_BIN_HOME}/asdf --branch v0.10.0
+```
 
-#### Plugins
-
-##### NodeJS
+#### NodeJS Plugin
 
 ```
 > asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git

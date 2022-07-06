@@ -1,6 +1,8 @@
 # Easily get new aliases without having to open a new shell.
 alias realias='zsd alias.d'
 
+alias ls="ls --color=auto"
+
 # I am lazy.
 alias npr='npm run'
 alias ..='cd ..'
