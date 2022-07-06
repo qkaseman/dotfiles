@@ -40,6 +40,17 @@ work-specific files to be self-contained and even a repo set up like this one.
 Some configuration files don't allow for shell variables or variable expansion,
 so those will directly reference the default location.
 
+## ZSH
+
+### Aliases
+
+I don't generally rely on plugins for my aliases as I add them too piecemeal for a plugin that provides a large number to be useful. But, here are some places to look for inspiration if desired:
+
+* [Common Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases)
+* [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
+* [MacOS Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos)
+
+
 ## Alacritty
 
 ### Window Decoration
