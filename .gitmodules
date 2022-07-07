@@ -26,3 +26,7 @@
 	path = zsh/plugin/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab.git
 	shallow = true
+[submodule "z"]
+	path = zsh/plugin/z
+	url = https://github.com/rupa/z.git
+	shallow = true
