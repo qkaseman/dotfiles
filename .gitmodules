@@ -22,3 +22,7 @@
 	path = zsh/plugin/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 	shallow = true
+[submodule "fzf-tab"]
+	path = zsh/plugin/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git
+	shallow = true
