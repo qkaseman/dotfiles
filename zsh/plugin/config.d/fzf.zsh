@@ -10,3 +10,6 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # Key bindings
 # ------------
 [ -f ${FZF_HOME}/shell/key-bindings.zsh ] && source ${FZF_HOME}/shell/key-bindings.zsh
+
+# FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
+(( $+commands[rg] )) && export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'

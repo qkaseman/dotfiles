@@ -32,15 +32,6 @@ this might get automated, but manual is fine for now.
 
 # Applications
 
-## Local Configuration
-
-Local configurations go into `$XDG_CONFIG_LOCAL_HOME`, which is set by default
-in the scripts provided to `${HOME}/.local/config`. This allows for computer or
-work-specific files to be self-contained and even a repo set up like this one.
-
-Some configuration files don't allow for shell variables or variable expansion,
-so those will directly reference the default location.
-
 ## ZSH
 
 ### Aliases
@@ -119,6 +110,11 @@ everything else is already configured.
 git clone --depth 1 https://github.com/junegunn/fzf.git ${FZF_HOME}
 ${FZF_HOME}/install --bin
 ```
+
+### `ripgrep`
+
+`fzf` is configured to use [`ripgrep`](https://github.com/BurntSushi/ripgrep)
+which also needs to be installed. Make sure it's in the path.
 
 # Inspiration
 

@@ -11,9 +11,6 @@ alias -- -='cd -'
 alias l='ls -lah'
 alias usage='du -cksh'
 
-# Always smart case searching.
-alias rg='rg -s'
-
 # Easy terminal reset.
 alias cls='printf "\033c"'
 
