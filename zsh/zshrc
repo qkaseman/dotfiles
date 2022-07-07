@@ -21,7 +21,6 @@ source ${ZDOTDIR}/functions.zsh
 
 zsd alias.d
 zsd config.d
-zsd plugin/config.d/
 
 # Platform and local should always come last.
 case "$OSTYPE" in
