@@ -127,17 +127,17 @@ Locations to go look at for organization or useful features.
 
 # TODO
 
-
 ## Plugins
 
 **Searching**
 * https://github.com/changyuheng/fz
 * https://github.com/skywind3000/z.lua
 **Completion**
+These seem to be doing almost exactly the same thing. They don't seem to work nicely together so going with the simpler `fzf-tab` for now as that just lets you search the completion results that are provided by other systems rather than altering how `zsh` completes.
 * https://github.com/lincheney/fzf-tab-completion
 * https://github.com/Aloxaf/fzf-tab
 **Alias Recommenders (maybe)**
-* https://github.com/Aloxaf/fzf-tab
+* repo with name `tipz`
 * https://github.com/MichaelAquilina/zsh-you-should-use
 **Maybe**
 * https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh
@@ -164,7 +164,7 @@ Locations to go look at for organization or useful features.
 ## ZSH
 
 * better expansion (a-d<TAB> --> amazing-directory)
-* arrow search
+* `autosuggestions` maybe not as nice as I always think before adding them?
 
 ## Git
 
