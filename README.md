@@ -110,3 +110,66 @@ Locations to go look at for organization or useful features.
 * [owl4ce/dotfiles](https://github.com/owl4ce/dotfiles)
 * [jessarcher/dotfiles](https://github.com/owl4ce/dotfiles)
   * [YT mini-walkthrough](https://www.youtube.com/watch?v=434tljD-5C8)
+
+# TODO
+
+## fzf
+
+[fzf]() is a fuzzy file finder that needs to be installed.
+
+This should get installed however is appropriate for the distro. If manual, the
+repo should be cloned into XDG_BIN_HOME and `./install` run. I need to see what
+actually gets installed into the zsh configurations to figure out exactly what
+args to run.
+
+Looks like `./install --no-fish --no-bash --xdg` currently but in the future
+might also want to have it not do some of the setup stuff (like if it just adds
+parts to zshrc to source the exact location of the completion files in the fzf
+repo.
+
+```
+git clone --depth=1 https://github.com/junegunn/fzf.git /tmp/fzf
+/tmp/fzf/install
+```
+
+## Plugins
+
+**Searching**
+* https://github.com/changyuheng/fz
+* https://github.com/skywind3000/z.lua
+**Completion**
+* https://github.com/lincheney/fzf-tab-completion
+* https://github.com/Aloxaf/fzf-tab
+**Alias Recommenders (maybe)**
+* https://github.com/Aloxaf/fzf-tab
+* https://github.com/MichaelAquilina/zsh-you-should-use
+**Maybe**
+* https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh
+* https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep
+
+## Neovim
+
+* https://github.com/NLKNguyen/papercolor-theme
+* trim whitespace
+* Highlight trailing whitespace
+* lsp/coc
+* system clipboard
+* default spacing to 2 :shocked_face:
+* clear search term
+* spell check but not code
+* persistent undo
+* backup dir
+* undo dir
+* smart case search
+* no highlight matching braces
+* block visual allowed past end of lines
+* open splits on the "correct" sides
+
+## ZSH
+
+* better expansion (a-d<TAB> --> amazing-directory)
+* arrow search
+
+## Git
+
+* Merge summary perhaps
