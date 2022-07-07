@@ -24,7 +24,8 @@ therefore override the default configurations in this repo.
 
 ### `etc-zsh-zshenv`
 
-This sets up `zsh` to have XDG variables defined and make `zsh` itself follow the spec.
+This sets up `zsh` to have XDG variables defined and make `zsh` itself follow
+the spec.
 
 The exports in this script should be added to `/etc/zsh/zshenv`. Eventually
 this might get automated, but manual is fine for now.
@@ -44,7 +45,9 @@ so those will directly reference the default location.
 
 ### Aliases
 
-I don't generally rely on plugins for my aliases as I add them too piecemeal for a plugin that provides a large number to be useful. But, here are some places to look for inspiration if desired:
+I don't generally rely on plugins for my aliases as I add them too piecemeal
+for a plugin that provides a large number to be useful. But, here are some
+places to look for inspiration if desired:
 
 * [Common Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases)
 * [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
@@ -102,6 +105,21 @@ information should be added to `~/.gitconfig` as:
     name = <username>
 ```
 
+## `fzf`
+
+[`fzf`](https://github.com/junegunn/fzf) is a fuzzy file finder that needs to
+be installed separately. All the configuration files in this repo assume it is
+installed into `$FZF_HOME`. This can be set in the local `zshenv` to override
+the default location.
+
+For the install itself, all we want is for the binary to be downloaded,
+everything else is already configured.
+
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ${FZF_HOME}
+${FZF_HOME}/install --bin
+```
+
 # Inspiration
 
 Locations to go look at for organization or useful features.
@@ -113,24 +131,6 @@ Locations to go look at for organization or useful features.
 
 # TODO
 
-## fzf
-
-[fzf]() is a fuzzy file finder that needs to be installed.
-
-This should get installed however is appropriate for the distro. If manual, the
-repo should be cloned into XDG_BIN_HOME and `./install` run. I need to see what
-actually gets installed into the zsh configurations to figure out exactly what
-args to run.
-
-Looks like `./install --no-fish --no-bash --xdg` currently but in the future
-might also want to have it not do some of the setup stuff (like if it just adds
-parts to zshrc to source the exact location of the completion files in the fzf
-repo.
-
-```
-git clone --depth=1 https://github.com/junegunn/fzf.git /tmp/fzf
-/tmp/fzf/install
-```
 
 ## Plugins
 
