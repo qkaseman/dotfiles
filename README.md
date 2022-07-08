@@ -44,6 +44,12 @@ places to look for inspiration if desired:
 * [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
 * [MacOS Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos)
 
+### Zsh Plugins to look at in the future.
+
+* [`fz`](https://github.com/changyuheng/fz) might be replicated by having `fzf-tab` installed.
+* [`fzf-tab-completion`](https://github.com/lincheney/fzf-tab-completion) seems to be the same thing as `fzf-tab` pretty much (and the additional change of the `zsh` completion to `fzf` seemed unneeded). Maybe change in the future if issues come up with `fzf-tab`.
+* [`you-should-use`](https://github.com/MichaelAquilina/zsh-you-should-use) for suggestions on aliases that are defined that match the command you just ran. There is also a plugin with the name `tipz` or something that looks similar.
+* [`fzf.plugin.zsh`](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh) possibly useful things associated with `fzf`
 
 ## Alacritty
 
@@ -127,20 +133,8 @@ Locations to go look at for organization or useful features.
 
 # TODO
 
-## Plugins
+## Zsh plugin completions
 
-**Searching**
-* https://github.com/changyuheng/fz
-* https://github.com/skywind3000/z.lua
-**Completion**
-These seem to be doing almost exactly the same thing. They don't seem to work nicely together so going with the simpler `fzf-tab` for now as that just lets you search the completion results that are provided by other systems rather than altering how `zsh` completes.
-* https://github.com/lincheney/fzf-tab-completion
-* https://github.com/Aloxaf/fzf-tab
-**Alias Recommenders (maybe)**
-* repo with name `tipz`
-* https://github.com/MichaelAquilina/zsh-you-should-use
-**Maybe**
-* https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh
 * https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep
 
 ## Neovim
