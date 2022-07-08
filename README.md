@@ -50,6 +50,12 @@ places to look for inspiration if desired:
 * [`fzf-tab-completion`](https://github.com/lincheney/fzf-tab-completion) seems to be the same thing as `fzf-tab` pretty much (and the additional change of the `zsh` completion to `fzf` seemed unneeded). Maybe change in the future if issues come up with `fzf-tab`.
 * [`you-should-use`](https://github.com/MichaelAquilina/zsh-you-should-use) for suggestions on aliases that are defined that match the command you just ran. There is also a plugin with the name `tipz` or something that looks similar.
 * [`fzf.plugin.zsh`](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh) possibly useful things associated with `fzf`
+* [`Zsh Zephyr`](https://github.com/mattmc3/zephyr) seems to have a lot of good default settings so I should look at those and pull out what seems nice after I live with these settings for a while.
+* [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting) apparently has better and faster highlighting so should try that.
+
+### Plugin/module changes
+
+Could do something like [`zsh-unplugged`](https://github.com/mattmc3/zsh_unplugged) rather than have them as git submodules. Might be easier to deal with?
 
 ## Alacritty
 
@@ -130,6 +136,10 @@ Locations to go look at for organization or useful features.
 * [owl4ce/dotfiles](https://github.com/owl4ce/dotfiles)
 * [jessarcher/dotfiles](https://github.com/owl4ce/dotfiles)
   * [YT mini-walkthrough](https://www.youtube.com/watch?v=434tljD-5C8)
+* [kazhala/dotfiles](https://github.com/kazhala/dotfiles)
+* [MyPickles/dotfiles](https://github.com/MrPickles/dotfiles)
+* [EdenEast/dots](https://github.com/EdenEast/dots)
+* [dotfiles](https://dotfiles.github.io/inspiration/)
 
 # TODO
 
