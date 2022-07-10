@@ -9,3 +9,4 @@
 require('user.plugin')
 require('user.option')
 require('user.keymap')
+require('user.whitespace')
