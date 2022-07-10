@@ -25,6 +25,13 @@ vim.api.nvim_command("packadd packer.nvim")
 return require("packer").startup({
   function(use)    
     use { 'wbthomason/packer.nvim' } -- Let packer manage itself
+    use {
+      'NLKNguyen/papercolor-theme',
+      as = 'papercolor',
+      config = function()
+        require('user.plugin.papercolor')
+      end
+    }
 
     if packer_bootstrap then
       require("packer").sync()
