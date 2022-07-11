@@ -43,7 +43,7 @@ return packer.startup(function(use)
     'NLKNguyen/papercolor-theme',
     as = 'papercolor',
     config = function()
-      require('user.plugin.papercolor')
+      require('plugin.papercolor')
     end
   }
 
@@ -54,7 +54,7 @@ return packer.startup(function(use)
         'lewis6991/spellsitter.nvim',
     },
     config = function()
-      require('user.plugin.treesitter')
+      require('plugin.treesitter')
       require('spellsitter').setup()
     end
   }
@@ -80,7 +80,7 @@ return packer.startup(function(use)
       'David-Kunz/cmp-npm',
     },
     config = function()
-      require('user.plugin.nvim-cmp')
+      require('plugin.nvim-cmp')
     end
   }
 
@@ -92,7 +92,7 @@ return packer.startup(function(use)
       'williamboman/nvim-lsp-installer',
     },
     config = function()
-      require('user.plugin.nvim-lsp')
+      require('plugin.nvim-lsp')
     end
   }
 
