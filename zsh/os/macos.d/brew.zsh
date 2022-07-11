@@ -3,3 +3,5 @@ export ZSH_DISABLE_COMPFIX="true"
 
 # https://docs.brew.sh/Analytics
 export HOMEBREW_NO_ANALYTICS=1
+
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
