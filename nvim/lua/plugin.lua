@@ -6,10 +6,10 @@
 local fn = vim.fn
 
 local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd(
-  "BufWritePost",
-  { command = "source <afile> | PackerSync", group = packer_group, pattern = "plugin.lua" }
-)
+--vim.api.nvim_create_autocmd(
+  --"BufWritePost",
+  --{ command = "source <afile> | PackerSync", group = packer_group, pattern = "plugin.lua" }
+--)
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -90,9 +90,10 @@ return packer.startup(function(use)
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
       'williamboman/nvim-lsp-installer',
+      'jose-elias-alvarez/typescript.nvim',
     },
     config = function()
-      require('plugin.nvim-lsp')
+      require('plugin.lsp')
     end
   }
 

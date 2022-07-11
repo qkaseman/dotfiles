@@ -1,21 +1,7 @@
-vim.diagnostic.config({
-  virtual_text = false, -- errors inline
-  severity_sort = true,
-  float = {
-    source = true,
-    focus = false,
-    format = function(diagnostic)
-      if diagnostic.user_data ~= nil and diagnostic.user_data.lsp.code ~= nil then
-        return string.format("%s: %s", diagnostic.user_data.lsp.code, diagnostic.message)
-      end
-      return diagnostic.message
-    end,
-  }
-})
+local M = {}
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+
+M.on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -51,38 +37,4 @@ local on_attach = function(client, bufnr)
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
---[[
--- TODO: Bash language server
-require('lspconfig').['bashls'].setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- TODO: HTML language server
-require('lspconfig').['html'].setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- TODO: CSS language server
-
--- TODO: TS lanuage server
-require('lspconfig')['tsserver'].setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-require'lspconfig'.tailwindcss.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- TODO: Lua language server
---]]
-
-vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
-vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+return M
