@@ -7,7 +7,7 @@
 --  'c' - command mode
 --  ''  - equivalent of ':map' (nvo)
 --  '!' - equivalent of ':map!'
-local keymap = require 'lib.keymap'.keymap
+local opts = { noremap=true, silent=true }
 
 -- Make semicolon into colon, because lazy.
-keymap('', ';', ':')
+vim.keymap.set('', ';', ':', opts)

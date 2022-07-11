@@ -6,6 +6,7 @@
 -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 -- `ANSI Shadow` text art!
 
-require 'user.options'
-require 'user.keymaps'
-
+require('plugin')
+require('option')
+require('keymap')
+require('whitespace')
