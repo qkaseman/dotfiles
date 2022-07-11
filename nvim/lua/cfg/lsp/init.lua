@@ -64,7 +64,12 @@ local handlers = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
 }
 
-local caps = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not ok then
+  return
+end
+
+local caps = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 caps.textDocument.completion.completionItem.snippetSupport = true
 caps.textDocument.completion.completionItem.preselectSupport = true
 caps.textDocument.completion.completionItem.insertReplaceSupport = true

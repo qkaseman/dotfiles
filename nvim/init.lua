@@ -6,5 +6,5 @@
 -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 -- `ANSI Shadow` text art!
 
-require('config')
+require('cfg')
 require('plugin')

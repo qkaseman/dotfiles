@@ -3,8 +3,15 @@
 -- Taken mostly from:
 -- https://github.com/hrsh7th/nvim-cmp/#recommended-configuration
 
-local cmp = require('cmp')
-local luasnip = require('luasnip')
+local ok, cmp = pcall(require, 'cmp')
+if not ok then
+  return
+end
+
+local ok, luasnip = pcall(require, 'luasnip')
+if not ok then
+  return
+end
 
 local has_words_before = function()
   local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
@@ -43,6 +50,7 @@ cmp.setup({
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },
   },
+
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),

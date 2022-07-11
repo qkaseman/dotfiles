@@ -6,10 +6,10 @@
 local fn = vim.fn
 
 local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
---vim.api.nvim_create_autocmd(
-  --"BufWritePost",
-  --{ command = "source <afile> | PackerSync", group = packer_group, pattern = "plugin.lua" }
---)
+vim.api.nvim_create_autocmd(
+  "BufWritePost",
+  { command = "source <afile> | PackerCompile", group = packer_group, pattern = "plugin.lua" }
+)
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -21,14 +21,18 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   })
+  vim.api.nvim_command("packadd packer.nvim")
 end
-vim.api.nvim_command("packadd packer.nvim")
 
-local packer = require('packer')
+local ok, packer = pcall(require, 'packer')
+if not ok then
+    return
+end
+
 packer.init({
   auto_clean = true,
   compile_on_sync = true,
-  compile_path = fn.stdpath("data") .. "/site/pack/packer/compiled.lua",
+  compile_path = fn.stdpath('data') .. "/site/pack/packer/start/packer.nvim/plugin/packer.lua",
   display = {
     open_fn = function()
       return require("packer.util").float({ border = "single" })
@@ -43,7 +47,7 @@ return packer.startup(function(use)
     'NLKNguyen/papercolor-theme',
     as = 'papercolor',
     config = function()
-      require('config.papercolor')
+      require('cfg.theme')
     end
   }
 
@@ -54,8 +58,7 @@ return packer.startup(function(use)
         'lewis6991/spellsitter.nvim',
     },
     config = function()
-      require('config.treesitter')
-      require('spellsitter').setup()
+      require('cfg.treesitter')
     end
   }
 
@@ -80,7 +83,7 @@ return packer.startup(function(use)
       'David-Kunz/cmp-npm',
     },
     config = function()
-      require('config.nvim-cmp')
+      require('cfg.cmp')
     end
   }
 
@@ -93,11 +96,11 @@ return packer.startup(function(use)
       'jose-elias-alvarez/typescript.nvim',
     },
     config = function()
-      require('config.lsp')
+      require('cfg.lsp')
     end
   }
 
   if packer_bootstrap then
-    require("packer").sync()
+    packer.sync()
   end
 end)
