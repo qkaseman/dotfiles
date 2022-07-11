@@ -17,3 +17,17 @@ user-dirs.locale
 
 # ZSH completion file, should go to cache but doesn't reliably
 zsh/.zcompdump
+
+# Node Conqueror of Completion, replace with lsp eventually
+coc
+
+# MacOS Stuff
+configstore
+
+# Don't know if I want to save.
+htop
+aws
+
+# Custom Tools
+brazil
+cr
