@@ -29,6 +29,12 @@ function config(plug)
 end
 
 return require("packer").startup({
+  config = {
+    display = {
+      --open_fn = require("packer.util").float({border = "rounded" }),
+      open_fn = require("packer.util").float,
+    },
+  },
   function(use)
     use { 'wbthomason/packer.nvim' } -- Let packer manage itself
 
@@ -50,13 +56,41 @@ return require("packer").startup({
       end
     }
 
+    use {
+      'David-Kunz/cmp-npm',
+      requires = {
+        'nvim-lua/plenary.nvim',
+      }
+    }
+
+    use {
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lua',
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+	'onsails/lspkind-nvim',
+        'David-Kunz/cmp-npm',
+      },
+      config = config('nvim-cmp')
+    }
+
+    use {
+      'neovim/nvim-lspconfig',
+      requires = {
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'williamboman/nvim-lsp-installer',
+      },
+      config = config('nvim-lsp')
+    }
+
     if packer_bootstrap then
       require("packer").sync()
     end
   end,
-  config = {
-    display = {
-      open_fn = require("packer.util").float,
-    },
-  },
 })
