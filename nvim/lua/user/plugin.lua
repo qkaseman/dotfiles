@@ -24,73 +24,79 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 vim.api.nvim_command("packadd packer.nvim")
 
-function config(plug)
-  require('user.plugin.'..plug)
-end
-
-return require("packer").startup({
-  config = {
-    display = {
-      --open_fn = require("packer.util").float({border = "rounded" }),
-      open_fn = require("packer.util").float,
-    },
+local packer = require('packer')
+packer.init({
+  auto_clean = true,
+  compile_on_sync = true,
+  compile_path = fn.stdpath("data") .. "/site/pack/packer/compiled.lua",
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "single" })
+    end,
   },
-  function(use)
-    use { 'wbthomason/packer.nvim' } -- Let packer manage itself
-
-    use {
-      'NLKNguyen/papercolor-theme',
-      as = 'papercolor',
-      config = config('papercolor')
-    }
-
-    use {
-      'nvim-treesitter/nvim-treesitter',
-      run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-      requires = {
-          'lewis6991/spellsitter.nvim',
-      },
-      config = function()
-        config('treesitter')
-        require('spellsitter').setup()
-      end
-    }
-
-    use {
-      'David-Kunz/cmp-npm',
-      requires = {
-        'nvim-lua/plenary.nvim',
-      }
-    }
-
-    use {
-      'hrsh7th/nvim-cmp',
-      requires = {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lua',
-        'L3MON4D3/LuaSnip',
-        'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-	'onsails/lspkind-nvim',
-        'David-Kunz/cmp-npm',
-      },
-      config = config('nvim-cmp')
-    }
-
-    use {
-      'neovim/nvim-lspconfig',
-      requires = {
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-nvim-lsp',
-        'williamboman/nvim-lsp-installer',
-      },
-      config = config('nvim-lsp')
-    }
-
-    if packer_bootstrap then
-      require("packer").sync()
-    end
-  end,
 })
+
+return packer.startup(function(use)
+  use { 'wbthomason/packer.nvim' } -- Let packer manage itself
+
+  use {
+    'NLKNguyen/papercolor-theme',
+    as = 'papercolor',
+    config = function()
+      require('user.plugin.papercolor')
+    end
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    requires = {
+        'lewis6991/spellsitter.nvim',
+    },
+    config = function()
+      require('user.plugin.treesitter')
+      require('spellsitter').setup()
+    end
+  }
+
+  use {
+    'David-Kunz/cmp-npm',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    }
+  }
+
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lua',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'onsails/lspkind-nvim',
+      'David-Kunz/cmp-npm',
+    },
+    config = function()
+      require('user.plugin.nvim-cmp')
+    end
+  }
+
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
+      'williamboman/nvim-lsp-installer',
+    },
+    config = function()
+      require('user.plugin.nvim-lsp')
+    end
+  }
+
+  if packer_bootstrap then
+    require("packer").sync()
+  end
+end)
