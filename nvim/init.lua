@@ -6,7 +6,5 @@
 -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 -- `ANSI Shadow` text art!
 
+require('config')
 require('plugin')
-require('option')
-require('keymap')
-require('whitespace')
