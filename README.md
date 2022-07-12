@@ -86,8 +86,12 @@ keep the version the same across computers which is maybe good, maybe bad?
 Install `asdf` into `${XDG_BIN_HOME}`:
 
 ```
-> git clone https://github.com/asdf-vm/asdf.git ${XDG_BIN_HOME}/asdf --branch v0.10.0
+> git clone https://github.com/asdf-vm/asdf.git ${ASDF_BIN_HOME} --branch v0.10.0
 ```
+
+If the installation is elsewhere (i.e. homebrew), set `$ASDF_BIN_HOME` in the
+local `zshenv` (`${XDG_CONFIG_LOCAL_HOME}/zsh/zshenv`) to override the default
+location so setup works appropriately.
 
 #### NodeJS Plugin
 
