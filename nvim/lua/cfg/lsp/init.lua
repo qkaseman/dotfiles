@@ -1,14 +1,21 @@
 -- TODO: Make a map of server name to config and use that rather
 -- than manually specifying them.
 
-local servers = {
-  'tsserver'
-}
-
 local ok, installer = pcall(require, 'nvim-lsp-installer')
 if not ok then
     return
 end
+local ok, lspconfig = pcall(require, 'lspconfig')
+if not ok then
+    return
+end
+
+vim.opt.signcolumn = "number"
+--vim.opt.signcolumn = "yes:2"
+
+local servers = {
+  'tsserver'
+}
 
 -- Install the list of servers.
 installer.setup {
@@ -112,3 +119,8 @@ typescript.setup({
     on_attach = on_attach,
   }
 })
+
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
