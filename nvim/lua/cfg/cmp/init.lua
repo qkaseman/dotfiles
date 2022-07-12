@@ -93,7 +93,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' }, -- emphasize current arg
     { name = 'nvim_lua' }, --nvim lua api
     { name = 'luasnip' },
-  }, {
+    { name = 'path' },
     { name = 'buffer' },
   }),
 })
@@ -104,14 +104,4 @@ cmp.setup.cmdline('/', {
   sources = {
     { name = 'buffer' }
   }
-})
-
--- Use cmdline & path source for ':'.
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
 })
