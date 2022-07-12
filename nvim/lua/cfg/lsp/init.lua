@@ -24,6 +24,26 @@ installer.setup {
     ui = { border = "rounded" },
 }
 
+vim.diagnostic.config({
+  virtual_text = true, -- errors inline
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = 'minimal',
+    border = 'rounded',
+    header = '',
+    footer = '',
+    source = true,
+    focus = false,
+    format = function(diagnostic)
+      if diagnostic.user_data ~= nil and diagnostic.user_data.lsp.code ~= nil then
+        return string.format("%s: %s", diagnostic.user_data.lsp.code, diagnostic.message)
+      end
+      return diagnostic.message
+    end,
+  }
+})
+
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
