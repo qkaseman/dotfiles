@@ -124,28 +124,39 @@ The ones these people have:
 * Jess Archer
 * Two others from my PC I don't recall
 
+#### Markdown syntax
+
+`npm` tab completion doesn't work `npm <TAB>`
+
+That highlights the middle as code due to the `<`.
+
 ## ZSH
 
 ### Major
 
-### `sudo` Tab Completion
+#### `sudo` Tab Completion
 
 Just doesn't seem to work at all.
 
-### Tab Completion jump
+#### Tab Completion jump
 
 When there is only one directory (option?) inside of the directory you are
 completing to, `fzf-tab` automatically fills that in and then opens a new
 completion menu, which is really frustrating.
 
-### Tab Completion color
+#### Tab Completion color
 
 The color of the tab completion is dark grey background with black text which
 is impossible to read. The general background is fine but the selection is bad.
 
+#### Tab completion `npm`
+
+`npm` tab completion doesn't work `npm <TAB>` or with any amount of leading `-`
+will also fail.
+
 ### Minor
 
-### Try `fzf-tab-complete`
+#### Try `fzf-tab-complete`
 
 Seemed redundant with `fzf-tab` (and might be) and with less features but the
 annoyances in `fzf-tab` might make it worth trying.
