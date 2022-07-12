@@ -32,6 +32,15 @@ this might get automated, but manual is fine for now.
 
 # Applications
 
+## Slack
+
+No way to automate the colorschme, but paste this into the "Custom Theme
+Colors" section of `slack` to get a theme that is `PaperColor`-esque.
+
+```
+#005F87,#350d36,#0087AF,#E4E4E4,#00AFAF,#E4E4E4,#008700,#AF0000,#005F87,#E4E4E4
+```
+
 ## ZSH
 
 ### Aliases
