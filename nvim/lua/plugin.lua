@@ -42,31 +42,15 @@ packer.init({
 
 return packer.startup(function(use)
   use { 'wbthomason/packer.nvim' } -- Let packer manage itself
+  use { 'tpope/vim-eunuch' } -- Adds :Rename, :SudoWrite, and other cool commands
+  use { 'NLKNguyen/papercolor-theme', config = function() require('cfg.theme') end }
 
-  use {
-    'NLKNguyen/papercolor-theme',
-    as = 'papercolor',
-    config = function()
-      require('cfg.theme')
-    end
-  }
-
+  --TODO: may need a unix guard around here
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    requires = {
-        'lewis6991/spellsitter.nvim',
-    },
-    config = function()
-      require('cfg.treesitter')
-    end
-  }
-
-  use {
-    'David-Kunz/cmp-npm',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    }
+    requires = { 'lewis6991/spellsitter.nvim', },
+    config = function() require('cfg.treesitter') end
   }
 
   use {
@@ -76,22 +60,34 @@ return packer.startup(function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lua',
-      'L3MON4D3/LuaSnip',
+      {
+        'L3MON4D3/LuaSnip',
+        requires = { "rafamadriz/friendly-snippets" },
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+      },
       'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
-      'onsails/lspkind-nvim',
-      'David-Kunz/cmp-npm',
+      {
+        "onsails/lspkind-nvim",
+        config = function()
+          require("lspkind").init()
+        end,
+      }, {
+        'David-Kunz/cmp-npm',
+        requires = {
+          'nvim-lua/plenary.nvim',
+        }
+      },
     },
-    config = function()
-      require('cfg.cmp')
-    end
+    config = function() require('cfg.cmp') end
   }
 
   use {
     'neovim/nvim-lspconfig',
     requires = {
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
       'williamboman/nvim-lsp-installer',
       'jose-elias-alvarez/typescript.nvim',
     },
