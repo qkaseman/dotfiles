@@ -1,10 +1,11 @@
 # Dotfiles
 
-My configuration files that (mostly) follow the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html).
+My configuration files that (mostly) follow the [XDG Base Directory
+Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html).
 
 ## Installation
 
-1. Clone into `.config`
+1. Clone into `.config`: `git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git ~/.config`
 1. Setup root zshenv from `resources`
 1. Install fonts, or use a local configuration to override the default.
 1. Profit?
@@ -14,7 +15,9 @@ My configuration files that (mostly) follow the [XDG Base Directory Specificatio
 These configuration files will also look for local configuration files at
 `$XDG_CONFIG_LOCAL_HOME`. Mostly this is for odd install paths and aliases for
 confidential tools as OS differences are (currently) handled via conditional
-script sourcing inside this repository. These local configurations are the final configuration files loaded and will therefore override the configurations set here.
+script sourcing inside this repository. These local configurations are the
+final configuration files loaded and will therefore override the configurations
+set here.
 
 `$XDG_CONFIG_LOCAL_HOME` defaults to `${HOME}/.local/config` and the programs
 in this expect their 'root' directory to have the same name as the one in
@@ -33,9 +36,10 @@ need a `~/.zshrc` or `~/.zshenv` at all. If you can't, you'll need to add these
 exports to `~/.zshenv` and then have both configuration files in your home
 directory source from the ones in this repository.
 
-### `fonts`
+### `font/*`
 
 Open-source fonts that are nice to use. Install as appropriate for the OS.
+Currently aren't any as I'm not sure the nicest way to actually store them.
 
 #### macOS
 
@@ -47,7 +51,7 @@ each `.ttf` file.
 Copy fonts into `~/.local/share/fonts/`:
 
 ```bash
-> cp ${XDG_CONFIG_HOME}/resources/fonts/* ~/.local/share/fonts/
+> cp ${XDG_CONFIG_HOME}/resources/font/* ~/.local/share/fonts/
 ```
 
 # Applications
