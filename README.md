@@ -1,47 +1,82 @@
-# Command Line Application Configurations
+# Dotfiles
 
-XDG-compliant (as much as possible) configuration files.
+My configuration files that (mostly) follow the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html).
 
 ## Installation
 
-1. Clone into `.config` (make sure to backup anything that is already there!)
-1. Setup root zshenv from `scripts`
-1. Install fonts, or override the config to use different fonts
+1. Clone into `.config`
+1. Setup root zshenv from `resources`
+1. Install fonts, or use a local configuration to override the default.
 1. Profit?
 
 ## Local Configuration
 
-Local configurations go into `$XDG_CONFIG_LOCAL_HOME`, which is set by default
-in the scripts provided to `${HOME}/.local/config`. This allows for computer or
-work-specific files to be self-contained and even a repo set up like this one.
+These configuration files will also look for local configuration files at
+`$XDG_CONFIG_LOCAL_HOME`. Mostly this is for odd install paths and aliases for
+confidential tools as OS differences are (currently) handled via conditional
+script sourcing inside this repository. These local configurations are the final configuration files loaded and will therefore override the configurations set here.
 
-Some configuration files don't allow for shell variables or variable expansion,
-so those will directly reference the default location. These configurations are
-generally the last thing loaded into the particular configuration and will
-therefore override the default configurations in this repo.
+`$XDG_CONFIG_LOCAL_HOME` defaults to `${HOME}/.local/config` and the programs
+in this expect their 'root' directory to have the same name as the one in
+`${HOME}/.config`. Some applications have their own, more specific, local
+environment variables. See those sections for more details. Some applications
+cannot perform environment variable expansion, so those will directly reference
+the default location.
 
-## Scripts
+## Resources
 
-### `etc-zsh-zshenv`
+### `zsh/zshenv`
 
-This sets up `zsh` to have XDG variables defined and make `zsh` itself follow
-the spec.
+This sets up `zsh` to follow the XDG specification. If you own the computer,
+you should add these in `/etc/zsh/zshenv` (or the equivalent) and you won't
+need a `~/.zshrc` or `~/.zshenv` at all. If you can't, you'll need to add these
+exports to `~/.zshenv` and then have both configuration files in your home
+directory source from the ones in this repository.
 
-The exports in this script should be added to `/etc/zsh/zshenv`. Eventually
-this might get automated, but manual is fine for now.
+### `fonts`
+
+Open-source fonts that are nice to use. Install as appropriate for the OS.
+
+#### macOS
+
+Double click on the `.ttf` and then click `Install`. You'll have to do this for
+each `.ttf` file.
+
+#### Ubuntu
+
+Copy fonts into `~/.local/share/fonts/`:
+
+```bash
+> cp ${XDG_CONFIG_HOME}/resources/fonts/* ~/.local/share/fonts/
+```
 
 # Applications
 
 ## Slack
 
-No way to automate the colorschme, but paste this into the "Custom Theme
-Colors" section of `slack` to get a theme that is `PaperColor`-esque.
+Slack doesn't provide a way to nicely automate custom themes, but pasting this
+into the "Custom Theme Colors" section of `slack` isn't too hard. This provides
+a theme that is
+[`PaperColor`](https://github.com/NLKNguyen/papercolor-theme)-esque.
 
 ```
 #005F87,#350d36,#0087AF,#E4E4E4,#00AFAF,#E4E4E4,#008700,#AF0000,#005F87,#E4E4E4
 ```
 
 ## ZSH
+
+### Local Configuration
+
+The configuration load order is as follows:
+
+1. `${ZDOTDIR}/zshenv`
+1. `${ZSH_LOCAL_HOME}/zshenv`
+1. `${ZDOTDIR}/zshrc`
+1. `${ZSH_LOCAL_HOME}/zshrc`
+
+This order enables things like the installation directory to be set in the
+local `zshenv` and then the various installed files are properly sourced by the
+`rc` files.
 
 ### Aliases
 
@@ -53,19 +88,6 @@ places to look for inspiration if desired:
 * [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
 * [MacOS Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos)
 
-### Zsh Plugins to look at in the future.
-
-* [`fz`](https://github.com/changyuheng/fz) might be replicated by having `fzf-tab` installed.
-* [`fzf-tab-completion`](https://github.com/lincheney/fzf-tab-completion) seems to be the same thing as `fzf-tab` pretty much (and the additional change of the `zsh` completion to `fzf` seemed unneeded). Maybe change in the future if issues come up with `fzf-tab`.
-* [`you-should-use`](https://github.com/MichaelAquilina/zsh-you-should-use) for suggestions on aliases that are defined that match the command you just ran. There is also a plugin with the name `tipz` or something that looks similar.
-* [`fzf.plugin.zsh`](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh) possibly useful things associated with `fzf`
-* [`Zsh Zephyr`](https://github.com/mattmc3/zephyr) seems to have a lot of good default settings so I should look at those and pull out what seems nice after I live with these settings for a while.
-* [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting) apparently has better and faster highlighting so should try that.
-
-### Plugin/module changes
-
-Could do something like [`zsh-unplugged`](https://github.com/mattmc3/zsh_unplugged) rather than have them as git submodules. Might be easier to deal with?
-
 ## Alacritty
 
 ### Window Decoration
@@ -73,47 +95,47 @@ Could do something like [`zsh-unplugged`](https://github.com/mattmc3/zsh_unplugg
 For non-tiling window managers (or if you want to be able to drag with the
 mouse), add the following to the local configuration:
 
-```
+```yaml
 window:
   decorations: full
 ```
-
-### Fonts
-
-Install fonts into `~/.local/share/fonts/`.
 
 ## `asdf`
 
 [`asdf`](https://asdf-vm.com/) is a terribly named runtime manager.
 
-TODO: Decide if `asdf` should be a submodule and have a `bin` directory in
-`.config` that is symlinked inside `${XDG_BIN_HOME}` for each dir. This would
-keep the version the same across computers which is maybe good, maybe bad?
-
 ### Installation
 
-Install `asdf` into `${XDG_BIN_HOME}`:
+If the installation is done via a package manager (i.e. `brew`), set
+`ASDF_BIN_HOME` in your local local `zshenv`
+(`${XDG_CONFIG_LOCAL_HOME}/zsh/zshenv`) to override the default location so
+initialization works correctly. If you don't, it will look like `asdf` is
+installed (you'll have the shell completion and command) but none of the
+environments installed will be available.
 
-```
-> git clone https://github.com/asdf-vm/asdf.git ${ASDF_BIN_HOME} --branch v0.10.0
-```
+For a 'standard' installation, do:
 
-If the installation is elsewhere (i.e. homebrew), set `$ASDF_BIN_HOME` in the
-local `zshenv` (`${XDG_CONFIG_LOCAL_HOME}/zsh/zshenv`) to override the default
-location so setup works appropriately.
+```bash
+> git clone --depth 1 https://github.com/asdf-vm/asdf.git ${ASDF_BIN_HOME} --branch v0.10.0
+```
 
 #### NodeJS Plugin
 
-```
+If desired, install the NodeJS plugin to manage Node runtimes:
+
+```bash
 > asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 > asdf install nodejs lts-gallium
 ```
 
 ## Git
 
-The core git configurations are within the `git` directory here. However, as
-the name and email might change (for example, when using work email) so that
-information should be added to `~/.gitconfig` as:
+`git` nicely handles multiple configuration files, though not sourcing (as far
+as I know). Therefore, the core `git` configurations are provided by this
+repository but specifics (i.e. email) or overrides should be set in
+`~/.gitconfig`.
+
+At a minimum, `~/.gitconfig` should contain:
 
 ```
 [user]
@@ -123,23 +145,24 @@ information should be added to `~/.gitconfig` as:
 
 ## `fzf`
 
-[`fzf`](https://github.com/junegunn/fzf) is a fuzzy file finder that needs to
-be installed separately. All the configuration files in this repo assume it is
-installed into `$FZF_HOME`. This can be set in the local `zshenv` to override
-the default location.
+[`fzf`](https://github.com/junegunn/fzf) is a fuzzy file finder that is quite useful.
+
+If the installation is done via a package manager or you just want to install
+it into a different location, set `FZF_HOME` in your local `zshenv`, just like
+with `asdf`.
 
 For the install itself, all we want is for the binary to be downloaded,
-everything else is already configured.
+everything else is already configured/included in this repository:
 
-```
-git clone --depth 1 https://github.com/junegunn/fzf.git ${FZF_HOME}
-${FZF_HOME}/install --bin
+```bash
+> git clone --depth 1 https://github.com/junegunn/fzf.git ${FZF_HOME}
+> ${FZF_HOME}/install --bin
 ```
 
 ### `ripgrep`
 
-`fzf` is configured to use [`ripgrep`](https://github.com/BurntSushi/ripgrep)
-which also needs to be installed. Make sure it's in the path.
+`fzf` is configured to use [`ripgrep`](https://github.com/BurntSushi/ripgrep),
+if installed. Highly recommend.
 
 # Inspiration
 
