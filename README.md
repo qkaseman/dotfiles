@@ -153,36 +153,3 @@ Locations to go look at for organization or useful features.
 * [MyPickles/dotfiles](https://github.com/MrPickles/dotfiles)
 * [EdenEast/dots](https://github.com/EdenEast/dots)
 * [dotfiles](https://dotfiles.github.io/inspiration/)
-
-# TODO
-
-## Zsh plugin completions
-
-* https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep
-
-## Neovim
-
-* https://github.com/NLKNguyen/papercolor-theme
-* trim whitespace
-* Highlight trailing whitespace
-* lsp/coc
-* system clipboard
-* default spacing to 2 :shocked_face:
-* clear search term
-* spell check but not code
-* persistent undo
-* backup dir
-* undo dir
-* smart case search
-* no highlight matching braces
-* block visual allowed past end of lines
-* open splits on the "correct" sides
-
-## ZSH
-
-* better expansion (a-d<TAB> --> amazing-directory)
-* `autosuggestions` maybe not as nice as I always think before adding them?
-
-## Git
-
-* Merge summary perhaps

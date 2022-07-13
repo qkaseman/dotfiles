@@ -8,6 +8,22 @@ up, so repo-specific prob better.
 
 ### Major
 
+#### Easy Quick List
+
+* block visual past EOL
+* Smart case search
+* persistent undo
+* backup dir
+* undo dir
+* no highlight matching braces
+* default spacing to 2 :shocked_face: -- maybe....
+* clear search highlight until next search
+
+#### Use system clipboard
+
+Don't want it as they yank buffer but do want a command to be able to yank and
+paste to/from the system clipboard.
+
 #### pink as the error highlight with red text is bad.
 
 Ewwwwww on colors.
@@ -33,9 +49,16 @@ that's just how that kind of thing is "sourced").
 
 ### Minor
 
+#### Spell check
+
+Would be nice to always have spellcheck on (prob should auto trigger for `md`
+and `txt` etc... files. Also would love spell checking in comments but not sure
+how possible that will be.
+
 #### Refactor lsp
 
-Refactor the lsp server setup so it's a little cleaner (not just one giant file for a start).
+Refactor the lsp server setup so it's a little cleaner (not just one giant file
+for a start).
 
 #### Add lsp servers
 
@@ -155,6 +178,14 @@ is impossible to read. The general background is fine but the selection is bad.
 will also fail.
 
 ### Minor
+
+#### `ripgrep` completions
+
+Add [`ripgrep completions`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep)
+
+#### Reevaluate `autosuggestions`
+
+Always think I like them, but when seeeing them I'm never quite sure I do.
 
 #### Try `fzf-tab-complete`
 
