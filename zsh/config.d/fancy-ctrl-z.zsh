@@ -3,7 +3,7 @@
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
+    BUFFER='fg'
     zle accept-line -w
   else
     zle push-input -w

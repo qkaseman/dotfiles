@@ -15,5 +15,5 @@ alias usage='du -cksh'
 alias cls='printf "\033c"'
 
 # Scratchpads.
-alias todo="vi ${XDG_DATA_HOME}/todo"
-alias scratch="vi ${XDG_DATA_HOME}/scratch"
+alias todo="vi ${XDG_DATA_HOME}/todo.md"
+alias scratch="vi ${XDG_DATA_HOME}/scratch.md"

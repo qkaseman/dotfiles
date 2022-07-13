@@ -1,6 +1,6 @@
 # Setup fzf
 # ---------
-PATH="${PATH:+${PATH}:}${FZF_HOME}/bin"
+path+=(${FZF_HOME}/bin)
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # Auto-completion

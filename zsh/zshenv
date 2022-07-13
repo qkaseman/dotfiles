@@ -5,5 +5,4 @@ foreach conf (${ZDOTDIR}/env.d/**/*.zsh)
 end
 unset conf
 
-LOCAL_CFG=${XDG_CONFIG_LOCAL_HOME:-~/.local/config/}/zsh/zshenv
-[ -f ${LOCAL_CFG} ] && . ${LOCAL_CFG}
+[ -f ${ZSH_LOCAL_HOME}/zshenv ] && . ${ZSH_LOCAL_HOME}/zshenv || true

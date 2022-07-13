@@ -32,6 +32,15 @@ this might get automated, but manual is fine for now.
 
 # Applications
 
+## Slack
+
+No way to automate the colorschme, but paste this into the "Custom Theme
+Colors" section of `slack` to get a theme that is `PaperColor`-esque.
+
+```
+#005F87,#350d36,#0087AF,#E4E4E4,#00AFAF,#E4E4E4,#008700,#AF0000,#005F87,#E4E4E4
+```
+
 ## ZSH
 
 ### Aliases
@@ -86,8 +95,12 @@ keep the version the same across computers which is maybe good, maybe bad?
 Install `asdf` into `${XDG_BIN_HOME}`:
 
 ```
-> git clone https://github.com/asdf-vm/asdf.git ${XDG_BIN_HOME}/asdf --branch v0.10.0
+> git clone https://github.com/asdf-vm/asdf.git ${ASDF_BIN_HOME} --branch v0.10.0
 ```
+
+If the installation is elsewhere (i.e. homebrew), set `$ASDF_BIN_HOME` in the
+local `zshenv` (`${XDG_CONFIG_LOCAL_HOME}/zsh/zshenv`) to override the default
+location so setup works appropriately.
 
 #### NodeJS Plugin
 
