@@ -35,7 +35,8 @@ case "$OSTYPE" in
     ;;
 esac
 
-LOCAL_CFG=${XDG_CONFIG_LOCAL_HOME:-~/.local/config/}/zsh/zshrc
-[ -f ${LOCAL_CFG} ] && . ${LOCAL_CFG}
-# Add this to the above live so prompt doesn't indicate failed if no local cfg
-true
+[ -f ${ZSH_LOCAL_HOME}/zshrc ] && . ${ZSH_LOCAL_HOME}/zshrc || true
+
+# Dedupe and export PATH.
+typeset -U path
+export PATH
