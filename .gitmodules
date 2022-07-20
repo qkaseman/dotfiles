@@ -10,10 +10,6 @@
 	path = zsh/plugin/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	shallow = true
-[submodule "zsh-history-substring-search"]
-	path = zsh/plugin/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search.git
-	shallow = true
 [submodule "zsh-completion-generator"]
 	path = zsh/plugin/zsh-completion-generator
 	url = https://github.com/RobSis/zsh-completion-generator.git
