@@ -17,3 +17,21 @@ vim.keymap.set('n', 'j', 'gj', opts)
 vim.keymap.set('n', 'k', 'gk', opts)
 vim.keymap.set('n', 'gj', 'j', opts)
 vim.keymap.set('n', 'gk', 'k', opts)
+
+-- Clear search highlight.
+vim.keymap.set('', '<leader>c', ':noh<CR>', opts)
+
+-- Make 'Y' behave like 'D' and 'C'
+vim.keymap.set('n', 'Y', 'y$', opts)
+
+-- Keep paste buffer after pasting once.
+vim.keymap.set('x', 'p', 'pgvy', opts)
+
+-- System clipboard integrations.
+vim.keymap.set('n', '<leader>p', '"+p', opts)
+vim.keymap.set('v', '<leader>p', '"+p', opts)
+vim.keymap.set('n', '<leader>P', '"+P', opts)
+vim.keymap.set('v', '<leader>P', '"+P', opts)
+vim.keymap.set('n', '<leader>y', '"+y', opts)
+vim.keymap.set('v', '<leader>y', '"+y', opts)
+vim.keymap.set('n', '<leader>Y', '"+y$', opts)

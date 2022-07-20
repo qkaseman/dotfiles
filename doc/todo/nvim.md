@@ -24,37 +24,11 @@ Comment indentation is **super** wrong.
 
 #### Easy Quick List
 
-* block visual past EOL
-* Smart case search
-* persistent undo
-* backup dir
-* undo dir
-* no highlight matching braces
 * default spacing to 2 :shocked_face: -- maybe....
-* clear search highlight until next search
-
-#### Use system clipboard
-
-Don't want it as they yank buffer but do want a command to be able to yank and
-paste to/from the system clipboard.
 
 #### pink as the error highlight with red text is bad.
 
 Ewwwwww on colors.
-
-#### <TAB> with a space before it blows up tab complete
-
-```
-E5108: Error executing lua /Users/quillank/.config/nvim/lua/config/nvim-cmp.lua:10: attempt to call field 'unpack' (a nil value)
-stack traceback:
-        /Users/quillank/.config/nvim/lua/config/nvim-cmp.lua:10: in function 'has_words_before'
-        /Users/quillank/.config/nvim/lua/config/nvim-cmp.lua:63: in function 'on_keymap'
-        ...re/nvim/site/pack/packer/start/nvim-cmp/lua/cmp/core.lua:146: in function 'callback'
-        ...site/pack/packer/start/nvim-cmp/lua/cmp/utils/keymap.lua:118: in function <...site/pack/packer/start/nvim-cmp/lua/cmp/utils/keymap.lua:112>
-        ...site/pack/packer/start/nvim-cmp/lua/cmp/utils/keymap.lua:248: in function <...site/pack/packer/start/nvim-cmp/lua/cmp/utils/keymap.lua:247>
-```
-This happens when I try to tab (in lua at least) without anything previous on
-the line. Also in txt if the previous thing isn't a character (is whitespace).
 
 #### menu tab completion sometimes doesn't work
 
