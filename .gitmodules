@@ -30,3 +30,7 @@
 	path = zsh/plugin/z
 	url = https://github.com/rupa/z.git
 	shallow = true
+[submodule "zsh/plugin/fzf-tab-completion"]
+	path = zsh/plugin/fzf-tab-completion
+	url = https://github.com/lincheney/fzf-tab-completion
+	shallow = true
