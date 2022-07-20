@@ -1,7 +1,15 @@
-## ZSH
+# ZSH
 
-### Major
+## Major
 
+### `fzf-tab-completion`
+
+#### is slow
+
+Noticable lab when hitting `<TAB>`.
+
+
+### `fzf-tab`
 #### `sudo` Tab Completion
 
 Just doesn't seem to work at all.
@@ -12,32 +20,32 @@ When there is only one directory (option?) inside of the directory you are
 completing to, `fzf-tab` automatically fills that in and then opens a new
 completion menu, which is really frustrating.
 
-#### Tab Completion color
-
-The color of the tab completion is dark grey background with black text which
-is impossible to read. The general background is fine but the selection is bad.
-
 #### Tab completion `npm`
 
 `npm` tab completion doesn't work `npm <TAB>` or with any amount of leading `-`
 will also fail.
 
-### Minor
+### Tab Completion color
 
-#### `ripgrep` completions
+The color of the tab completion is dark grey background with black text which
+is impossible to read. The general background is fine but the selection is bad.
+
+## Minor
+
+### `ripgrep` completions
 
 Add [`ripgrep completions`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep)
 
-#### Reevaluate `autosuggestions`
+### Reevaluate `autosuggestions`
 
 Always think I like them, but when seeeing them I'm never quite sure I do.
 
-#### Try `fzf-tab-complete`
+### Try `fzf-tab-complete`
 
 Seemed redundant with `fzf-tab` (and might be) and with less features but the
 annoyances in `fzf-tab` might make it worth trying.
 
-#### Plugin/module relayout
+### Plugin/module relayout
 
 Could do something like
 [`zsh-unplugged`](https://github.com/mattmc3/zsh_unplugged) rather than have
@@ -45,7 +53,7 @@ them as git submodules. Would be more consistent with `nvim` and might be
 easier to deal with. Could also automate the installing of tools like `fzf` and
 `asdf`.
 
-#### Moar plugins!
+### Moar plugins!
 
 * [`fz`](https://github.com/changyuheng/fz) might be replicated by having
   `fzf-tab` installed.
