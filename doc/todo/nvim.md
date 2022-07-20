@@ -2,10 +2,6 @@
 
 ### Major
 
-#### `js` indent
-
-Should be 2 not 4.
-
 #### `.d.ts` filetype detection
 
 See title.
