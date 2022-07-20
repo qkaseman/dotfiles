@@ -13,6 +13,27 @@ Should work but doesn't seem to? At least not with `fzf-tab`.
 
 ### Major
 
+
+#### `js` indent
+
+Should be 2 not 4.
+
+#### `.d.ts` filetype detection
+
+See title.
+
+#### `json` LSP for errors
+
+See title.
+
+#### Tab completion in file search breaks sometimes
+
+`:tabe <file>` tab completion sometimes stops working (why, no idea). Super super annoying though.
+
+#### Indentation for JS/TS comments
+
+Comment indentation is **super** wrong.
+
 #### Easy Quick List
 
 * block visual past EOL
