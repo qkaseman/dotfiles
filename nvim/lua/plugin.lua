@@ -90,6 +90,7 @@ return packer.startup(function(use)
     requires = {
       'williamboman/nvim-lsp-installer',
       'jose-elias-alvarez/typescript.nvim',
+      'hrsh7th/nvim-cmp',
     },
     config = function()
       require('cfg.lsp')

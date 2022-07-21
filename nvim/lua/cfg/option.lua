@@ -4,6 +4,7 @@ vim.opt.title = true
 vim.opt.number = true
 vim.opt.list = true
 vim.opt.listchars = 'tab:▸-,trail:·,extends:»,precedes:«,nbsp:%'
+vim.opt.signcolumn = "number" -- LSP icons in number gutter
 
 -- Tabs vs Spaces --
 vim.opt.expandtab = true
@@ -42,3 +43,4 @@ vim.opt.backup = true
 vim.opt.backupdir = vim.fn.stdpath('data')..'/backup//'
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath('data')..'/undo//'
+
