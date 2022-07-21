@@ -97,11 +97,3 @@ cmp.setup({
     { name = 'buffer' },
   }),
 })
-
--- Use buffer source for `/`.
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
