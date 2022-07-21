@@ -14,7 +14,8 @@ vim.opt.signcolumn = "number"
 --vim.opt.signcolumn = "yes:2"
 
 local servers = {
-  'tsserver'
+  'tsserver',
+  'sumneko_lua',
 }
 
 -- Install the list of servers.
@@ -139,6 +140,37 @@ typescript.setup({
     on_attach = on_attach,
   }
 })
+
+local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
+lspconfig.sumneko_lua.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+    },
+    diagnostics = {
+      -- Get the language server to recognize the `vim` global
+      globals = { 'vim' },
+    },
+    workspace = {
+      -- Make the server aware of Neovim runtime files
+      library = vim.api.nvim_get_runtime_file('', true),
+    },
+    telemetry = {
+      enable = false,
+    },
+  },
+});
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
