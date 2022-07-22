@@ -6,10 +6,6 @@
 
 See title.
 
-#### `json` LSP for errors
-
-See title.
-
 #### Tab completion in file search breaks sometimes
 
 `:tabe <file>` tab completion sometimes stops working (why, no idea). Super super annoying though.
@@ -17,10 +13,6 @@ See title.
 #### Indentation for JS/TS comments
 
 Comment indentation is **super** wrong.
-
-#### Easy Quick List
-
-* default spacing to 2 :shocked_face: -- maybe....
 
 #### pink as the error highlight with red text is bad.
 
@@ -43,46 +35,26 @@ Would be nice to always have spellcheck on (prob should auto trigger for `md`
 and `txt` etc... files. Also would love spell checking in comments but not sure
 how possible that will be.
 
-#### Refactor lsp
-
-Refactor the lsp server setup so it's a little cleaner (not just one giant file
-for a start).
-
 #### Add lsp servers
 
 From top the list of servers `lsp-installer` supports, these seem useful:
  * `AWK	awk_ls`
- * `Bash	bashls`
  * `C	ccls`
  * `C	clangd`
  * `C++	ccls`
  * `C++	clangd`
- * `CMake	cmake`
- * `CSS	cssls`
  * `CSS	cssmodules_ls`
- * `Cucumber	cucumber_language_server`
- * `Docker	dockerls`
- * `ESLint (docs)	eslint`
- * `HTML	html`
- * `JSON	jsonls`
- * `Java (docs)	jdtls`
  * `Jsonnet	jsonnet_ls`
- * `Kotlin	kotlin_language_server`
  * `LaTeX	ltex`
  * `LaTeX	texlab`
- * `Lua	sumneko_lua`
  * `Markdown	marksman`
  * `Markdown	prosemd_lsp`
  * `Markdown	remark_ls`
  * `Markdown	zk`
  * `Python	jedi_language_server`
- * `Python	pyright`
  * `Python	sourcery`
  * `Python (docs)	pylsp`
- * `Ruby	solargraph`
- * `Rust	rust_analyzer`
  * `Sphinx	esbonio`
- * `Tailwind CSS	tailwindcss`
 
 #### `lua` syntax highlighting is wonky
 
@@ -109,6 +81,18 @@ if not ok then<ENTER>
 
 If `plugin.lua` has the proper dependency modeling, then I can only do the
 `pcall` crap on the final one at the top of the file. Much cleaner.
+
+#### tpope surround
+
+I finally see the use of this, look into it.
+
+#### tpope commentary
+
+Look into this as well, pretty sure I used it in the past and liked it.
+
+#### Line highlight not working
+
+Should be highlighting but not underlining the current buffer....
 
 #### Title flicker
 
