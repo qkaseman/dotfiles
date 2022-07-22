@@ -134,6 +134,14 @@ return packer.startup(function(use)
   -- Code-aware line splitting and joining.
   use({ 'AndrewRadev/splitjoin.vim' })
 
+  use({
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function() require('cfg.nvim-tree') end
+  })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
