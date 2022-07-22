@@ -66,18 +66,14 @@ return packer.startup(function(use)
       {
         'L3MON4D3/LuaSnip',
         requires = { "rafamadriz/friendly-snippets" },
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
+        config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
       },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       {
         "onsails/lspkind-nvim",
-        config = function()
-          require("lspkind").init()
-        end,
+        config = function() require("lspkind").init() end,
       }, {
         'David-Kunz/cmp-npm',
         requires = {
@@ -98,9 +94,12 @@ return packer.startup(function(use)
       -- Add LSP highlight groups for those that don't support the LSP client yet
       'folke/lsp-colors.nvim',
     },
-    config = function()
-      require('cfg.lsp')
-    end
+    config = function() require('cfg.lsp') end
+  })
+
+  use({
+    'glepnir/dashboard-nvim',
+    config = function() require('cfg.dashboard') end
   })
 
   if PACKER_BOOTSTRAP then
