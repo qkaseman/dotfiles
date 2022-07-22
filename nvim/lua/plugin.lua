@@ -92,6 +92,7 @@ return packer.startup(function(use)
       'jose-elias-alvarez/typescript.nvim',
       'b0o/schemastore.nvim',
       'hrsh7th/nvim-cmp',
+      'folke/lsp-colors.nvim', -- Add LSP highlight groups for those that don't support the LSP client yet
     },
     config = function()
       require('cfg.lsp')
