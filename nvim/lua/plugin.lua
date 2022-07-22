@@ -111,6 +111,11 @@ return packer.startup(function(use)
     config = function() require('cfg.vim-floaterm') end
   })
 
+  use({
+    'vim-test/vim-test',
+    config = function() require('cfg.vim-test') end
+  })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
