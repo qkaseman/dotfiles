@@ -35,3 +35,6 @@ vim.keymap.set('v', '<leader>P', '"+P', opts)
 vim.keymap.set('n', '<leader>y', '"+y', opts)
 vim.keymap.set('v', '<leader>y', '"+y', opts)
 vim.keymap.set('n', '<leader>Y', '"+y$', opts)
+
+-- Allow gf to open no-existent files
+vim.keymap.set('', 'gf', ':edit <cfile><CR>', opts)
