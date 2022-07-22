@@ -124,3 +124,9 @@ The ones these people have:
 `npm` tab completion doesn't work `npm <TAB>`
 
 That highlights the middle as code due to the `<`.
+
+#### Look into autopairs plugins
+
+I don't generally like them but it looks like there are a number of indentation
+things that only *really* work with that being setup. (`lua` is a current
+example but I'm sure it applies to more.
