@@ -124,6 +124,13 @@ return packer.startup(function(use)
     config = function() require('cfg.lualine') end
   })
 
+  -- The paste plugin you didn't know you wanted. Adjust indentation to
+  -- the destination context.
+  use({
+    'sickill/vim-pasta',
+    config = function() require('cfg.vim-pasta') end
+  })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
