@@ -69,17 +69,18 @@ return packer.startup(function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lua',
-      {
-        'L3MON4D3/LuaSnip',
-        requires = {
-          "rafamadriz/friendly-snippets"
-        },
-        config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
-      },
-      'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       {
+        'saadparwaiz1/cmp_luasnip',
+        requires = {
+          'L3MON4D3/LuaSnip',
+          requires = {
+            "rafamadriz/friendly-snippets"
+          },
+          config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+        },
+      }, {
         "onsails/lspkind-nvim",
         config = function() require("lspkind").init() end,
       }, {
@@ -130,6 +131,7 @@ return packer.startup(function(use)
 
   -- The paste plugin you didn't know you wanted. Adjust indentation to
   -- the destination context.
+  -- This might be the greatest thing ever.
   use({
     'sickill/vim-pasta',
     config = function() require('cfg.vim-pasta') end
