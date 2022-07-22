@@ -56,7 +56,9 @@ return packer.startup(function(use)
   use({
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    requires = { 'lewis6991/spellsitter.nvim', },
+    requires = {
+      'lewis6991/spellsitter.nvim',
+    },
     config = function() require('cfg.treesitter') end
   })
 
@@ -69,7 +71,9 @@ return packer.startup(function(use)
       'hrsh7th/cmp-nvim-lua',
       {
         'L3MON4D3/LuaSnip',
-        requires = { "rafamadriz/friendly-snippets" },
+        requires = {
+          "rafamadriz/friendly-snippets"
+        },
         config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
       },
       'saadparwaiz1/cmp_luasnip',
