@@ -131,6 +131,9 @@ return packer.startup(function(use)
     config = function() require('cfg.vim-pasta') end
   })
 
+  -- Code-aware line splitting and joining.
+  use({ 'AndrewRadev/splitjoin.vim' })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
