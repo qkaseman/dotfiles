@@ -116,6 +116,14 @@ return packer.startup(function(use)
     config = function() require('cfg.vim-test') end
   })
 
+  use({
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function() require('cfg.lualine') end
+  })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
