@@ -46,6 +46,10 @@ return packer.startup(function(use)
 
   -- Adds :Rename, :SudoWrite, and other cool commands)
   use({ 'tpope/vim-eunuch' })
+
+  -- automatically create parent dirs when saving
+  use({ 'jessarcher/vim-heritage' })
+
   use({ 'NLKNguyen/papercolor-theme', config = function() require('cfg.theme') end })
 
   --TODO: may need a unix guard around here
