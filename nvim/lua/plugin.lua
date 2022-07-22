@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd(
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
+  PACKER_BOOTSTRAP = fn.system({
     "git",
     "clone",
     "--depth",
@@ -90,6 +90,7 @@ return packer.startup(function(use)
     requires = {
       'williamboman/nvim-lsp-installer',
       'jose-elias-alvarez/typescript.nvim',
+      'b0o/schemastore.nvim',
       'hrsh7th/nvim-cmp',
     },
     config = function()
@@ -97,7 +98,7 @@ return packer.startup(function(use)
     end
   }
 
-  if packer_bootstrap then
+  if PACKER_BOOTSTRAP then
     packer.sync()
   end
 end)

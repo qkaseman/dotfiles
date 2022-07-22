@@ -41,7 +41,10 @@ function M.setup()
     server = {
       capabilities = caps,
       handlers = require('cfg.lsp.handlers'),
-    }
+    },
+    flags = {
+      debounce_text_changes = 150,
+    },
   })
 end
 

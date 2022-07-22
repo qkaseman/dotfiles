@@ -12,6 +12,22 @@ local installer = require('nvim-lsp-installer')
 local servers = {
   'tsserver',
   'sumneko_lua',
+  'bashls',
+  'cmake',
+  'cssls',
+  'cucumber_language_server',
+  'dockerls',
+  'eslint',
+  'html',
+  'jsonls',
+  'jdtls', -- Java
+  'kotlin_language_server',
+  'pyright',
+  'solargraph', -- Ruby
+  'rust_analyzer',
+  'tailwindcss',
+  'lemminx', -- XML
+  'yamlls'
 }
 
 -- Install
@@ -63,3 +79,21 @@ end)
 
 require('cfg.lsp.tsserver').setup()
 require('cfg.lsp.sumneko_lua').setup()
+require('cfg.lsp.tsserver').setup()
+require('cfg.lsp.sumneko_lua').setup()
+require('cfg.lsp.bashls').setup()
+require('cfg.lsp.cmake').setup()
+require('cfg.lsp.cssls').setup()
+require('cfg.lsp.cucumber_language_server').setup()
+require('cfg.lsp.dockerls').setup()
+require('cfg.lsp.eslint').setup()
+require('cfg.lsp.html').setup()
+require('cfg.lsp.jsonls').setup()
+require('cfg.lsp.jdtls').setup()
+require('cfg.lsp.kotlin_language_server').setup()
+require('cfg.lsp.pyright').setup()
+require('cfg.lsp.solargraph').setup()
+require('cfg.lsp.rust_analyzer').setup()
+require('cfg.lsp.tailwindcss').setup()
+require('cfg.lsp.lemminx').setup()
+require('cfg.lsp.yamlls').setup()
