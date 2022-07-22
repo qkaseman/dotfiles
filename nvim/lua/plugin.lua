@@ -41,19 +41,22 @@ packer.init({
 })
 
 return packer.startup(function(use)
-  use { 'wbthomason/packer.nvim' } -- Let packer manage itself
-  use { 'tpope/vim-eunuch' } -- Adds :Rename, :SudoWrite, and other cool commands
-  use { 'NLKNguyen/papercolor-theme', config = function() require('cfg.theme') end }
+  -- Let packer manage itself
+  use({ 'wbthomason/packer.nvim' })
+
+  -- Adds :Rename, :SudoWrite, and other cool commands)
+  use({ 'tpope/vim-eunuch' })
+  use({ 'NLKNguyen/papercolor-theme', config = function() require('cfg.theme') end })
 
   --TODO: may need a unix guard around here
-  use {
+  use({
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     requires = { 'lewis6991/spellsitter.nvim', },
     config = function() require('cfg.treesitter') end
-  }
+  })
 
-  use {
+  use({
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-buffer',
@@ -83,21 +86,22 @@ return packer.startup(function(use)
       },
     },
     config = function() require('cfg.cmp') end
-  }
+  })
 
-  use {
+  use({
     'neovim/nvim-lspconfig',
     requires = {
       'williamboman/nvim-lsp-installer',
       'jose-elias-alvarez/typescript.nvim',
       'b0o/schemastore.nvim',
       'hrsh7th/nvim-cmp',
-      'folke/lsp-colors.nvim', -- Add LSP highlight groups for those that don't support the LSP client yet
+      -- Add LSP highlight groups for those that don't support the LSP client yet
+      'folke/lsp-colors.nvim',
     },
     config = function()
       require('cfg.lsp')
     end
-  }
+  })
 
   if PACKER_BOOTSTRAP then
     packer.sync()
