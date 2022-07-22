@@ -142,6 +142,14 @@ return packer.startup(function(use)
     config = function() require('cfg.nvim-tree') end
   })
 
+  use({
+    'j-hui/fidget.nvim',
+    requires = {
+      'neovim/nvim-lspconfig',
+    },
+    config = function() require('cfg.fidget') end
+  })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
