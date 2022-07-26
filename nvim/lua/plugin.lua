@@ -62,6 +62,14 @@ return packer.startup(function(use)
     config = function() require('cfg.treesitter') end
   })
 
+  use( {
+    'L3MON4D3/LuaSnip',
+    requires = {
+      "rafamadriz/friendly-snippets"
+    },
+    config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+  })
+
   use({
     'hrsh7th/nvim-cmp',
     requires = {
@@ -74,11 +82,8 @@ return packer.startup(function(use)
       {
         'saadparwaiz1/cmp_luasnip',
         requires = {
+          -- Sadly, only one level of `requires` nesting is supported.
           'L3MON4D3/LuaSnip',
-          requires = {
-            "rafamadriz/friendly-snippets"
-          },
-          config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
         },
       }, {
         "onsails/lspkind-nvim",
