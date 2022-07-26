@@ -130,3 +130,8 @@ That highlights the middle as code due to the `<`.
 I don't generally like them but it looks like there are a number of indentation
 things that only *really* work with that being setup. (`lua` is a current
 example but I'm sure it applies to more.
+
+#### `gitcommit` tab completion
+
+The tab completion seems to be broken now? Git gives an error about `hint:
+Waiting for your editor to close the file...` which might indicate something.
