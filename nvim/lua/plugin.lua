@@ -156,6 +156,16 @@ return packer.startup(function(use)
     config = function() require('cfg.fidget') end
   })
 
+  use({
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    },
+    config = function() require('cfg.telescope') end
+  })
+
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
