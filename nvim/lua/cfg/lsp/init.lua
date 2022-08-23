@@ -25,7 +25,6 @@ local servers = {
   'pyright',
   'solargraph', -- Ruby
   'rust_analyzer',
-  'tailwindcss',
   'lemminx', -- XML
   'yamlls'
 }
@@ -94,6 +93,5 @@ require('cfg.lsp.kotlin_language_server').setup()
 require('cfg.lsp.pyright').setup()
 require('cfg.lsp.solargraph').setup()
 require('cfg.lsp.rust_analyzer').setup()
-require('cfg.lsp.tailwindcss').setup()
 require('cfg.lsp.lemminx').setup()
 require('cfg.lsp.yamlls').setup()
