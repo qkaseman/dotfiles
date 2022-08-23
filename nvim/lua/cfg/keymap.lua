@@ -12,6 +12,10 @@ local opts = { noremap=true, silent=true }
 -- Make semicolon into colon, because lazy.
 vim.keymap.set('', ';', ':', opts)
 
+-- space is easier than \
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Wrapped lines to go next by default.
 vim.keymap.set('n', 'j', 'gj', opts)
 vim.keymap.set('n', 'k', 'gk', opts)
