@@ -38,7 +38,7 @@ installer.setup {
 
 -- LSP config
 vim.diagnostic.config({
-  virtual_text = true, -- errors inline
+  virtual_text = false, -- errors inline
   severity_sort = true,
   float = {
     focusable = false,
