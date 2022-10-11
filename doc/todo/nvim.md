@@ -25,6 +25,10 @@ that's just how that kind of thing is "sourced").
 
 ### Minor
 
+#### Spelling cache into `.local/share`
+
+So that git ignore can be removed.
+
 #### Markdown syntax highlighting
 
 Is broken if there are 3 sets of backticks on a single line, but maybe only if there are `<>`?
