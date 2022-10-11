@@ -31,3 +31,6 @@ aws
 # Custom Tools
 brazil
 cr
+
+# NeoVim Spelling
+nvim/spell
