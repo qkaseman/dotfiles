@@ -6,11 +6,11 @@ local actions = require('telescope.actions')
 
 local is_win = vim.fn.has "win32" == 1
 if not is_win then
-    require("telescope").load_extension "fzf"
+  require("telescope").load_extension "fzf"
 end
 
 telescope.setup({
-   defaults = {
+  defaults = {
     path_display = { truncate = 1 },
     prompt_prefix = '   ',
     selection_caret = '  ',
@@ -52,9 +52,9 @@ telescope.setup({
   },
 })
 
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>f', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], opts)
-vim.keymap.set('n', '<leader>F', [[<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' })<CR>]]) -- luacheck: no max line lengt, opts)
+vim.keymap.set('n', '<leader>F', [[<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' })<CR>]], opts) -- luacheck: no max line lengt, opts)
 vim.keymap.set('n', '<leader>r', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], opts)
 vim.keymap.set('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], opts)
 -- vim.keymap.set('n', '<leader>r', [[<cmd>lua require('telescope.builtin').extensions.live_grep_raw.live_grep_raw()<CR>]], opts)
