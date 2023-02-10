@@ -1,5 +1,5 @@
 # Based on [PaperColor Theme](https://github.com/NLKNguyen/papercolor-theme).
-# 
+#
 # Color indexs 0-7 are the `normal` colors and 8-15 are the `bright` colors.
 
 schemes:
@@ -46,7 +46,7 @@ schemes:
 
     normal:
       black:    '0x1c1c1c'
-      red:      'oxaf005f'
+      red:      '0xaf005f'
       green:    '0x5faf00'
       yellow:   '0xd7af5f'
       blue:     '0x5fafd7'
