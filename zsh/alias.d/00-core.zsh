@@ -4,7 +4,6 @@ alias realias='zsd alias.d'
 alias ls="ls --color=auto"
 
 # I am lazy.
-alias npr='npm run'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias -- -='cd -'
