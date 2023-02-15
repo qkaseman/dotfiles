@@ -13,12 +13,6 @@ setopt pushdminus           # Use `-` to traverse dir stack.
 setopt pushdsilent          # Don't print stack after push/pop.
 setopt pushdtohome          # pushd w/no args acts like cd w/no args.
 
-# Completion
-setopt autolist             # Immediately list ambiguous completion choices.
-setopt autoremoveslash      # Remove slash from completion if redundant.
-setopt autonamedirs         # Parameter that is absolute name of dir becomes a
-                            # name for that dir.
-
 # Expansion & Globbing
 unsetopt nomatch            # If a pattern has no matches, pass glob along.
 setopt extendedglob
