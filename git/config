@@ -37,3 +37,6 @@
 
 [credential]
     helper = cache
+
+[advice]
+    detachedHead = false
