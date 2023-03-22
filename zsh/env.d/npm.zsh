@@ -1,0 +1,2 @@
+export NPM_CACHE_HOME=${XDG_CACHE_HOME}/npm
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME}/npm/npmrc
