@@ -7,3 +7,7 @@ function nan {
   local section=${1:-all}
   open_command "https://nodejs.org/docs/$(node --version)/api/$section.html"
 }
+
+# Node's REPL doesn't create the directory structure to the history file if it
+# doesn't exist.
+mkdir -p $(dirname ${NODE_REPL_HISTORY})
