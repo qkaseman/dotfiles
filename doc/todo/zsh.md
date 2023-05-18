@@ -2,12 +2,18 @@
 
 ## Major
 
+### Fix init errors that only exist on linux
+
+```
+touch: cannot touch ‘/home/quillank/.local/share/asdf/tool-versions’: No such file or directory
+ln: failed to create symbolic link ‘/home/quillank/.tool-versions’: File exists
+```
+
 ### `fzf-tab-completion`
 
 #### is slow
 
 Noticable lab when hitting `<TAB>`.
-
 
 ### `fzf-tab`
 #### `sudo` Tab Completion
