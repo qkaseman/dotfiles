@@ -33,7 +33,11 @@ font:
 
   # MacOS-only, if thin stroke rendering should be used. Only turn on for
   # retina displays.
-  use_thin_strokes: true
+  #
+  # https://github.com/alacritty/alacritty/issues/4616#issuecomment-1236413444
+  #
+  # defaults write -g AppleFontSmoothing -int 0
+  #use_thin_strokes: true
 
 import:
   - ~/.config/alacritty/color/color.yml
