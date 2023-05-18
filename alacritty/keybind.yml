@@ -1,0 +1,4 @@
+key_bindings:
+  # Keep a way to spawn a new instance at least.
+  - { key: N,  mods: Control|Shift, action: SpawnNewInstance }
+  - { key: N,  mods: Command|Shift, action: SpawnNewInstance }

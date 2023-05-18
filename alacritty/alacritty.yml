@@ -12,4 +12,5 @@ import:
   - ~/.config/alacritty/env.yml
   - ~/.config/alacritty/visual.yml
   - ~/.config/alacritty/debug.yml
+  - ~/.config/alacritty/keybind.yml
   - ~/.local/config/alacritty/alacritty.yml
