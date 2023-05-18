@@ -34,7 +34,11 @@ bell:
 
 # Starting shell directory, if `None` the working directory of the parent
 # is used.
-working_directory: ~
+#
+# `~` briefly worked, though it apparently was never officially supported. The
+# location is relative to `${HOME}`according to
+# https://github.com/alacritty/alacritty/issues/6241
+working_directory: './'
 
 selection:
   # All characters used as separators for "semantic words" in Alacritty.
