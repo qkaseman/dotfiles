@@ -26,6 +26,22 @@ environment variables. See those sections for more details. Some applications
 cannot perform environment variable expansion, so those will directly reference
 the default location.
 
+### Super Special MacOS Configuration
+
+MacOS has a weird `${ZDOTDIR}/.zsh_sessions/` directory it creates when
+starting a default Apple Terminal instance. As far as I can tell, it is used
+for storing history per terminal session, which isn't a feature I want even if
+I did use the default terminal. However, some commands, such as
+`react-native`, may trigger a new instance of the Apple Terminal to open
+and that will still generate the `.zsh_sessions` directory.
+
+The only way you can disable it is to add the your `/etc/zprofile`:
+
+```bash
+# Disable Apple Terminal's session files.
+export SHELL_SESSIONS_DISABLE=1
+```
+
 ## Resources
 
 ### `zsh/zshenv`
