@@ -10,3 +10,9 @@ General terminal commands.
 * `jobs` -- list terminal processes
 * `fg %X` -- foreground terminal job `X` where `X` is the job number from `jobs`
 * `bg %X` -- resume background job `X` where `X` is the job number from `jobs`
+
+## `pacman` command line install wrapper
+
+Install [pacaptr](https://github.com/rami3l/pacaptr) which is a Rust-based
+wrapper around a bunch of package managers that allows using the `pacman`-style
+syntax.
