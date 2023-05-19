@@ -6,7 +6,7 @@ local setup_buffer_keymaps = function(bufnr)
   vim.keymap.set('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
   end, bufopts)
-  vim.keymap.set('n', '<leader>l', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<leader>l', vim.lsp.buf.format, bufopts)
 
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
