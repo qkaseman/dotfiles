@@ -12,7 +12,7 @@ local installer_lsp = require('mason-lspconfig')
  -- TODO: Extend this so it's a "server name" and "callback" association where the callback is the setup function.
 local servers = {
   'tsserver',
-  'sumneko_lua',
+  'lua_ls',
   'bashls',
   'cmake',
   'cssls',
@@ -79,10 +79,8 @@ util.on_setup = util.add_hook_after(util.on_setup, function(config)
     end
 end)
 
+require('cfg.lsp.lua_ls').setup()
 require('cfg.lsp.tsserver').setup()
-require('cfg.lsp.sumneko_lua').setup()
-require('cfg.lsp.tsserver').setup()
-require('cfg.lsp.sumneko_lua').setup()
 require('cfg.lsp.bashls').setup()
 require('cfg.lsp.cmake').setup()
 require('cfg.lsp.cssls').setup()
