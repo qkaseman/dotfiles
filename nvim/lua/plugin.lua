@@ -101,7 +101,8 @@ return packer.startup(function(use)
   use({
     'neovim/nvim-lspconfig',
     requires = {
-      'williamboman/nvim-lsp-installer',
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
       'jose-elias-alvarez/typescript.nvim',
       'b0o/schemastore.nvim',
       'hrsh7th/nvim-cmp',

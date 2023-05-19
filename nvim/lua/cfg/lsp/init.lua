@@ -6,7 +6,8 @@ if not ok then
     return
 end
 local util = require("lspconfig.util")
-local installer = require('nvim-lsp-installer')
+local installer_core = require('mason')
+local installer_lsp = require('mason-lspconfig')
 
  -- TODO: Extend this so it's a "server name" and "callback" association where the callback is the setup function.
 local servers = {
@@ -30,11 +31,13 @@ local servers = {
 }
 
 -- Install
-installer.setup {
+installer_core.setup {
+  ui = { border = "rounded" },
+}
+installer_lsp.setup({
     ensure_installed = servers,
     automatic_installation = true,
-    ui = { border = "rounded" },
-}
+})
 
 -- LSP config
 vim.diagnostic.config({
