@@ -10,10 +10,6 @@ See title.
 
 `:tabe <file>` tab completion sometimes stops working (why, no idea). Super super annoying though.
 
-#### Indentation for JS/TS comments
-
-Comment indentation is **super** wrong.
-
 #### pink as the error highlight with red text is bad.
 
 Ewwwwww on colors.
@@ -32,38 +28,6 @@ So that git ignore can be removed.
 #### Markdown syntax highlighting
 
 Is broken if there are 3 sets of backticks on a single line, but maybe only if there are `<>`?
-
-#### Spell check
-
-Would be nice to always have spellcheck on (prob should auto trigger for `md`
-and `txt` etc... files. Also would love spell checking in comments but not sure
-how possible that will be.
-
-#### Add lsp servers
-
-From top the list of servers `lsp-installer` supports, these seem useful:
- * `AWK	awk_ls`
- * `C	ccls`
- * `C	clangd`
- * `C++	ccls`
- * `C++	clangd`
- * `CSS	cssmodules_ls`
- * `Jsonnet	jsonnet_ls`
- * `LaTeX	ltex`
- * `LaTeX	texlab`
- * `Markdown	marksman`
- * `Markdown	prosemd_lsp`
- * `Markdown	remark_ls`
- * `Markdown	zk`
- * `Python	jedi_language_server`
- * `Python	sourcery`
- * `Python (docs)	pylsp`
- * `Sphinx	esbonio`
-
-#### `lua` syntax highlighting is wonky
-
-Sometimes not all of the string is highlighted. For example,
-`require('config.keymap')` will have `keymap` highlighted but not `config.`.
 
 #### `lua` indent bad
 
