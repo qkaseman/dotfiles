@@ -1,6 +1,6 @@
 # Based on [PaperColor Theme](https://github.com/NLKNguyen/papercolor-theme).
 #
-# Color indexs 0-7 are the `normal` colors and 8-15 are the `bright` colors.
+# Color indices 0-7 are the `normal` colors and 8-15 are the `bright` colors.
 
 schemes:
 
