@@ -55,10 +55,7 @@ return packer.startup(function(use)
   --TODO: may need a unix guard around here
   use({
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    requires = {
-      'lewis6991/spellsitter.nvim',
-    },
+    run = function() require('nvim-treesitter.install').update({ with_sync = true })() end,
     config = function() require('cfg.treesitter') end
   })
 

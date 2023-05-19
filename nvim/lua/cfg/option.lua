@@ -6,6 +6,9 @@ vim.opt.list = true
 vim.opt.listchars = 'tab:▸-,trail:·,extends:»,precedes:«,nbsp:%'
 vim.opt.signcolumn = "number" -- LSP icons in number gutter
 
+-- Spelling --
+vim.opt.spell = true
+
 -- Tabs vs Spaces --
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
