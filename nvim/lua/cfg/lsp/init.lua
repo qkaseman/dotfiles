@@ -23,7 +23,7 @@ local servers = {
   'jsonls',
   'jdtls', -- Java
   'kotlin_language_server',
-  'pyright',
+  -- 'pyright',
   'solargraph', -- Ruby
   'rust_analyzer',
   'lemminx', -- XML
@@ -91,7 +91,7 @@ require('cfg.lsp.html').setup()
 require('cfg.lsp.jsonls').setup()
 require('cfg.lsp.jdtls').setup()
 require('cfg.lsp.kotlin_language_server').setup()
-require('cfg.lsp.pyright').setup()
+-- require('cfg.lsp.pyright').setup()
 require('cfg.lsp.solargraph').setup()
 require('cfg.lsp.rust_analyzer').setup()
 require('cfg.lsp.lemminx').setup()
