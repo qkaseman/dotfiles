@@ -60,10 +60,12 @@ return packer.startup(function(use)
   })
 
   use( {
-    'L3MON4D3/LuaSnip',
+    "L3MON4D3/LuaSnip",
     requires = {
       "rafamadriz/friendly-snippets"
     },
+    version = "1.*",
+    build = "make install_jsregexp",
     config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
   })
 
