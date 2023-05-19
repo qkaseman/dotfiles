@@ -25,7 +25,11 @@ cmp.setup({
   },
   formatting = {
     format = require('lspkind').cmp_format({
-      with_text = true,
+      -- with_text = true,
+      -- defines how annotations are shown
+      -- default: symbol
+      -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+      mode = 'symbol_text',
       menu = {
         nvim_lsp = '[LSP]',
         nvim_lua = '[Lua]',
