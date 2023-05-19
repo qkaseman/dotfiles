@@ -38,10 +38,12 @@ schemes:
 
     primary:
       background: '0x1c1c1c'
+      # foreground: '0x808080'
       foreground: '0xd0d0d0'
 
     cursor:
       text:   '0x1c1c1c'
+      # cursor: '0x808080'
       cursor: '0xd0d0d0'
 
     normal:
@@ -61,6 +63,7 @@ schemes:
       yellow:   '0xaf87d7'
       blue:     '0xffaf00'
       magenta:  '0xff5faf'
+      #magenta: '0xffaf00'
       cyan:     '0x00afaf'
       white:    '0x5f8787'
 
