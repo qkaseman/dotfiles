@@ -14,8 +14,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # `zsh` won't create these if they don't already exist.
-mkdir -p ${ZSH_DATA_HOME}
-mkdir -p ${ZSH_CACHE_HOME}
+[[ -d ${ZSH_DATA_HOME} ]] || mkdir -p ${ZSH_DATA_HOME}
+[[ -d ${ZSH_CACHE_HOME} ]] || mkdir -p ${ZSH_CACHE_HOME}
 
 source ${ZDOTDIR}/functions.zsh
 
