@@ -1,181 +1,163 @@
--- Make sure to run `:PackerSync` after editing this file, otherwise the things
--- won't get updated properly. It seems like it might be a pain to have it be
--- done automatically as it will delete the existing plugins (it seems). Would
--- be nice to have a smart "is it installed" and install specific plugins. Will
--- have to look into if that is possible later.
 local fn = vim.fn
 
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd(
-  "BufWritePost",
-  { command = "source <afile> | PackerCompile", group = packer_group, pattern = "plugin.lua" }
-)
-
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
   })
-  vim.api.nvim_command("packadd packer.nvim")
 end
+vim.loader.enable() -- enable experimental faster module loader
+vim.opt.runtimepath:prepend(lazypath)
 
-local ok, packer = pcall(require, 'packer')
-if not ok then
-    return
-end
+require('lazy').setup({
 
-packer.init({
-  auto_clean = true,
-  compile_on_sync = true,
-  compile_path = fn.stdpath('data') .. "/site/pack/packer/start/packer.nvim/plugin/packer.lua",
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "single" })
-    end,
+  -- load colourscheme first
+  {
+    'NLKNguyen/papercolor-theme',
+    lazy = false,
+    priority = 1000, -- load before all other non-lazy plugs
+    config = function()
+      require('cfg.theme')
+    end
   },
-})
-
-return packer.startup(function(use)
-  -- Let packer manage itself
-  use({ 'wbthomason/packer.nvim' })
 
   -- Adds :Rename, :SudoWrite, and other cool commands)
-  use({ 'tpope/vim-eunuch' })
+  'tpope/vim-eunuch',
 
-  -- automatically create parent dirs when saving
-  use({ 'jessarcher/vim-heritage' })
-
-  use({ 'NLKNguyen/papercolor-theme', config = function() require('cfg.theme') end })
-
-  --TODO: may need a unix guard around here
-  use({
+  {
+    -- look at moving the treesitter files to a dir inside of the data dir
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true })() end,
-    config = function() require('cfg.treesitter') end
-  })
-
-  use( {
-    "L3MON4D3/LuaSnip",
-    requires = {
-      "rafamadriz/friendly-snippets"
+    event = { 'BufReadPost', 'BufNewFile' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-refactor',
+      'RRethy/nvim-treesitter-textsubjects',
+      'RRethy/nvim-treesitter-endwise',
+      'windwp/nvim-ts-autotag',
     },
-    version = "1.*",
-    build = "make install_jsregexp",
-    config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
-  })
+    build = ':TSUpdate',
+    config = function()
+      require('cfg.treesitter')
+    end,
+  },
 
-  use({
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      {
-        'saadparwaiz1/cmp_luasnip',
-        requires = {
-          -- Sadly, only one level of `requires` nesting is supported.
-          'L3MON4D3/LuaSnip',
-        },
-      }, {
-        "onsails/lspkind-nvim",
-        config = function() require("lspkind").init() end,
-      }, {
-        'David-Kunz/cmp-npm',
-        requires = {
-          'nvim-lua/plenary.nvim',
-        }
-      },
-    },
-    config = function() require('cfg.cmp') end
-  })
+  { 'rafamadriz/friendly-snippets', lazy = false },
 
-  use({
+
+  {
     'neovim/nvim-lspconfig',
-    requires = {
+    dependencies = {
+      --{ "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+      --{ "folke/neodev.nvim", opts = {} },
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'jose-elias-alvarez/typescript.nvim',
       'b0o/schemastore.nvim',
-      'hrsh7th/nvim-cmp',
       -- Add LSP highlight groups for those that don't support the LSP client yet
       'folke/lsp-colors.nvim',
+      {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+          'hrsh7th/cmp-buffer',
+          'onsails/lspkind.nvim',
+          'hrsh7th/cmp-nvim-lsp-signature-help',
+          'hrsh7th/cmp-path',
+          'hrsh7th/cmp-nvim-lua',
+          'hrsh7th/cmp-nvim-lsp',
+          'hrsh7th/cmp-nvim-lsp-document-symbol',
+          'saadparwaiz1/cmp_luasnip',
+          'lukas-reineke/cmp-under-comparator',
+          'hrsh7th/cmp-cmdline',
+          'doxnit/cmp-luasnip-choice',
+          'L3MON4D3/LuaSnip',
+          {
+            'David-Kunz/cmp-npm',
+            dependencies = {
+              'nvim-lua/plenary.nvim',
+            }
+          },
+        },
+        config = function()
+          require('cfg.cmp')
+        end,
+      },
     },
-    config = function() require('cfg.lsp') end
-  })
+    config = function()
+      require('cfg.lsp')
+    end
+  },
 
-  use({
+  {
+    'voldikss/vim-floaterm',
+    config = function()
+      require('cfg.vim-floaterm')
+    end
+  },
+
+  {
+    'vim-test/vim-test',
+    config = function() require('cfg.vim-test') end
+  },
+
+  {
     'glepnir/dashboard-nvim',
-    requires = {
-      'nvim-tree/nvim-web-devicons'
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons', name = 'nvim-tree-web-devicons' },
     },
     event = 'VimEnter',
     config = function() require('cfg.dashboard') end
-  })
+  },
 
-  use({
-    'voldikss/vim-floaterm',
-    config = function() require('cfg.vim-floaterm') end
-  })
-
-  use({
-    'vim-test/vim-test',
-    config = function() require('cfg.vim-test') end
-  })
-
-  use({
+  {
     'nvim-lualine/lualine.nvim',
-    requires = {
+    dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
     config = function() require('cfg.lualine') end
-  })
+  },
 
   -- The paste plugin you didn't know you wanted. Adjust indentation to
   -- the destination context.
   -- This might be the greatest thing ever.
-  use({
+  {
     'sickill/vim-pasta',
     config = function() require('cfg.vim-pasta') end
-  })
+  },
 
   -- Code-aware line splitting and joining.
-  use({ 'AndrewRadev/splitjoin.vim' })
+  { 'AndrewRadev/splitjoin.vim' },
 
-  use({
+  {
     'kyazdani42/nvim-tree.lua',
-    requires = {
+    dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
     config = function() require('cfg.nvim-tree') end
-  })
+  },
 
-  use({
+  {
     'j-hui/fidget.nvim',
-    requires = {
-      'neovim/nvim-lspconfig',
+    branch = 'legacy',
+    dependencies = {
+      'nvim-lspconfig',
     },
     config = function() require('cfg.fidget') end
-  })
+  },
 
-  use({
+  {
     'nvim-telescope/telescope.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     config = function() require('cfg.telescope') end
-  })
+  },
+})
 
-  if PACKER_BOOTSTRAP then
-    packer.sync()
-  end
-end)
+
+
