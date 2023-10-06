@@ -23,6 +23,8 @@ coc
 
 # MacOS Stuff
 configstore
+# ZSH session file that MacOS creates from ReactNative things
+zsh/.zsh_sessions
 
 # Tools that shouldn't be saved
 htop
