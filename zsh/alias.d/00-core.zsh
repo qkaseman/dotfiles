@@ -30,4 +30,4 @@ alias d='dirs -v | head -10'
 # -A - almost all, don't list '.' and '..'
 # -h - with '-l', human readable size formats
 alias l='ls -lah'
-alias la='ls -lAh'
+alias la='ls -lAh'
