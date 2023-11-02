@@ -13,8 +13,12 @@ alias usage='du -cksh'
 alias cls='printf "\033c"'
 
 # Scratchpads.
-alias todo="vi ${XDG_DATA_HOME}/todo.md"
-alias scratch="vi ${XDG_DATA_HOME}/scratch.md"
+function todo {
+    vi ${XDG_DATA_HOME}/notes/todo${1:+-$1}.md
+}
+function scratch {
+    vi ${XDG_DATA_HOME}/notes/scratch${1:+-$1}.md
+}
 
 # Pretty dir stack
 alias dirs="dirs -v"
