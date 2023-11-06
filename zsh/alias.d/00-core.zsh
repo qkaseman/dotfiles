@@ -12,14 +12,6 @@ alias usage='du -cksh'
 # Easy terminal reset.
 alias cls='printf "\033c"'
 
-# Scratchpads.
-function todo {
-    vi ${XDG_DATA_HOME}/notes/todo${1:+-$1}.md
-}
-function scratch {
-    vi ${XDG_DATA_HOME}/notes/scratch${1:+-$1}.md
-}
-
 # Pretty dir stack
 alias dirs="dirs -v"
 alias d='dirs -v | head -10'
