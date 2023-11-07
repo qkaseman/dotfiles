@@ -12,12 +12,13 @@ function scratch {
 #
 # Streams all arguments into a date-stamped file for organization. Adds a newline after them all.
 function log {
+    local timestamp=$(date +%H:%M)
     local date_stamp=$(date +%Y-%m-%d)
     local fname="${WORKLOG_HOME}/${date_stamp}.md"
     if [ ! -f ${fname} ]; then
         touch ${fname}
         printf "# ${date_stamp}\n\n" >> ${fname}
     fi
-    printf '%s\n\n' "$*" >> ${fname}
+    printf '%s: %s\n\n' ${timestamp} "$*" >> ${fname}
 }
 
