@@ -18,12 +18,9 @@ user-dirs.locale
 # ZSH completion file, should go to cache but doesn't reliably
 zsh/.zcompdump
 
-# Node Conqueror of Completion, replace with lsp eventually
-coc
-
 # MacOS Stuff
 configstore
-# ZSH session file that MacOS creates from ReactNative things
+## ZSH session file that MacOS creates from ReactNative things
 zsh/.zsh_sessions
 
 # Tools that shouldn't be saved
