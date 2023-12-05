@@ -68,4 +68,6 @@ function log {
 # Could store the `date ...` string in a variable and `eval` it, but not sure
 # that's the best idea plus I believe the variable would pollute the general
 # variable closure which isn't great either.
-alias worklog-open="vi ${WORKLOG_HOME}/$(date +%Y-%m-%d).md"
+function worklog-open {
+    vi ${WORKLOG_HOME}/$(date +%Y-%m-%d).md
+}
