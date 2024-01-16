@@ -28,6 +28,14 @@ htop
 aws
 ada
 
+# Tools that maybe shouldn't be saved (unsure).
+#
+# `cups/lpoptions` shouldn't as it provides the default printer
+# which depends on computer and `fontforge/plugin/plugin_config.ini`
+# is empty.
+cups
+fontforge
+
 # Custom Tools
 brazil
 cr
