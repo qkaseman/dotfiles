@@ -74,10 +74,24 @@ Copy fonts into `~/.local/share/fonts/`:
 
 ## Slack
 
-Slack doesn't provide a way to nicely automate custom themes, but pasting this
-into the "Custom Theme Colors" section of `slack` isn't too hard. This provides
-a theme that is
-[`PaperColor`](https://github.com/NLKNguyen/papercolor-theme)-esque.
+Slack now provides even less of a way to create custom themes and still no
+light/dark custom theme support, yay....
+
+This set of colours is an attempt to have a
+[`PaperColor`](https://github.com/NLKNguyen/papercolor-theme)-esque theme in
+Slack, though less successful than within the legacy theming system.
+
+| Property              | Hex     | Swatch                                                       |
+|-----------------------|---------|--------------------------------------------------------------|
+| Window background     | #005f87 |![#005f87](https://place-hold.it/100x40/005f87/000000?text=+) |
+| Selected items        | #0087af |![#0087af](https://place-hold.it/100x40/0087af/000000?text=+) |
+| Presence indication   | #008700 |![#008700](https://place-hold.it/100x40/008700/000000?text=+) |
+| Notifications         | #af0000 |![#af0000](https://place-hold.it/100x40/af0000/000000?text=+) |
+
+### Legacy Slack Theme
+
+This is the legacy theme string. You can just put this in as the string to
+import in `Theme colors`, but I have no faith that process won't change.
 
 ```
 #005F87,#350d36,#0087AF,#E4E4E4,#00AFAF,#E4E4E4,#008700,#AF0000,#005F87,#E4E4E4
