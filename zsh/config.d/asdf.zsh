@@ -5,7 +5,3 @@
     touch ${ASDF_GLOBAL_TOOL_VERSIONS}
 [ ! -f ${ASDF_TOOL_VERSIONS_LINK} ] && \
     ln -s ${ASDF_GLOBAL_TOOL_VERSIONS} ${ASDF_TOOL_VERSIONS_LINK}
-
-[ -d ${ASDF_BIN_HOME} ] && \
-    source ${ASDF_BIN_HOME}/asdf.sh && \
-    fpath+=(${ASDF_BIN_HOME}/completions)

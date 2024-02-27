@@ -134,33 +134,24 @@ window:
   decorations: full
 ```
 
-## `asdf`
+## `mise`
 
-[`asdf`](https://asdf-vm.com/) is a terribly named runtime manager.
+[`mise`](https://mise.jdx.dev/), formerly `rtx`, is the new agnostic version
+management tool, similar to [`asdf`](https://asdf-vm.com/). It is a bit more
+flexible than `asdf` but also has already succumbed to scope creep, adding task
+execution and general development environment management features. Hopefully
+those won't conflict with the core usefulness of `mise`.
 
-### Installation
+Thankfully `mise` respects the XDG specification, so as long as you have those
+set everything will work properly, just follow the [Quick Start
+Guide](https://mise.jdx.dev/getting-started.html).
 
-If the installation is done via a package manager (i.e. `brew`), set
-`ASDF_BIN_HOME` in your local local `zshenv`
-(`${XDG_CONFIG_LOCAL_HOME}/zsh/zshenv`) to override the default location so
-initialization works correctly. If you don't, it will look like `asdf` is
-installed (you'll have the shell completion and command) but none of the
-environments installed will be available.
+### Why do you still have `asdf` files?
 
-For a 'standard' installation, do:
-
-```bash
-> git clone --depth 1 https://github.com/asdf-vm/asdf.git ${ASDF_BIN_HOME} --branch v0.10.0
-```
-
-#### NodeJS Plugin
-
-If desired, install the NodeJS plugin to manage Node runtimes:
-
-```bash
-> asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-> asdf install nodejs lts-gallium
-```
+[`powerlevel10k`](https://github.com/romkatv/powerlevel10k) has some
+integrations with `asdf` I don't want to lose. Until I modify it to support
+`mise`, `asdf` will stay around for that purpose unless it causes functional
+issues with `mise`.
 
 ## Git
 
