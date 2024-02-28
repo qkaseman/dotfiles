@@ -1,0 +1,41 @@
+# Apparently imports must be first.
+import = ["~/.config/alacritty/color/color.toml"]
+
+[colors]
+    draw_bold_text_with_bright_colors = true
+
+[cursor]
+    # Blink interval in milliseconds.
+    blink_interval = 750
+    unfocused_hollow = true
+
+    [cursor.style]
+        # Cursor Blinking State: [ Never | Off | On | Always ]
+        blinking = "Off"
+        # Cursor Shape: [ Block | Underline | Beam ]
+        shape = "Block"
+
+[font]
+    size = 11.0
+
+    # MacOS-only, if thin stroke rendering should be used. Only turn on for
+    # retina displays.
+    #
+    # https://github.com/alacritty/alacritty/issues/4616#issuecomment-1236413444
+    #
+    # defaults write -g AppleFontSmoothing -int 0
+    #use_thin_strokes: true
+
+    # Glyph offset inside the glyph cell, (0,0) is bottom left.
+    [font.glyph_offset]
+        x = 0
+        y = 0
+
+    [font.normal]
+        family = "Gintronic"
+        style = "Regular"
+
+    # Extra spacing, `x` is letter spacing, `y` is line spacing.
+    [font.offset]
+        x = 0
+        y = 0

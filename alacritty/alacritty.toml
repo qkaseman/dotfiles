@@ -5,12 +5,13 @@
 #  ██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║   ██║      ██║      ██║
 #  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
 
-live_config_reload: true
+live_config_reload = true
 
-import:
-  - ~/.config/alacritty/core.yml
-  - ~/.config/alacritty/env.yml
-  - ~/.config/alacritty/visual.yml
-  - ~/.config/alacritty/debug.yml
-  - ~/.config/alacritty/keybind.yml
-  - ~/.local/config/alacritty/alacritty.yml
+import = [
+    "~/.config/alacritty/core.toml",
+    "~/.config/alacritty/env.toml",
+    "~/.config/alacritty/visual.toml",
+    "~/.config/alacritty/debug.toml",
+    "~/.config/alacritty/keybind.toml",
+    "~/.local/config/alacritty/alacritty.toml",
+]

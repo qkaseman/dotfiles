@@ -13,7 +13,7 @@ function alacritty_swap_color_mode() {
 
   # MacOS requires the empty `''` or it will use `-e` as the backup
   # extension which we don't want.
-  sed -i '' -e "s/\*${FROM}/\*${TO}/g" ~/.config/alacritty/color/*.yml
+  sed -i '' -e "s/-${FROM}/-${TO}/g" ~/.config/alacritty/color/color.toml
 }
 
 alias lightmode="alacritty_swap_color_mode light"

@@ -1,0 +1,34 @@
+# Based on [PaperColor Theme](https://github.com/NLKNguyen/papercolor-theme).
+#
+# Color indices 0-7 are the `normal` colors and 8-15 are the `bright` colors.
+
+[colors.primary]
+    background = "#1c1c1c"
+    # foreground = "#808080"
+    foreground = "#d0d0d0"
+
+[colors.cursor]
+    # cursor  = "#808080"
+    cursor  = "#d0d0d0"
+    text    = "#1c1c1c"
+
+[colors.normal]
+    black   = '#1c1c1c'
+    red     = '#af005f'
+    green   = '#5faf00'
+    yellow  = '#d7af5f'
+    blue    = '#5fafd7'
+    magenta = '#808080'
+    cyan    = '#d7875f'
+    white   = '#d0d0d0'
+
+[colors.bright]
+    black   = '#585858'
+    red     = '#5faf5f'
+    green   = '#afd700'
+    yellow  = '#af87d7'
+    blue    = '#ffaf00'
+    # magenta = "#ffaf00"
+    magenta = "#ff5faf"
+    cyan    = '#00afaf'
+    white   = '#5f8787'

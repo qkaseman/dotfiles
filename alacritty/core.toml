@@ -1,0 +1,55 @@
+# Starting shell directory, if `None` the working directory of the parent
+# is used.
+#
+# `~` briefly worked, though it apparently was never officially supported. The
+# location is relative to `${HOME}`according to
+# https://github.com/alacritty/alacritty/issues/6241
+working_directory = "./"
+
+[bell]
+# Death to bells.
+    command = "None"
+    duration = 0
+
+# To be replaced with `tmux` eventually.
+[scrolling]
+    # `0` disables scrollback.
+    history = 50000
+
+[selection]
+    # If selected text should be copied to the primary clipboard.
+    save_to_clipboard = false
+
+    # All characters used as separators for "semantic words" in Alacritty.
+    semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[window]
+    # Window Decorations: [ full | none ]
+    decorations = "none"
+
+    # Padding around the window in pixels. Scaled by DPI and added at both ends.
+    dynamic_padding = false
+
+    # Terminal apps can change window title.
+    dynamic_title = true
+
+    # Background Opacity: [ 0.0 <-> 1.0 ]
+    opacity = 1.0
+
+    # Startup Mode: [ Windowed | Maximized | Fullscreen ]
+    startup_mode = "Windowed"
+
+    # Application class name for Linux/BSD.
+    [window.class]
+        general = "alacritty"
+        instance = "alacritty"
+
+    # Default window dimensions in lines/columns.
+    [window.dimensions]
+        columns = 100
+        lines = 85
+
+    # Padding around the window in pixels. Scaled by DPI and added at both ends.
+    [window.padding]
+        x = 0
+        y = 0
