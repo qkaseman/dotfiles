@@ -201,3 +201,5 @@ Locations to go look at for organization or useful features.
 * [MyPickles/dotfiles](https://github.com/MrPickles/dotfiles)
 * [EdenEast/dots](https://github.com/EdenEast/dots)
 * [dotfiles](https://dotfiles.github.io/inspiration/)
+* [mattmc3/zshrc](https://github.com/mattmc3/zshrc.d)
+* [ibnunes/zshrc](https://github.com/ibnunes/zshrc)
