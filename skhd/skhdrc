@@ -7,7 +7,7 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/com.koekeishiya.yabai"
 alt - q : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
 ## Fullscreen window
-cmd - f : yabai -m window --toggle zoom-fullscreen
+alt - f : yabai -m window --toggle zoom-fullscreen
 
 ## Float window
 alt - t : yabai -m window --toggle float
