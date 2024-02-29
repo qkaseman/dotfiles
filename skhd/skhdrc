@@ -13,34 +13,34 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 alt - t : yabai -m window --toggle float
 
 ## Focus Windows
-cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
-cmd - l : yabai -m window --focus east
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
 
 ## Swap Windows
+shift + ctrl + alt - h : yabai -m window --swap west
+shift + ctrl + alt - j : yabai -m window --swap south
+shift + ctrl + alt - k : yabai -m window --swap north
+shift + ctrl + alt - l : yabai -m window --swap east
+
+## 'Warp' Windows (re-insert them into binary tree)
 shift + alt - h : yabai -m window --swap west
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east
 
-## 'Warp' Windows (re-insert them into binary tree)
-shift + cmd - h : yabai -m window --swap west
-shift + cmd - j : yabai -m window --swap south
-shift + cmd - k : yabai -m window --swap north
-shift + cmd - l : yabai -m window --swap east
-
 ## Move app to new space
-shift + cmd - 1 : yabai -m window --space 1
-shift + cmd - 2 : yabai -m window --space 2
-shift + cmd - 3 : yabai -m window --space 3
-shift + cmd - 4 : yabai -m window --space 4
-shift + cmd - 5 : yabai -m window --space 5
-shift + cmd - 6 : yabai -m window --space 6
-shift + cmd - 7 : yabai -m window --space 7
-shift + cmd - 8 : yabai -m window --space 8
-shift + cmd - 9 : yabai -m window --space 9
-shift + cmd - 0 : yabai -m window --space 10
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
+shift + alt - 4 : yabai -m window --space 4
+shift + alt - 5 : yabai -m window --space 5
+shift + alt - 6 : yabai -m window --space 6
+shift + alt - 7 : yabai -m window --space 7
+shift + alt - 8 : yabai -m window --space 8
+shift + alt - 9 : yabai -m window --space 9
+shift + alt - 0 : yabai -m window --space 10
 
 ## Re-layout windows
 ### rotate tree 90
