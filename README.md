@@ -153,6 +153,24 @@ integrations with `asdf` I don't want to lose. Until I modify it to support
 `mise`, `asdf` will stay around for that purpose unless it causes functional
 issues with `mise`.
 
+### How to use Node code names with `mise`?
+
+Add this to `${XDG_CONFIG_HOME}/mise/config.toml`:
+
+```toml
+[alias.node]
+    argon = '4'
+    boron = '6'
+    carbon = '8'
+    dubnium = '10'
+    erbium = '12'
+    fermium = '14'
+    gallium = '16'
+    hydrogen = '18'
+    iron = '20'
+    jod = '22'
+```
+
 ## Git
 
 `git` nicely handles multiple configuration files, though not sourcing (as far
