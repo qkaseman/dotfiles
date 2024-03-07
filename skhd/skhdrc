@@ -56,3 +56,6 @@ alt - e : yabai -m window --toggle split
 
 # Terminal
 alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty --working-directory ~
+
+# Stop accidentally hiding windows
+cmd - h : skhd -k ""
