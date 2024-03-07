@@ -65,6 +65,7 @@ yabai -m config mouse_action2               resize
 
 ## Mostly these are settings apps that don't actually scale
 yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
+yabai -m rule --add app="^SteerMouse$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
