@@ -73,6 +73,14 @@ yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 # }}}
 
+# TODO: Find a way to tie this to `${XDG_CONFIG_LOCAL_HOME}`, the `plist`
+# context for the service start/restart doesn't have the env variable
+# available.
+LOCAL_YABAIRC="${HOME}/.local/config/yabai/yabairc"
+echo "Loading local config ${LOCAL_YABAIRC} (if present)...."
+[ -f ${LOCAL_YABAIRC} ] && . ${LOCAL_YABAIRC} || true
+unset LOCAL_YABAIRC
+
 # Limelight addon (Kill it and start it each time Yabai starts)
 # killall limelight &>/dev/null
 # limelight &>/dev/null &
