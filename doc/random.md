@@ -1,5 +1,14 @@
 # Random Things I Don't Have A Better Spot For
 
+## System Design
+
+Looks like an interesting [github
+repo](https://github.com/donnemartin/system-design-primer) around system design.
+
+## Abstract Syntax Tree (AST) Explorer
+
+Cool [AST Explorer](https://astexplorer.net/) for multiple languages.
+
 ## Sweeping Updates To A Library
 
 While focused around design systems, [this
