@@ -5,6 +5,11 @@ end
 
 db.setup({
   theme = 'doom',
+  -- Defaults hide the tabline and statusline permanently, terrible defaults --
+  hide = {
+    statusline = false,
+    tabline = false,
+  },
   config = {
     center = {
       { icon = '  ', desc = 'New file                            ', action = 'enew' }, -- longer desc b/c no shortcut

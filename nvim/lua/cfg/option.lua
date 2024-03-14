@@ -41,6 +41,9 @@ vim.opt.visualbell = false
 vim.opt.hidden = true -- Open new buffer with unsaved changes in current
 vim.opt.virtualedit = 'block'
 
+-- Tabs --
+vim.opt.showtabline = 1 -- show if two tabs
+
 -- Backup/Undo --
 vim.opt.backup = true
 vim.opt.backupdir = vim.fn.stdpath('data')..'/backup//'
