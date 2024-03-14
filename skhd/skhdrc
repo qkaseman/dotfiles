@@ -1,7 +1,7 @@
 # yabai {{{
 
 ## Restart (this doesn't seem to work?)
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/com.koekeishiya.yabai"
+ctrl + alt + cmd - r : yabai --restart-service
 
 ## Close active app
 alt - q : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
