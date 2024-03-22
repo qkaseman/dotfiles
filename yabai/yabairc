@@ -61,13 +61,13 @@ yabai -m config mouse_action2               resize
 # Programs to ignore {{{
 
 ## Mostly these are settings apps that don't actually scale
-yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
-yabai -m rule --add app="^SteerMouse$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Settings$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^SteerMouse$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Finder$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^System Information$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on sub-layer=above manage=off
 # }}}
 
 # TODO: Find a way to tie this to `${XDG_CONFIG_LOCAL_HOME}`, the `plist`
