@@ -98,8 +98,11 @@ You can see all of the classes with `man ctype` and specifically `blank` with
     sed -E '
       s/^[[:blank:]]*//; # Regex substitution to strip leading spaces/tabs.
       s/\s*$//;          # Regex substitution to strip trailing whitespace.
-      /^(@|\*)/d;        # Regex match lines starting with `@` or `*` and delete them, some comments and at-directives end in `;`.
-      /;$/!d;            # Regex match lines ending with `;` and delete non-matching ones.' |
+      /^(@|\*)/d;        # Regex match lines starting with `@` or `*` and
+                         # delete them, some comments and at-directives end
+                         # in `;`.
+      /;$/!d;            # Regex match lines ending with `;` and delete
+                         # non-matching ones.' |
     sort |
     uniq > unique-style-declarations.txt
 ```
@@ -120,8 +123,11 @@ In one line:
     sed -E '
       s/^[[:blank:]]*//; # Regex substitution to strip leading spaces/tabs.
       s/\s*$//;          # Regex substitution to strip trailing whitespace.
-      /^(@|\*)/d;        # Regex match lines starting with `@` or `*` and delete them, some comments and at-directives end in `;`.
-      /;$/!d;            # Regex match lines ending with `;` and delete non-matching ones.
+      /^(@|\*)/d;        # Regex match lines starting with `@` or `*` and
+                         # delete them, some comments and at-directives end
+                         # in `;`.
+      /;$/!d;            # Regex match lines ending with `;` and delete
+                         # non-matching ones.
       s/:.*//;           # Regex substitution to strip value declarations.' |
     sort |
     uniq > unique-prop-names.txt
@@ -144,13 +150,21 @@ In one line:
 
 ```bash
 > sed '
-    $!N;                    # For all but the last line, add the line to the pattern buffer.
-    /^\(.*:\)\(.*\)\n\1/!P; # Put the declaration into the first match group, the value into the second, and see if the next line
-                            # starts with the same declaration. If not, print the line (`!P`).
-    s//\n\1\2 |/;           # Regex substitution using the most recently used regex (`s//`) and replace it with a newline, the
-                            # first match group, the second match group, and a ` |`.
-    D;                      # Delete everything to the first newline in the pattern buffer. This is why the regex substitution
-                            # includes a leading `\n`, this will strip it out while keeping the rest of the pattern in place.
+    $!N;                    # For all but the last line, add the line to the
+                            # pattern buffer.
+    /^\(.*:\)\(.*\)\n\1/!P; # Put the declaration into the first match group,
+                            # the value into the second, and see if the next
+                            # line starts with what is contained in the first
+                            # match group. If not, print the line (`!P`).
+    s//\n\1\2 |/;           # Regex substitution using the most recently used
+                            # regex (`s//`) and replace it with a newline, the
+                            # first match group, the second match group, and
+                            # a ` |`.
+    D;                      # Delete everything to the first newline in the
+                            # pattern buffer. This is why the regex
+                            # substitution above includes a leading `\n`, `D`
+                            # will strip it out while keeping the rest of the
+                            # pattern buffer as is (post substitution).
   ' unique-style-declarations.txt > unique-vals-per-prop.txt
 ```
 
