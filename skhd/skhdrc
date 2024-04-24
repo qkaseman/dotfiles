@@ -50,7 +50,7 @@ alt - y : yabai -m space --mirror y-axis
 ### Flip top & bottom
 alt - x : yabai -m space --mirror x-axis
 ### Toggle vertical|horizontal split
-alt - e : yabai -m window --toggle split
+alt - s : yabai -m window --toggle split
 
 # }}}
 
