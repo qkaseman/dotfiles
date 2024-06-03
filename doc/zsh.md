@@ -50,7 +50,54 @@ file1.html file2.html
 
 `zsh` provides a way to create "suffix aliases" where the last part of a command indicates the alias to expand at the **start** of the command. A suffix alias is indicated by `-s` in the definition.
 
-```
+```bash
 > alias -s ts=vim
 > file.ts # suffix alias `ts` gets triggered and this becomes `vim file.ts`
+```
+
+## Scripting
+
+### Safer Scripts with `set -euxo pipefail`
+
+> More detailed explanation: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+
+Adding `set -euxo pipefail` to the top of shell scripts is useful for catching
+errors:
+
+- `-e`: any non-zero exit status causes an immediate script failure
+- `-u`: unset variables are errors too, if you want a default use
+  `${VAR:-$DEFAULT}`
+- `-x`: print commands before executing them
+- `-o pipefail`: exit status of a pipeline of commands becomes the right-most
+  non-zero exit status even if the final part of the pipeline exited with `0`
+
+### Terniary in shell scripts
+
+```bash
+[ ${TEST_EXPR} ] && ${TRUE_EXPR} || ${FALSE_EXPR}
+```
+
+You can create terniary expressions in shell scripting using a test expression
+and then `&&`/`||` chaining. I often use this when checking for a file or
+directory, particularly when a simple command or creation is the next step.
+
+There are two important facts to be aware of doing this:
+
+1. `[ ${TEST_EXPR} ]` will be `0` if `${TEST_EXPR}` evaluates to`true` and `1`
+   if it evaluates to `false`. This is the opposite of most programming
+   languages where `0` is `false` and any non-`0` is `true`.
+1. You *must* do `&& ${TRUE_EXPR} || ${FALSE_EXPR}`. Doing it reverse will
+   execute `${TRUE_EXPR}` if `${FALSE_EXPR}` executes successfully (non-`0` exit
+   code), which is *not* what you want.
+
+#### Terniary with `set -e`
+
+If you have `-e` set, you need to ensure the overall terniary expression has a
+`0` exit code, otherwise the script will fail. This is relevant when you don't
+actually have a `false` condition you want to execute which would allow the
+`${TEST_EXPR}`'s `false` exit code of `1` to be the terniary exit code. You can
+fix this by adding `|| true`:
+
+```bash
+[ -f ${ZSH_LOCAL_HOME}/zshrc ] && . ${ZSH_LOCAL_HOME}/zshrc || true
 ```
