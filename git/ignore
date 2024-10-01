@@ -39,7 +39,7 @@ ehthumbs.db
 Thumbs.db
 desktop.ini
 
-# Temporary files 
+# Temporary files
 *.bak
 *.swp
 *.swo
@@ -49,7 +49,7 @@ desktop.ini
 # IDE files
 .vscode
 .idea
-.iml
+*.iml
 *.sublime-workspace
 
 # LaTeX
