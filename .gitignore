@@ -47,3 +47,9 @@ nvim/spell
 # Node/Npm
 node
 npm
+
+# Temporary tools
+# Unsure if these tools will stick around or not, don't want to commit
+# anything to start though.
+avim
+lvim
