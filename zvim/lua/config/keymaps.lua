@@ -15,10 +15,6 @@ local opts = { noremap=true, silent=true }
 -- Make semicolon into colon, because lazy.
 vim.keymap.set('', ';', ':', opts)
 
--- space is easier than \
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- Make 'Y' behave like 'D' and 'C'
 vim.keymap.set('n', 'Y', 'y$', opts)
 

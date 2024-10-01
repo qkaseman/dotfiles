@@ -2,6 +2,13 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- <Space> is easier than \
+-- Has to be mapped here rather than in `keymaps.lua`
+-- because it needs to be set before `lazy` is run which
+-- happens after this file is loaded but before keymaps are.
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- General --
 vim.opt.mouse = "a"
 vim.opt.title = true
