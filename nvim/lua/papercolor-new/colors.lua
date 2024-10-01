@@ -2,66 +2,7 @@ local util = require('papercolor.util')
 
 local M = {}
 
---[[
 ---@class Palette
-M.light = {
-  none = 'NONE',
-  color00 = '#eeeeee', -- black
-  color01 = '#af0000', -- dark red
-  color02 = '#008700', -- dark green
-  color03 = '#5f8700', -- dark yellow
-  color04 = '#0087af', -- dark blue
-  color05 = '#878787', -- dark magenta
-  color06 = '#005f87', -- dark cyan
-  color07 = '#444444', -- light gray
-  color08 = '#bcbcbc', -- dark gray
-  color09 = '#d70000', -- light red (red2)
-  color10 = '#d70087', -- light green (green2)
-  color11 = '#8700af', -- light yellow (yellow2)
-  color12 = '#d75f00', -- light blue (blue2)
-  color13 = '#d75f00', -- light magenta (magenta2)
-  color14 = '#005faf', -- light cyan (cyan2)
-  color15 = '#005f87', -- white
-  color16 = '#0087af', -- ?? (color11)
-  color17 = '#008700', -- ?? (color13)
-  color18 = '#8700af', -- ?? (color11)
-
-  -- bg_dark = '#1f2335',
-  -- bg = '#24283b',
-  -- bg_highlight = '#292e42',
-  -- terminal_black = '#414868',
-  -- fg = '#c0caf5',
-  -- fg_dark = '#a9b1d6',
-  -- fg_gutter = '#3b4261',
-  -- dark3 = '#545c7e',
-  -- comment = '#565f89',
-  -- dark5 = '#737aa2',
-  -- blue0 = '#3d59a1',
-  -- blue = '#7aa2f7',
-  -- cyan = '#7dcfff',
-  -- blue1 = '#2ac3de',
-  -- blue2 = '#0db9d7',
-  -- blue5 = '#89ddff',
-  -- blue6 = '#b4f9f8',
-  -- blue7 = '#394b70',
-  -- magenta = '#bb9af7',
-  -- magenta2 = '#ff007c',
-  -- purple = '#9d7cd8',
-  -- orange = '#ff9e64',
-  -- yellow = '#e0af68',
-  -- green = '#9ece6a',
-  -- green1 = '#73daca',
-  -- green2 = '#41a6b5',
-  -- teal = '#1abc9c',
-  -- red = '#f7768e',
-  -- red1 = '#db4b4b',
-}
---]]
-
--- Liked old colours for search and errors before swapping to PC.
--- I might overall just like using the core colours with some
--- slight modifications rather than all of the subcolours.
-
 M.light = {
   none              = 'NONE',
   color00           = '#eeeeee', -- black     | white       |
@@ -439,6 +380,12 @@ function M.setup(opts)
       Secondary | Contrast  | Emphasis
       Tertiary  | Subtle    | Diminish
 
+!! Differnece between `primary` and `primary-container` is `primary` can be used EITHER
+   as an important container colour, at which point you use `on-primary` for the text,
+   or simply as the text colour without a background at all. `primary-container` should
+   ONLY be used for the container, never just text colour and use `on-primary-container`
+   for the corresponding content colour. `primary` CAN be used for things like icons
+   or checkboxes, `primary-container` CANNOT.
 
 Surface – A role used for backgrounds and large, low-emphasis areas of the screen.
 
@@ -457,36 +404,91 @@ Look at this for how to structure the colours to use
 
 https://github.com/material-foundation/material-tokens/blob/main/dsp/dist/styledictionary/properties/colors.json
 
-primary
-on-primary
-primary-container
-on-primary-container
-secondary
-on-secondary
-secondary-container
-on-secondary-container
-tertiary
-on-tertiary
-tertiary-container
-on-tertiary-container
-error
-on-error
-error-container
-on-error-container
-surface-dim (darker)
-surface
-surface-bright (lighter)
-inverse-surface
-inverse-on-surface
-inverse-primary
+# Primary
+Use primary roles for the most prominent components across the UI, such as the FAB, high-emphasis buttons, and active states
+
+  primary - High-emphasis fills, texts, and icons against surface
+  on-primary - Text and icons against primary
+  primary-container - Standout fill color against surface, for key components like FAB
+  on-primary-container - Text and icons against primary container
+
+# Secondary
+Use secondary roles for less prominent components in the UI such as filter chips.
+
+  secondary - Less prominent fills, text, and icons against surface
+  on-secondary - Text and icons against secondary
+  secondary-container - Less prominent fill color against surface, for recessive components like tonal buttons
+  on-secondary-container - Text and icons against secondary container
+
+# Tertiary
+Use tertiary roles for contrasting accents that balance primary and secondary colors or bring heightened attention to an element such as an input field.
+
+  tertiary - Complementary fills, text, and icons against surface
+  on-tertiary - Text and icons against tertiary
+  tertiary-container - Complementary container color against surface, for components like input fields
+  on-tertiary-container - Text and icons against tertiary container
+
+# Error
+Use error roles to communicate error states, such as an incorrect password entered into a text field.
+Error is an example of a static color (it doesn't change even in dynamic color schemes). Error color roles are made static by default with any dynamic color scheme.
+
+  error - Attention-grabbing color against surface for fills, icons, and text, indicating urgency
+  on-error - Text and icons against error
+  error-container - Attention-grabbing fill color against surface
+  on-error-container - Text and icons against error container
+
+
+# Inverse colors
+
+Inverse roles are applied selectively to components to achieve colors that are the reverse of those in the surrounding UI, creating a contrasting effect.
+
+  inverse-surface - Background fills for elements which contrast against surface
+  inverse-on-surface - Text and icons against inverse surface
+  inverse-primary - Actionable elements, such as text buttons, against inverse surface
+
+
 scrim
 shadow
-on-surface
-on-surface-variant
-outline
-outline-variant
 
+# Outline
+
+There are two outline colors to be used against surface:
+
+  outline - Important boundaries, such as a text field outline
+  outline-variant - Decorative elements, such as dividers
+
+# Surface
+
+Use surface roles for more neutral backgrounds, and container colors for components like cards, sheets, and dialogs.
+
+Surface container is the default role, but the others are especially helpful for creating hierarchy and nested containers in layouts for expanded screens.
+
+The most common combination of surface roles uses surface for a background area and surface container for a navigation area. The body area will use the surface color and the navigation area will use the surface container color on both mobile and tablet.
+
+While the default surface color automatically inverts between light and dark themes (it’s a light color in light theme and it flips to a dark color in dark theme), the surface bright and surface dim colors invert in a slightly different way. More precisely, they keep their relative brightness across both light and dark theme.
+
+For example, in an interface using the default surface role, the mapped area is the brightest in light theme and the dimmest in dark theme. In an interface using the surface bright role, the mapped area is the brightest in both light and dark theme.
+
+  surface – Default color for backgrounds
+  on-surface – Text and icons against any surface color
+  on-surface-variant – Lower-emphasis color for text and icons against any surface color
+
+  surface-dim (darker) - Dimmest surface color in light and dark themes
+  surface-bright (lighter) - Brightest surface color in light and dark themes
+
+  surface-container-lowest - Lowest-emphasis container color
+  surface-container-low - Low-emphasis container color
+  surface-container - Default container color
+  surface-container-high - High-emphasis container color
+  surface-container-highest - Highest-emphasis container color
   --]]
+
+  -- Semantic Layer
+  -- need `container` ones? (things like popup-menus) ?
+  -- need `surface` ones (wide general BG) ?
+  -- need `inverse` ones (contrasting things) ?
+  -- need `error` ones (prob no)?
+  -- need `on-X` ones?
 
   -- Semantic Layer
   -- need `container` ones? (things like popup-menus) ?

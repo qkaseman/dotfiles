@@ -4,4 +4,5 @@ vim.opt.background = "light"
 --vim.cmd('silent! colorscheme PaperColor')
 
 --require('papercolor').setup()
-vim.cmd('silent! colorscheme papercolor-lua')
+-- vim.cmd('silent! colorscheme papercolor-lua')
+vim.cmd('colorscheme papercolor-lua')

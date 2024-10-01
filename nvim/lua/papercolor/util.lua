@@ -26,12 +26,18 @@ function M.blend(foreground, background, alpha)
   return string.format('#%02x%02x%02x', blendChannel(1), blendChannel(2), blendChannel(3))
 end
 
-function M.darken(hex, amount, bg)
-  return M.blend(hex, bg or M.bg, amount)
+-- @param hex string colour to darken
+-- @param percent number percentage to darken, 100 is black, 0 is `hex`
+-- @param bg string alternate to default pure black colour to blend with
+function M.darken(hex, percent, bg)
+  return M.blend(bg or M.bg, hex, percent/100.0)
 end
 
-function M.lighten(hex, amount, fg)
-  return M.blend(hex, fg or M.fg, amount)
+-- @param hex string colour to lighten
+-- @param percent number percentage to lighten, 100 is white, 0 is `hex`
+-- @param fg string alternate to pure white colour to blend with
+function M.lighten(hex, percent, fg)
+  return M.blend(fg or M.fg, hex, percent/100.0)
 end
 
 function M.invert_color(color)
