@@ -3,6 +3,7 @@ return {
   opts = {
     ensure_installed = {
       "css-lsp",
+      "some-sass-language-server",
     },
   }
 }
