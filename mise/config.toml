@@ -9,3 +9,7 @@
     hydrogen = '18'
     iron = '20'
     jod = '22'
+
+[tools]
+ruby = "3.2"
+node = "18"
