@@ -136,6 +136,10 @@ window:
 
 ## `mise`
 
+> DO NOT USE `mise`. The maintainer is dismissive and unreceptive to feedback and
+> that should not be supported. I am required to use it because of my job
+> otherwise I would kill it.
+
 [`mise`](https://mise.jdx.dev/), formerly `rtx`, is the new agnostic version
 management tool, similar to [`asdf`](https://asdf-vm.com/). It is a bit more
 flexible than `asdf` but also has already succumbed to scope creep, adding task
@@ -158,7 +162,7 @@ issues with `mise`.
 Add this to `${XDG_CONFIG_HOME}/mise/config.toml`:
 
 ```toml
-[alias.node]
+[alias.node.versions]
     argon = '4'
     boron = '6'
     carbon = '8'

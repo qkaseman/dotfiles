@@ -1,4 +1,4 @@
-[alias.node]
+[alias.node.versions]
     argon = '4'
     boron = '6'
     carbon = '8'
@@ -11,5 +11,5 @@
     jod = '22'
 
 [tools]
-ruby = "3.2"
-node = "18"
+    ruby = "3.2"
+    node = "18"
