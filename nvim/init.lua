@@ -1,0 +1,41 @@
+-- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+-- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+-- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+-- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+-- `ANSI Shadow` text art!
+
+-- TODO:
+-- - add 80 column line
+-- - fix `gqq` for all buf types
+-- - don't hide "hidden" files
+-- - evaluate `\` or `,` as `localleader`
+-- - hjkl should move to wrapped line next, not jump.
+-- - keep paste selection in register after paste
+-- - make `<` work repeatedly (might be the same as paste selection)
+-- - Figure out how to make the `:` show up properly in TODO highlighting
+-- - Figure out auto-install of LSP like Treesitter has for grammar
+-- - Evaluate complexity of LSP module and determine if should be submodules
+-- - Add debounce to LSP processing. It doesn't need to have executed 20 times
+--   while I wrote this comment, that's just absurdly inefficient
+-- - Figure out why fidget.nvim isn't showing LSP updates sometimes
+-- - make help pages vertical
+-- - submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
+--   `:help wo`, it takes you to `wildmenu` not set `window-local` options
+-- - Figure out why resuming workspace froze nvim for a while. Seems like it
+--   is the LSP struggling when a file has been deleted or changed while
+--   Neovim is suspended. Seems weird as that should be async.
+-- - Set up TypeScript/JavaScript DAP
+-- - Look at LazyVim/LazyVim and AstroNvim's config/plugins
+-- - Look at `cmp.lua` keybinds. Think I like the general idea of <Tab> should
+--   always be <Tab>. That and enter doing completion was one of the things
+--   that annoyed the crap out of me for AstroNvim and LazyVim. Not sure I
+--   love Ctrl+Y though.
+-- - Fix colorscheme so it's not using tokyonight to set it to a different
+--   scheme
+-- - Look at treesitter stuff in the future
+-- - Explore other statuslines
+-- - keymap for `o` that inserts a new line below and goes back to normal mode
+
+require('config')
