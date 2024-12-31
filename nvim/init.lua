@@ -9,7 +9,6 @@
 -- TODO:
 -- - add 80 column line
 -- - fix `gqq` for all buf types
--- - don't hide "hidden" files
 -- - evaluate `\` or `,` as `localleader`
 -- - hjkl should move to wrapped line next, not jump.
 -- - keep paste selection in register after paste
