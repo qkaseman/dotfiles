@@ -12,6 +12,9 @@
 --  See `:help set()`
 local set = vim.keymap.set
 
+-- Make semicolon into colon, because lazy.
+set('', ';', ':', { noremap = true, silent = true })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
