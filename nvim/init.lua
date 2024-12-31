@@ -7,7 +7,6 @@
 -- `ANSI Shadow` text art!
 
 -- TODO:
--- - add 80 column line
 -- - fix `gqq` for all buf types
 -- - evaluate `\` or `,` as `localleader`
 -- - Figure out auto-install of LSP like Treesitter has for grammar
