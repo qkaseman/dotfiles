@@ -54,3 +54,7 @@ set('v', '>', '>gv')
 
 -- Keep paste buffer after pasting once.
 vim.keymap.set('v', 'p', 'pgvy')
+
+-- Copy to system clipboard
+set({ 'n', 'v' }, '<leader>y', '"+y')
+set('n', '<leader>Y', '"+Y')
