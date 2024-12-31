@@ -44,3 +44,6 @@ set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 -- Remap for dealing with visual line wraps
 set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+-- Make 'Y' behave like 'D' and 'C'
+set('n', 'Y', 'y$', { desc = '[Y]ank full line. Works like `D` and `C`' })
