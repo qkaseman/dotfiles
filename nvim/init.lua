@@ -11,8 +11,6 @@
 -- - fix `gqq` for all buf types
 -- - evaluate `\` or `,` as `localleader`
 -- - keep paste selection in register after paste
--- - make `<` work repeatedly (might be the same as paste selection)
--- - Figure out how to make the `:` show up properly in TODO highlighting
 -- - Figure out auto-install of LSP like Treesitter has for grammar
 -- - Evaluate complexity of LSP module and determine if should be submodules
 -- - Add debounce to LSP processing. It doesn't need to have executed 20 times

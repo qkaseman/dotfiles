@@ -47,3 +47,7 @@ set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Make 'Y' behave like 'D' and 'C'
 set('n', 'Y', 'y$', { desc = '[Y]ank full line. Works like `D` and `C`' })
+
+-- Keep selection after indentation changes.
+set('v', '<', '<gv')
+set('v', '>', '>gv')
