@@ -10,7 +10,6 @@
 -- - add 80 column line
 -- - fix `gqq` for all buf types
 -- - evaluate `\` or `,` as `localleader`
--- - hjkl should move to wrapped line next, not jump.
 -- - keep paste selection in register after paste
 -- - make `<` work repeatedly (might be the same as paste selection)
 -- - Figure out how to make the `:` show up properly in TODO highlighting
