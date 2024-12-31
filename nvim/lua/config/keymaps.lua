@@ -58,3 +58,11 @@ vim.keymap.set('v', 'p', 'pgvy')
 -- Copy to system clipboard
 set({ 'n', 'v' }, '<leader>y', '"+y')
 set('n', '<leader>Y', '"+Y')
+
+-- Insert blank lines without entering Insert mode.
+set('n', ']<Space>', function()
+  vim.fn.append(vim.fn.line('.'), '')
+end, { noremap = true })
+set('n', '[<Space>', function()
+  vim.fn.append(vim.fn.line('.') - 1, '')
+end, { noremap = true })

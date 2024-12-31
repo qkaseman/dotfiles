@@ -29,6 +29,5 @@
 --   scheme
 -- - Look at treesitter stuff in the future
 -- - Explore other statuslines
--- - keymap for `o` that inserts a new line below and goes back to normal mode
 
 require('config')
