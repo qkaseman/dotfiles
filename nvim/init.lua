@@ -12,8 +12,6 @@
 -- - evaluate `\` or `,` as `localleader`
 -- - Figure out auto-install of LSP like Treesitter has for grammar
 -- - Evaluate complexity of LSP module and determine if should be submodules
--- - Add debounce to LSP processing. It doesn't need to have executed 20 times
---   while I wrote this comment, that's just absurdly inefficient
 -- - Figure out why fidget.nvim isn't showing LSP updates sometimes
 -- - make help pages vertical
 -- - submit help page bug to Neovim `vim.wo.diff` doesn't have anything for

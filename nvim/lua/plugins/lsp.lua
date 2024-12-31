@@ -140,6 +140,9 @@ return {
         end,
       })
 
+      -- Don't update LSP in insert mode.
+      vim.diagnostic.config({ update_in_insert = false })
+
       -- Use those Nerd Font icons if they exist.
       if vim.g.have_nerd_font then
         local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
@@ -169,6 +172,7 @@ return {
       --    initializing the server. What you can do in the settings depends
       --    on the server. For example, to see the options for `lua_ls`, you
       --    could go to: https://luals.github.io/wiki/settings/
+      --
       -- TODO: Create/use a type for this
       local servers = {
         -- TODO: Add support for:
@@ -213,7 +217,11 @@ return {
       require('mason-lspconfig').setup({
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
+            local server = vim.tbl_deep_extend('force', {
+              flags = {
+                debounce_text_changes = 150,
+              },
+            }, servers[server_name] or {})
             server.capabilities =
               vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
