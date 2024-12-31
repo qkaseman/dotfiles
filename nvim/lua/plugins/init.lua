@@ -5,10 +5,28 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   { -- Highlight todo, notes, etc in comments
+    -- Below are the highlighted keywords as well as some oddly spaced
+    -- instances to see how the highlighting works.
+    -- TODO: todo comment
+    --FIXME: no space fixme comment
+    --  WARN: offset warning comment
+    -- HACK no colon hacky code comment
+    -- PERF: code performance comment
+    -- NOTE: note comment
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
+    opts = {
+      highlight = {
+        -- `before` doesn't apply to multi-line comments well, their leading
+        -- characters don't get changed so it looks weird.
+        before = '', -- Set how to highlight the comment characters.
+        keyword = 'bg', -- Set how to highlight the keyword itself.
+        after = 'fg', -- Set how to highlight the rest of the comment.
+        pattern = [[.*<((KEYWORDS):?)\s*]], -- Highlight colon if present.
+      },
+      signs = false,
+    },
   },
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
