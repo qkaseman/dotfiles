@@ -10,7 +10,6 @@
 -- - add 80 column line
 -- - fix `gqq` for all buf types
 -- - evaluate `\` or `,` as `localleader`
--- - keep paste selection in register after paste
 -- - Figure out auto-install of LSP like Treesitter has for grammar
 -- - Evaluate complexity of LSP module and determine if should be submodules
 -- - Add debounce to LSP processing. It doesn't need to have executed 20 times

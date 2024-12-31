@@ -51,3 +51,6 @@ set('n', 'Y', 'y$', { desc = '[Y]ank full line. Works like `D` and `C`' })
 -- Keep selection after indentation changes.
 set('v', '<', '<gv')
 set('v', '>', '>gv')
+
+-- Keep paste buffer after pasting once.
+vim.keymap.set('v', 'p', 'pgvy')
