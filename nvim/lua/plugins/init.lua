@@ -29,6 +29,16 @@ return {
       signs = false,
     },
   },
+
+  {
+    'sickill/vim-pasta',
+    config = function()
+      -- These are disabled by default because indentation is complicated in them.
+      -- Explicitly disabled to make it obvious.
+      vim.g.pasta_disabled_filetypes = { 'python', 'coffee', 'yaml', 'markdown', 'slim' }
+    end,
+  },
+
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
