@@ -1,6 +1,9 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- For all options, see `:help option-list`
+--
+-- WARN: Don't set 'formatoptions' here, the file type plugins that get loaded
+-- last will override whatever you set. Use an autocommand.
 local opt = vim.opt
 
 -- Make line numbers default

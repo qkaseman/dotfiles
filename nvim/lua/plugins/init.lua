@@ -4,6 +4,7 @@
 -- NOTE: Use `opts = {}` to force a plugin to be loaded.
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
   { -- Highlight todo, notes, etc in comments
     -- Below are the highlighted keywords as well as some oddly spaced
     -- instances to see how the highlighting works.
