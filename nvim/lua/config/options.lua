@@ -29,4 +29,4 @@ opt.cursorline = true
 opt.scrolloff = 10
 opt.sidescrolloff = 5
 opt.modeline = false -- only use my configurations
-opt.colorcolumn = "+1,80" -- highlight 80th column and one past `textwidth`.
+opt.colorcolumn = '+1,80' -- highlight 80th column and one past `textwidth`.
