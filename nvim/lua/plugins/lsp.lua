@@ -175,17 +175,10 @@ return {
       --
       -- TODO: Create/use a type for this
       local servers = {
-        -- TODO: Add support for:
-        -- - TypeScript
-        -- - JSON
-        -- - Bash
-        --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-
         lua_ls = {
           settings = {
             Lua = {
@@ -202,6 +195,14 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'bashls',
+        'cssls',
+        'cucumber_language_server',
+        'ts_ls',
+        'gradle_ls',
+        'jsonls',
+        'yamlls',
+        'somesass_ls',
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup({
