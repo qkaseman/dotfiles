@@ -1,2 +1,39 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+-- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+-- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+-- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+-- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+-- `ANSI Shadow` text art!
+
+-- TODO:
+-- - fix `gqq` for all buf types
+-- - evaluate `\` or `,` as `localleader`
+-- - Figure out auto-install of LSP like Treesitter has for grammar
+-- - Evaluate complexity of LSP module and determine if should be submodules
+-- - Figure out why fidget.nvim isn't showing LSP updates sometimes
+-- - make help pages vertical
+-- - submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
+--   `:help wo`, it takes you to `wildmenu` not set `window-local` options
+-- - Figure out why resuming workspace froze nvim for a while. Seems like it
+--   is the LSP struggling when a file has been deleted or changed while
+--   Neovim is suspended. Seems weird as that should be async.
+-- - Set up TypeScript/JavaScript DAP
+-- - Look at LazyVim/LazyVim and AstroNvim's config/plugins
+-- - Look at `cmp.lua` keybinds. Think I like the general idea of <Tab> should
+--   always be <Tab>. That and enter doing completion was one of the things
+--   that annoyed the crap out of me for AstroNvim and LazyVim. Not sure I
+--   love Ctrl+Y though.
+-- - Fix colorscheme so it's not using tokyonight to set it to a different
+--   scheme
+-- - Look at treesitter stuff in the future
+-- - Explore other statuslines
+-- - Get plugin that makes it easy to block comment.
+-- - Figure out why prettier support isn't working right
+-- - make keybind to generate hover window of diag error
+-- - make keybind to make hoverwindow of type
+-- - make/figure out keybind to move in completion window without arrows
+--
+--
+
+require('config')

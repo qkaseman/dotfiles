@@ -1,22 +1,39 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
 
-local au = vim.api.nvim_create_autocmd
-
-local group = vim.api.nvim_create_augroup('whitespace', { clear = true })
-au({ 'BufRead', 'BufWrite' }, {
-  group = group,
-  callback = function ()
-    local ws_regex = "\\s\\+"
-
-    -- Only do if the buffer is modifiable
-    if not vim.bo.modifiable or vim.o.binary and vim.o.filetype == 'diff' then
-      return
-    end
-
-    local view = vim.fn.winsaveview()
-    vim.cmd("silent! keeppatterns %s/"..ws_regex.."$//e")
-    vim.fn.winrestview(view)
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
   end,
-} )
+})
+
+--- Remove all trailing whitespace on save
+local TrimWhiteSpaceGrp = vim.api.nvim_create_augroup('TrimWhiteSpaceGrp', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+  command = [[:%s/\s\+$//e]],
+  group = TrimWhiteSpaceGrp,
+})
+
+--- Indentation/Format Settings ---
+-- Needed because file type plugins that Neovim provides get loaded after
+-- options are set.
+--[[
+local IndentationGrp = vim.api.nvim_create_augroup('IndentationGrp', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '*.js', '*.ts', '*.tsx', '*.jsx' },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.textwidth = 80
+    vim.opt_local.formatoptions:append({ c = true, r = true, o = true, q = true })
+  end,
+    group = IndentationGrp,
+})
+--]]

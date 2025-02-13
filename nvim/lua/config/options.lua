@@ -1,88 +1,42 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+-- [[ Setting options ]]
+-- See `:help vim.opt`
+-- For all options, see `:help option-list`
+--
+-- WARN: Don't set 'formatoptions' here, the file type plugins that get loaded
+-- last will override whatever you set. Use an autocommand.
+local opt = vim.opt
 
--- <Space> is easier than \
--- Has to be mapped here rather than in `keymaps.lua`
--- because it needs to be set before `lazy` is run which
--- happens after this file is loaded but before keymaps are.
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
--- General --
-vim.opt.mouse = "a"
-vim.opt.title = true
-vim.opt.number = true
-vim.opt.list = true
-vim.opt.listchars = 'tab:▸-,trail:·,extends:»,precedes:«,nbsp:%'
-vim.opt.scrolloff = 10
-vim.opt.sidescrolloff = 10
-vim.opt.cursorline = true
-vim.opt.linebreak = true
-vim.opt.virtualedit = "block"
-vim.opt.signcolumn = "yes" -- Prevent shifting text, always show the signcolumn
-
--- Spelling --
-vim.opt.spell = true
-
--- Code Style --
-vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
+-- Make line numbers default
+opt.number = true
+opt.relativenumber = false -- relative numbers are evil
+opt.mouse = 'a'
+-- Don't show mode in command line, since it's already in the status line
+opt.showmode = false
+opt.clipboard = '' -- don't use the system clipboard unless specified
+opt.breakindent = true -- wrapped lines have pseudo-indentation
+opt.ignorecase = true -- case-insensitive search
+opt.smartcase = true -- unless `\C` or capital letters are present
+opt.undofile = true -- save undo history
+opt.signcolumn = 'yes' -- probalby want `number` here
+opt.updatetime = 1000 -- ms between swapfile writes
+opt.timeoutlen = 500 -- ms, display which-key sooner
+opt.splitright = true
+opt.splitbelow = true
+opt.list = true -- show whitespace characters
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.inccommand = 'nosplit' -- preview substitutions in buffer
+opt.cursorline = true
+opt.scrolloff = 10
+opt.sidescrolloff = 5
+opt.modeline = false -- only use my configurations
+opt.colorcolumn = '+1,80' -- highlight 80th column and one past `textwidth`.
+opt.virtualedit = 'block'
 
 -- Tabs vs Spaces --
-vim.opt.smarttab = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.shiftround = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-
--- Search --
-vim.opt.smartcase = true
-vim.opt.ignorecase = true
-vim.opt.incsearch = true
-vim.opt.hlsearch = true
-vim.opt.wildmode = 'longest:full,full'
-
--- All bells must die. --
-vim.opt.belloff = 'all'
-vim.opt.errorbells = false
-vim.opt.visualbell = false
-
--- Search --
-vim.opt.incsearch = true
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.wildmode = "longest:full,full"
-
--- Splits --
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-
--- Backup/Undo --
-vim.opt.backup = true
-vim.opt.backupdir = vim.fn.stdpath('data')..'/backup//'
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath('data')..'/undo//'
-vim.opt.undolevels = 10000
-
--- Fix bad LazyVim's defaults. --
-vim.opt.relativenumber = false -- Just.... why?
-vim.opt.autowrite = false -- Autosaving can break in-progress builds.
-vim.opt.wrap = true -- Scrolling is evil.
-vim.g.autoformat = false -- So is autoformatting.
-vim.opt.clipboard = "" -- So is using the system clipboard for everything.
-
--- LazyVim defaults I don't know if I like. --
-vim.opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
-vim.opt.formatoptions = "jcroqlnt" -- tcqj
---                       ||||||||
---                       |||||||+- auto-wrap text
---                       ||||||+- recognise number lists
---                       |||||+- don't auto-wrap long lines in Insert mode
---                       ||||+- format comments with `gq`
---                       |||+- add comment leader with `o`, Ctrl-U deletes
---                       ||+- add comment leader when hitting <enter>
---                       |+- wrap comments and add comment leader
---                       +- remove comment leader when joining lines
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.shiftround = true
+opt.smarttab = true
+opt.autoindent = true
+opt.smartindent = true
