@@ -1,3 +1,5 @@
+-- TODO: As this interacts with `lsp.lua`, should they be combined? Linting is
+-- related ot the LSP functionality, so somewhat makes sense.
 return {
   { -- Linting
     'mfussenegger/nvim-lint',
@@ -5,6 +7,8 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
+        -- WARN: Make sure to add these to `ensure_installed` in `lsp.lua`
+        -- to install them.
         markdown = { 'markdownlint' },
       }
 

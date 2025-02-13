@@ -204,6 +204,7 @@ return {
         'yamlls',
         'somesass_ls',
         'stylua', -- Used to format Lua code
+        'markdownlint',
       })
       require('mason-tool-installer').setup({
         ensure_installed = ensure_installed,
