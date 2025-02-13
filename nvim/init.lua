@@ -28,5 +28,12 @@
 --   scheme
 -- - Look at treesitter stuff in the future
 -- - Explore other statuslines
+-- - Get plugin that makes it easy to block comment.
+-- - Figure out why prettier support isn't working right
+-- - make keybind to generate hover window of diag error
+-- - make keybind to make hoverwindow of type
+-- - make/figure out keybind to move in completion window without arrows
+--
+--
 
 require('config')
