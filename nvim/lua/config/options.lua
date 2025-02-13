@@ -30,3 +30,13 @@ opt.scrolloff = 10
 opt.sidescrolloff = 5
 opt.modeline = false -- only use my configurations
 opt.colorcolumn = '+1,80' -- highlight 80th column and one past `textwidth`.
+opt.virtualedit = 'block'
+
+-- Tabs vs Spaces --
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.shiftround = true
+opt.smarttab = true
+opt.autoindent = true
+opt.smartindent = true
