@@ -42,6 +42,12 @@ return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
+      -- Better commenting functionality.
+      --
+      -- Neovim does have built-in support but this is more featured/flexible
+      -- (and apparently what the built-in support is based on).
+      require('mini.comment').setup()
+
       -- Better Around/Inside textobjects
       --
       -- Examples:
