@@ -8,11 +8,9 @@
 
 -- TODO:
 -- - fix `gqq` for all buf types
--- - evaluate `\` or `,` as `localleader`
 -- - Figure out auto-install of LSP like Treesitter has for grammar
 -- - Evaluate complexity of LSP module and determine if should be submodules
 -- - Figure out why fidget.nvim isn't showing LSP updates sometimes
--- - make help pages vertical
 -- - submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
 --   `:help wo`, it takes you to `wildmenu` not set `window-local` options
 -- - Figure out why resuming workspace froze nvim for a while. Seems like it
@@ -28,12 +26,11 @@
 --   scheme
 -- - Look at treesitter stuff in the future
 -- - Explore other statuslines
--- - Get plugin that makes it easy to block comment.
 -- - Figure out why prettier support isn't working right
 -- - make keybind to generate hover window of diag error
 -- - make keybind to make hoverwindow of type
 -- - make/figure out keybind to move in completion window without arrows
---
+-- - figure out the `mini.surround` and `mini.ai` uses
 --
 
 require('config')
