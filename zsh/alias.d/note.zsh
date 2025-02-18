@@ -1,11 +1,11 @@
 # Easily manage todo lists.
 function todo {
-    vi ${NOTE_HOME}/todo${1:+-$1}.md
+    vi "${NOTE_HOME}/todo${1:+-$1}.md"
 }
 
 # Easily manage scratchpad notes.
 function scratch {
-    vi ${NOTE_HOME}/scratch${1:+-$1}.md
+    vi "${NOTE_HOME}/scratch${1:+-$1}.md"
 }
 
 # Log work done.
@@ -69,5 +69,5 @@ function log {
 # that's the best idea plus I believe the variable would pollute the general
 # variable closure which isn't great either.
 function worklog-open {
-    vi ${WORKLOG_HOME}/$(date +%Y-%m-%d).md
+    vi "${WORKLOG_HOME}/$(date +%Y-%m-%d).md"
 }

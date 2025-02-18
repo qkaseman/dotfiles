@@ -10,7 +10,7 @@ setopt autonamedirs         # Parameter that is absolute name of dir becomes a
 
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion:*' cache-path ${ZSH_CACHE_HOME}/zcompcache
+zstyle ':completion:*' cache-path "${ZSH_CACHE_HOME}/zcompcache"
 
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' list-suffixes true

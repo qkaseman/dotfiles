@@ -4,6 +4,8 @@
 function xcfg() {
     cd ${XDG_CONFIG_HOME}/${1}
 }
+
+# Local Config.
 function xcfgl() {
     cd ${XDG_CONFIG_LOCAL_HOME}/${1}
 }

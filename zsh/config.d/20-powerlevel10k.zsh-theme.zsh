@@ -3,4 +3,4 @@
 # add this `source` back to the top of it every time, which is annoying.
 #
 # This avoids that by splitting them.
-source ${ZDOTDIR}/plugin/powerlevel10k/powerlevel10k.zsh-theme
+source "${ZDOTDIR}/plugin/powerlevel10k/powerlevel10k.zsh-theme"

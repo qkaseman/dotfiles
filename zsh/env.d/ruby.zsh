@@ -7,5 +7,5 @@ export BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/ruby/bundle"
 export BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/ruby/bundle"
 
 # Gems
-export GEM_HOME=${XDG_DATA_HOME}/gem
-export GEM_SPEC_CACHE=${XDG_CACHE_HOME}/gem
+export GEM_HOME="${XDG_DATA_HOME}/gem"
+export GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"

@@ -1,1 +1,1 @@
-export SOLARGRAPH_CACHE=${XDG_CACHE_HOME}/solargraph
+export SOLARGRAPH_CACHE="${XDG_CACHE_HOME}/solargraph"
