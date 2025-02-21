@@ -35,6 +35,11 @@ case "$OSTYPE" in
     ;;
 esac
 
+# Add/source local configs if they exist. Alternatively we could copy things
+# from the local `bin` into `$XDG_BIN_HOME` but then we have to do it for every
+# new script which is just annoying.
+LOCAL_CFG_BIN="${XDG_CONFIG_LOCAL_HOME:-~/.local/config}/bin"
+[ -d ${LOCAL_CFG_BIN} ] && path+=("${LOCAL_CFG_BIN}") || true
 [ -f ${ZSH_LOCAL_HOME}/zshrc ] && . ${ZSH_LOCAL_HOME}/zshrc || true
 
 # Dedupe and export PATH.
