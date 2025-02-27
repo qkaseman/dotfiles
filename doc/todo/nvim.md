@@ -1,4 +1,13 @@
-## NeoVim
+# NeoVim
+
+## LSP Things
+
+- `toml`
+
+## Other things
+
+- `git` isn't using `nvim` nor my config on new laptop, maybe need to handle
+  in setup scripts?
 
 ### Major
 
