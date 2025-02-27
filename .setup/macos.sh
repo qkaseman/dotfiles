@@ -2,6 +2,20 @@
 
 CONFIG_DIR=${XDG_CONFIG_HOME:-${HOME}/.config}
 
+# git is special as MacOS provides a shim to trigger installation if you
+# haven't but that makes it harder to detect if it is installed.
+INSTALL="git"
+TOOLS=(
+  "tree"
+  "fzf"
+  "alacritty"
+  "ripgrep"
+  "neovim"
+  "skhd"
+  "yabai"
+  "stats"
+)
+
 # Install Homebrew.
 #
 # Note: Install Xcode Command Line Tools
@@ -27,33 +41,34 @@ done
 [[ -x "$(command -v node)" ]] || mise use -g node@20
 
 # Install tools.
-
-# Add Formulae locations
-brew install koekeishiya/formulae/yabai
-brew install koekeishiya/formulae/skhd
-
-# git is special as MacOS provides a shim to trigger installation if you
-# haven't but that makes it harder to detect if it is installed.
-INSTALL="git"
-PROGS=(
-  "tree"
-  "fzf"
-  "alacritty"
-  "ripgrep"
-  "neovim"
-  "skhd"
-  "yabai"
-)
-for p in ${PROGS[@]}; do
+for p in ${TOOLS[@]}; do
     [[ -x "$(command -v ${p})" ]] || INSTALL="${INSTALL} ${p}"
 done
-
+brew install koekeishiya/formulae/yabai
+brew install koekeishiya/formulae/skhd
 brew install ${INSTALL}
+
+# TODO: symlink or alias?
+sudo ln -s "$(command -v nvim)" /usr/local/bin/vi
+
+# FIXME: Make smarter
+skhd --start-service
+read -n 1 -p Once you have give a11y permissions, hit any key to continue.
+skhd --start-service
+
+yabai --start-service
+read -n 1 -p Once you have give a11y permissions, hit any key to continue.
+yabai --start-service
 
 # Clone common config.
 git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git ${CONFIG_DIR}
 
 # Handle MacOS weirdness.
-# FIXME: this doesn't work right
-sudo echo "export SHELL_SESSIONS_DISABLE=1" >> /etc/zprofile
+
+# MacOS's default shell config is weird.
+echo "export SHELL_SESSIONS_DISABLE=1" | sudo tee -a /etc/zprofile > /dev/null
 sudo cp "${CONFIG_DIR}/resources/zsh/zshenv.macos" /etc/zshenv
+
+# The "helpers" are annoying.
+sudo ln -s /Library/Developer/CommandLineTools/usr/bin/python3 /Library/Developer/CommandLineTools/usr/bin/python
+sudo ln -s /usr/bin/python3 /usr/local/bin/python
