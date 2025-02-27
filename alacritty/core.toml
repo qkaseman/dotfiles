@@ -1,13 +1,14 @@
-# Starting shell directory, if `None` the working directory of the parent
-# is used.
-#
-# `~` briefly worked, though it apparently was never officially supported. The
-# location is relative to `${HOME}`according to
-# https://github.com/alacritty/alacritty/issues/6241
-working_directory = "./"
+[general]
+    # Starting shell directory, if `None` the working directory of the parent
+    # is used.
+    #
+    # `~` briefly worked, though it apparently was never officially supported.
+    # The location is relative to `${HOME}`according to
+    # https://github.com/alacritty/alacritty/issues/6241
+    working_directory = "./"
 
 [bell]
-# Death to bells.
+    # Death to bells.
     command = "None"
     duration = 0
 
