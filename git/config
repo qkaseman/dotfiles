@@ -16,7 +16,10 @@
     br = branch
     ci = commit
     st = status
+    rs = "restore --staged"
     r = !"r() { git rebase -i HEAD~$1; }; r"
+    ri = "rebase -i"
+    rc = "rebase --continue"
     # Always verbose tags.
     tags = tag -l
     # Pull **all** repos.
