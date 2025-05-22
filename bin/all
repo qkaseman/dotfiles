@@ -1,0 +1,8 @@
+#/usr/bin/env bash
+# Run a command against all directories in current dir
+
+set -xe
+
+ARGS="$@"
+
+find . -type d -maxdepth 1 -mindepth 1 -print0 | xargs -0 -n1 -I {} sh -c "pushd {} && ${ARGS} && popd"
