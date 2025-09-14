@@ -21,7 +21,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Handle installation of LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true },
+      { 'williamboman/mason.nvim', opts= {} },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -189,9 +189,6 @@ return {
           },
         },
       }
-
-      -- Ensure the servers and tools above are installed
-      require('mason').setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
