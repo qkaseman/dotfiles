@@ -4,7 +4,14 @@
 
 Mac gives some....interesting defaults sometimes.
 
-- TBD
+### Enable Normal Key Repeat
+
+macOS now opens a key palette when you hold down a key rather than repeating
+it. To stop that behavior:
+
+```bash
+defaults write -g ApplePressAndHoldEnabled -bool false
+```
 
 ## Super Special MacOS Configuration
 
