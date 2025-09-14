@@ -29,8 +29,8 @@ return {
       -- TODO: see if these could be pulled up higher in the config/au? Easier
       -- to not miss it then.
 
-      -- Allows extra capabilities provided by nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
+      -- Allows extra capabilities provided by blink.cmp
+      'saghen/blink.cmp',
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -166,9 +166,7 @@ return {
 
       -- Merge default Neovim LSP capabilities with any additional capabilities
       -- from plugins.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities =
-        vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Enable the following language servers
       --  See `:help lspconfig-all` for a list of all the pre-configured LSPs
