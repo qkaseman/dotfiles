@@ -41,6 +41,13 @@ set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- CTRL+SHIFT+<hjkl> to move windows around, some terminals have colliding
+-- built-in keymaps.
+set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
+set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
+set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
+set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+
 -- Remap for dealing with visual line wraps
 set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
