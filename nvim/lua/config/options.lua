@@ -32,6 +32,7 @@ opt.modeline = false -- only use my configurations
 opt.colorcolumn = '+1,80' -- highlight 80th column and one past `textwidth`.
 opt.virtualedit = 'block'
 opt.confirm = true -- if operation would fail, ask for confirm first
+opt.spell = true
 
 -- Tabs vs Spaces --
 opt.expandtab = true
