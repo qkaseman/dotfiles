@@ -89,7 +89,7 @@ return {
           local client = vim.lsp.get_client_by_id(attach_event.data.client_id)
           if
             client
-            and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
+            and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
           then
             local highlight_augroup =
               vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
@@ -126,7 +126,7 @@ return {
           -- feature as it displaces code and screws with line length, but
           -- _can_ have its uses.
           -- TODO: send msg if not supported.
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(
                 not vim.lsp.inlay_hint.is_enabled({ bufnr = attach_event.buf })
