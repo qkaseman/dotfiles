@@ -35,11 +35,13 @@ ada
 # is empty.
 cups
 fontforge
+gatsby
 
 # Custom Tools
 brazil
 cr
 kata
+builder-mcp
 
 # NeoVim Spelling
 mvim/spell
