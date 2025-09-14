@@ -17,7 +17,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Handle installation of LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', opts= {} },
+      { 'williamboman/mason.nvim', opts = {} },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -42,48 +42,44 @@ return {
           end
           -- TODO: `symbol` rather than `word`? `word` just seems wrong.
 
-          -- Jump to the definition of the word under your cursor.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          -- Rename the variable under your cursor.
+          --  Most Language Servers support renaming across files, etc.
+          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+
+          -- Execute a code action, usually your cursor needs to be on top of
+          -- an error or a suggestion from your LSP for this to activate.
+          map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor, for when
           -- types are declared without an actual implementation.
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
-          -- Jump to the definition of the type of the word under your cursor.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          -- Jump to the definition of the word under your cursor.
+          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- Jump to the declaration of the word under the cursor. In C, this
           -- would go to the header; in TypeScript, to `const foo: Type;`.
           -- For high-level languages this will be the same thing as the
           -- word's definition.
-          -- TODO: How does this differ from `lsp_implementations`?
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Fuzzy find all the symbols in your current document.
-          map(
-            '<leader>ds',
-            require('telescope.builtin').lsp_document_symbols,
-            '[D]ocument [S]ymbols'
-          )
+          --  Symbols are things like variables, functions, types, etc.
+          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
           -- Fuzzy find all the symbols in your current workspace.
+          --  Similar to document symbols, except searches over your entire project.
           map(
-            '<leader>ws',
+            'gW',
             require('telescope.builtin').lsp_dynamic_workspace_symbols,
-            '[W]orkspace [S]ymbols'
+            'Open Workspace Symbols'
           )
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-
-          -- Execute a code action. This is weirdly named, it isn't for all
-          -- actions on code (such as `rename`), it's for LSP suggestions such
-          -- as ways to fix errors or suggested code snippets.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          -- Jump to the definition of the type of the word under your cursor.
+          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
           -- In-buffer reference highlighting
           local client = vim.lsp.get_client_by_id(attach_event.data.client_id)
@@ -141,7 +137,7 @@ return {
 
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
-      vim.diagnostic.config {
+      vim.diagnostic.config({
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -166,7 +162,7 @@ return {
             return diagnostic_message[diagnostic.severity]
           end,
         },
-      }
+      })
 
       -- Merge default Neovim LSP capabilities with any additional capabilities
       -- from plugins.
