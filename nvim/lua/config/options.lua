@@ -1,44 +1,48 @@
 -- [[ Setting options ]]
--- See `:help vim.opt`
+-- See `:help vim.o`
 -- For all options, see `:help option-list`
 --
 -- WARN: Don't set 'formatoptions' here, the file type plugins that get loaded
 -- last will override whatever you set. Use an autocommand.
-local opt = vim.opt
+--
+-- `vim.o` is used over `vim.opt` b/c eventually it will be required and it
+-- has better overall devex. The one exception is tables, so those still use
+-- `vim.opt`.
+local o = vim.o
 
 -- Make line numbers default
-opt.number = true
-opt.relativenumber = false -- relative numbers are evil
-opt.mouse = 'a'
+o.number = true
+o.relativenumber = false -- relative numbers are evil
+o.mouse = 'a'
 -- Don't show mode in command line, since it's already in the status line
-opt.showmode = false
-opt.clipboard = '' -- don't use the system clipboard unless specified
-opt.breakindent = true -- wrapped lines have pseudo-indentation
-opt.ignorecase = true -- case-insensitive search
-opt.smartcase = true -- unless `\C` or capital letters are present
-opt.undofile = true -- save undo history
-opt.signcolumn = 'yes' -- probalby want `number` here
-opt.updatetime = 1000 -- ms between swapfile writes
-opt.timeoutlen = 500 -- ms, display which-key sooner
-opt.splitright = true
-opt.splitbelow = true
-opt.list = true -- show whitespace characters
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-opt.inccommand = 'nosplit' -- preview substitutions in buffer
-opt.cursorline = true
-opt.scrolloff = 10
-opt.sidescrolloff = 5
-opt.modeline = false -- only use my configurations
-opt.colorcolumn = '+1,80' -- highlight 80th column and one past `textwidth`.
-opt.virtualedit = 'block'
-opt.confirm = true -- if operation would fail, ask for confirm first
-opt.spell = true
+o.showmode = false
+o.clipboard = '' -- don't use the system clipboard unless specified
+o.breakindent = true -- wrapped lines have pseudo-indentation
+o.ignorecase = true -- case-insensitive search
+o.smartcase = true -- unless `\C` or capital letters are present
+o.undofile = true -- save undo history
+o.signcolumn = 'yes' -- probalby want `number` here
+o.updatetime = 1000 -- ms between swapfile writes
+o.timeoutlen = 500 -- ms, display which-key sooner
+o.splitright = true
+o.splitbelow = true
+o.list = true -- show whitespace characters
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+o.inccommand = 'nosplit' -- preview substitutions in buffer
+o.cursorline = true
+o.scrolloff = 10
+o.sidescrolloff = 5
+o.modeline = false -- only use my configurations
+o.colorcolumn = '+1,80' -- highlight 80th column and one past `textwidth`.
+o.virtualedit = 'block'
+o.confirm = true -- if operation would fail, ask for confirm first
+o.spell = true
 
 -- Tabs vs Spaces --
-opt.expandtab = true
-opt.shiftwidth = 4
-opt.tabstop = 4
-opt.shiftround = true
-opt.smarttab = true
-opt.autoindent = true
-opt.smartindent = true
+o.expandtab = true
+o.shiftwidth = 4
+o.tabstop = 4
+o.shiftround = true
+o.smarttab = true
+o.autoindent = true
+o.smartindent = true

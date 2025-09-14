@@ -20,8 +20,11 @@ if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
     vim.fn.getchar()
     os.exit(1)
   end
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+end
+
+---@type vim.Option
+local rtp = vim.opt.rtp
+rtp:prepend(lazypath)
 
 local ok, lazy = pcall(require, 'lazy')
 if not ok then
