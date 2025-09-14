@@ -3,6 +3,8 @@ return {
   'folke/which-key.nvim',
   event = 'VimEnter',
   opts = {
+    -- delay between pressing a key and opening which-key (ms)
+    delay = 300,
     icons = {
       mappings = vim.g.have_nerd_font, -- Poor name, this enables icon mappings.
       -- Use Nerd Font icons if installed, otherwise use strings.
