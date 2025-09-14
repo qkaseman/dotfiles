@@ -8,14 +8,10 @@ return {
     opts = {
       library = {
         -- Load luvit types when the `vim.uv` word is found
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
   },
-
-  -- Documentation for all modules shipped in Luvit (a NodeJS-style async
-  -- runtime for Lua, see [luvit.io](https://luvit.io/) for more details.
-  { 'Bilal2453/luvit-meta', lazy = true },
 
   { -- Main LSP Configuration
     'neovim/nvim-lspconfig',
