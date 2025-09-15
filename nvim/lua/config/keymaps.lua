@@ -73,3 +73,9 @@ end, { noremap = true })
 set('n', '[<Space>', function()
   vim.fn.append(vim.fn.line('.') - 1, '')
 end, { noremap = true })
+
+-- Undo breakpoints for specific characters rather than last insert block for
+-- more granular undos.
+set('i', ',', ',<c-g>u')
+set('i', '.', '.<c-g>u')
+set('i', ';', ';<c-g>u')
