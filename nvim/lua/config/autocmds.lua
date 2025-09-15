@@ -21,3 +21,15 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = [[:%s/\s\+$//e]],
   group = augroup('trim-whitespace'),
 })
+
+-- Automatically reload buffers when contents are changed externally.
+--
+-- TODO: why does this need an autocommand vs setting `autoread` option?
+vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+  group = augroup('checktime'),
+  callback = function()
+    if vim.o.buftype ~= 'nofile' then
+      vim.cmd('checktime')
+    end
+  end,
+})
