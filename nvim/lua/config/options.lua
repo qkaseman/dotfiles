@@ -36,6 +36,7 @@ o.confirm = true -- If operation would fail, ask for confirm first.
 o.virtualedit = 'block' -- Allow Visual Block cursor where there is no text.
 o.spell = true -- Enable spellchecking, in code this only applies to comments.
 o.undofile = true -- Save undo history.
+o.undolevels = 10000 -- And lots of it.
 o.ignorecase = true -- Case-insensitive search.
 o.smartcase = true -- Unless `\C` or capital letters are present.
 o.expandtab = true -- Use spaces, not tabs.
