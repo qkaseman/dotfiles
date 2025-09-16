@@ -54,3 +54,7 @@ o.shiftround = true -- Round to multiples of `shiftwidth`.
 o.autoindent = true -- Copy indent from current line to new line.
 o.smartindent = true -- Attempt to intelligently indent from context.
 vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
+o.foldlevel = 99 -- Max depth of folds.
+o.foldmethod = 'expr' -- How to determine folds.
+o.foldexpr = "v:lua.require'config.util.fold'.expr()"
+o.foldtext = '' -- Use buffer text (with highlights!) for the fold text.
