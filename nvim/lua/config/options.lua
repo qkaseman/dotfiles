@@ -19,6 +19,7 @@ o.scrolloff = 10 -- Min rows between cursor and edge of buffer.
 o.sidescrolloff = 5 -- Min columns between cursor and edge of buffer.
 o.cursorline = true -- Highlight row with the cursor.
 o.colorcolumn = '+1,80' -- Highlight 80th column and one past `textwidth`.
+o.conceallevel = 0 -- Don't conceal things.
 o.breakindent = true -- Wrapped lines have pseudo-indentation.
 o.splitright = true -- New vertical splits to the right of the current buffer.
 o.splitbelow = true -- New splits below the current buffer.
