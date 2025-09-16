@@ -22,6 +22,12 @@ o.colorcolumn = '+1,80' -- Highlight 80th column and one past `textwidth`.
 o.conceallevel = 0 -- Don't conceal things.
 o.breakindent = true -- Wrapped lines have pseudo-indentation.
 o.linebreak = true -- Wrap lines at convenient points.
+vim.opt.shortmess:append({
+  I = true, -- Suppress intro message.
+  W = true, -- Suppress file write messages.
+  c = true, -- Suppress completion messages.
+  C = true, -- Suppress completion scanning messages.
+})
 o.splitright = true -- New vertical splits to the right of the current buffer.
 o.splitbelow = true -- New splits below the current buffer.
 o.splitkeep = 'screen' -- Keep view stable rather than cursor position.
