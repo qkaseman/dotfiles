@@ -24,6 +24,7 @@ o.breakindent = true -- Wrapped lines have pseudo-indentation.
 o.linebreak = true -- Wrap lines at convenient points.
 o.splitright = true -- New vertical splits to the right of the current buffer.
 o.splitbelow = true -- New splits below the current buffer.
+o.splitkeep = 'screen' -- Keep view stable rather than cursor position.
 
 --- Features ---
 o.mouse = 'a' -- Enable the mouse.
