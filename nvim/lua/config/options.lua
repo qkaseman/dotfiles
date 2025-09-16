@@ -46,3 +46,4 @@ o.tabstop = 2 -- Size of a tab, in spaces.
 o.shiftround = true -- Round to multiples of `shiftwidth`.
 o.autoindent = true -- Copy indent from current line to new line.
 o.smartindent = true -- Attempt to intelligently indent from context.
+vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
