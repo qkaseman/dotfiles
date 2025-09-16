@@ -39,6 +39,7 @@ o.undofile = true -- Save undo history.
 o.undolevels = 10000 -- And lots of it.
 o.ignorecase = true -- Case-insensitive search.
 o.smartcase = true -- Unless `\C` or capital letters are present.
+o.wildmode = 'longest:full,full' -- Command-line completion mode
 o.expandtab = true -- Use spaces, not tabs.
 o.shiftwidth = 2 -- Size of an indent.
 o.tabstop = 2 -- Size of a tab, in spaces.
