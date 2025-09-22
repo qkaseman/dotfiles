@@ -32,13 +32,12 @@ o.splitright = true -- New vertical splits to the right of the current buffer.
 o.splitbelow = true -- New splits below the current buffer.
 o.splitkeep = 'screen' -- Keep view stable rather than cursor position.
 
---- Features ---
+-- Features --
 o.mouse = 'a' -- Enable the mouse.
 o.clipboard = '' -- Don't use the system clipboard unless specified.
 o.updatetime = 1000 -- Time between swapfile writes, in ms.
 o.timeoutlen = vim.g.vscode and 1000 or 500 -- General timeout, in ms.
 o.modeline = false -- Only use my configurations.
-o.confirm = true -- If operation would fail, ask for confirm first.
 o.virtualedit = 'block' -- Allow Visual Block cursor where there is no text.
 o.spell = true -- Enable spellchecking, in code this only applies to comments.
 o.spelllang = 'en'
@@ -58,3 +57,6 @@ o.foldlevel = 99 -- Max depth of folds.
 o.foldmethod = 'expr' -- How to determine folds.
 o.foldexpr = "v:lua.require'config.util.fold'.expr()"
 o.foldtext = '' -- Use buffer text (with highlights!) for the fold text.
+-- Setting this to `true` doesn't let you look at the changes and saying `no`
+-- or trying to do nothing (<esc>) is treated as `no`. I don't like that.
+o.confirm = false -- If operation would fail, ask for confirm first.
