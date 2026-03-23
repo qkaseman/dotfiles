@@ -6,6 +6,11 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require('lint')
+      lint.linters.markdownlint.args = {
+        '--config',
+        vim.fn.expand('$XDG_CONFIG_HOME/markdownlint/config.json'),
+        '--',
+      }
       lint.linters_by_ft = {
         -- WARN: Make sure to add these to `ensure_installed` in `lsp.lua`
         -- to install them.
