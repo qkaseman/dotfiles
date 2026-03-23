@@ -204,13 +204,32 @@ return {
         'bashls',
         'cssls',
         'cucumber_language_server',
-        'ts_ls',
+        'eslint-lsp', -- JS/TS
         'gradle_ls',
+        'html-lsp',
+        -- 'java-language-server',
         'jsonls',
-        'yamlls',
+        -- 'kotlin-language-server',
+        'python-lsp-server',
+        -- 'rubocop', -- Ruby
         'somesass_ls',
-        'stylua', -- Used to format Lua code
+        'stylelint-lsp', -- CSS/Sass
+        'ts_ls',
+        'yamlls',
+
+        -- Linters (some also format)
+        'commitlint',
+        'editorconfig-checker',
+        -- 'erb-lint',
+        -- 'eslint_d', -- JS/TS
+        'ktlint', -- Kotlin
         'markdownlint',
+        -- 'stylelint', -- CSS/Sass
+
+        -- Formatters
+        -- 'erb-formatter',
+        'prettierd',
+        'stylua',
       })
       require('mason-tool-installer').setup({
         ensure_installed = ensure_installed,
