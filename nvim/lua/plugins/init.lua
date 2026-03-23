@@ -3,7 +3,7 @@
 --
 -- NOTE: Use `opts = {}` to force a plugin to be loaded.
 return {
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   { -- Highlight todo, notes, etc in comments
     -- Below are the highlighted keywords as well as some oddly spaced
