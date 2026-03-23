@@ -17,6 +17,7 @@
     ci = commit
     st = status
     rs = "restore --staged"
+    # Rebasing
     r = !"r() { git rebase -i HEAD~$1; }; r"
     ri = "rebase -i"
     rc = "rebase --continue"
@@ -27,6 +28,9 @@
     # Pretty logs.
     lg = log --pretty=oneline --abbrev-commit --graph --decorate --all
     last = log -1 HEAD
+    # NPM sucks
+    al = add package-lock.json
+    dh = diff HEAD~1
 
 [merge]
     conflictstyle = diff3
