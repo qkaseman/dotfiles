@@ -14,10 +14,19 @@ return {
     -- HACK no colon hacky code comment
     -- PERF: code performance comment
     -- NOTE: note comment
+    -- QUESTION: question comment
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
+      keywords = {
+        QUESTION = {
+          icon = '?',
+          color = '#d70087',
+          alt = { 'Q' },
+        },
+      },
+      merge_keywords = true,
       highlight = {
         -- `before` doesn't apply to multi-line comments well, their leading
         -- characters don't get changed so it looks weird.
@@ -26,7 +35,7 @@ return {
         after = 'fg', -- Set how to highlight the rest of the comment.
         pattern = [[.*<((KEYWORDS):?)\s*]], -- Highlight colon if present.
       },
-      signs = false,
+      signs = true,
     },
   },
 
