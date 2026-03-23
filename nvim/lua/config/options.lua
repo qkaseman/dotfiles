@@ -60,3 +60,36 @@ o.foldtext = '' -- Use buffer text (with highlights!) for the fold text.
 -- Setting this to `true` doesn't let you look at the changes and saying `no`
 -- or trying to do nothing (<esc>) is treated as `no`. I don't like that.
 o.confirm = false -- If operation would fail, ask for confirm first.
+
+-- vim.opt.fillchars = {
+--   foldopen = "",
+--   foldclose = "",
+--   fold = " ",
+--   foldsep = " ",
+--   diff = "╱",
+--   eob = " ",
+-- }
+-- o.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+-- o.foldlevel = 99
+-- o.foldmethod = "expr"
+-- o.foldtext = ""
+-- o.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
+-- o.formatoptions = "jcroqlnt" -- tcqj
+-- o.formatoptions = "jcroqlnt"         -- Set format options for comments and text wrapping
+-- o.grepformat = "%f:%l:%c:%m"         -- Format for showing grep results
+-- o.grepprg = "rg --vimgrep"           -- Use ripgrep for searching
+-- o.jumpoptions = "view"
+-- o.laststatus = 3 -- global statusline
+-- o.pumblend = 10 -- Popup blend (menu transparency)
+-- o.pumheight = 10 -- Maximum popup menu height (max entries?)
+-- o.ruler = false -- Disable the default ruler
+-- o.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" } -- Session persistence settings
+-- o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+-- o.termguicolors = true               -- Enable 24-bit RGB colors in the terminal
+-- o.switchbuf = "usetab"               -- Reuse existing tabs for switching buffers
+-- o.copyindent = true                  -- Copy indent from previous line
+-- o.previewheight = 38                 -- Set height for preview windows
+-- o.foldcolumn = "0"                   -- No fold column on the left
+-- o.shell = "zsh"                      -- Set default shell to zsh
+-- o.cmdheight = 1                      -- Set height of command line to 1
+-- o.showcmd = false                    -- Hide command in progress in command line
