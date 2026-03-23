@@ -58,3 +58,6 @@ desktop.ini
 
 # TODO files
 *.todo
+
+# AI agent scratch
+.sisyphus
