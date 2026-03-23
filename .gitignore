@@ -45,6 +45,7 @@ builder-mcp
 
 # NeoVim Spelling
 mvim/spell
+nvim/spell
 
 # Node/Npm
 node
