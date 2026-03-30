@@ -81,47 +81,11 @@ return {
           -- Jump to the definition of the type of the word under your cursor.
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-          -- In-buffer reference highlighting
-          local client = vim.lsp.get_client_by_id(attach_event.data.client_id)
-          if
-            client
-            and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
-          then
-            local highlight_augroup =
-              vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
-
-            -- Highlight references of the word under the cursor if it rests
-            -- there for a little while.
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = attach_event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            -- But clear it when the cursor starts moving again.
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = attach_event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-            })
-
-            -- And clear it when LSP is detached from the buffer.
-            vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
-              callback = function(detach_event)
-                vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds({
-                  group = 'lsp-highlight',
-                  buffer = detach_event.buf,
-                })
-              end,
-            })
-          end
-
           -- Toggle inline hints, if supported. Generally this is a terrible
           -- feature as it displaces code and screws with line length, but
           -- _can_ have its uses.
           -- TODO: send msg if not supported.
+          local client = vim.lsp.get_client_by_id(attach_event.data.client_id)
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(
@@ -187,12 +151,46 @@ return {
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
+        -- vtsls wraps the VS Code TypeScript extension as an LSP server,
+        -- providing more code actions, better inlay hints, and server-side
+        -- fuzzy matching over the built-in ts_ls.
         lua_ls = {
           settings = {
             Lua = {
               completion = {
                 callSnippet = 'Replace',
+              },
+            },
+          },
+        },
+
+        vtsls = {
+          filetypes = {
+            'javascript', 'javascriptreact', 'javascript.jsx',
+            'typescript', 'typescriptreact', 'typescript.tsx',
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                maxInlayHintLength = 30,
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+            },
+            typescript = {
+              updateImportsOnFileMove = { enabled = 'always' },
+              suggest = { completeFunctionCalls = true },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
               },
             },
           },
@@ -214,7 +212,6 @@ return {
         -- 'rubocop', -- Ruby
         'somesass_ls',
         'stylelint-lsp', -- CSS/Sass
-        'ts_ls',
         'yamlls',
 
         -- Linters (some also format)

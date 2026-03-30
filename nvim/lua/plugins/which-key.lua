@@ -43,8 +43,14 @@ return {
     -- Document existing key chains
     -- TODO: Evaluate these keybinds, not 100% sure what each is for yet.
     spec = {
+      { '<leader>b', group = '[B]uffer' },
+      { '<leader>c', group = '[C]ode' },
+      { '<leader>q', group = '[Q]uit/Session' },
       { '<leader>s', group = '[S]earch' },
+      { '<leader>sn', group = '[N]oice' },
       { '<leader>t', group = '[T]oggle' },
+      { '<leader>u', group = '[U]I Toggle' },
+      { '<leader>x', group = 'Diagnostics/Quickfi[x]' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
     },
   },

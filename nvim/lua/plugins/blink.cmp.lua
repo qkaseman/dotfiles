@@ -1,3 +1,4 @@
+-- Completion engine with fuzzy matching, snippet support, and signature help.
 return { -- Autocompletion
   'saghen/blink.cmp',
   event = 'VimEnter',

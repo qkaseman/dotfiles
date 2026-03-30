@@ -1,3 +1,4 @@
+-- Debug Adapter Protocol client for step-through debugging.
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
