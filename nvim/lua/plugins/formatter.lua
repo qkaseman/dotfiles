@@ -2,6 +2,11 @@
 --
 -- @param bufnr - buffer to format
 local function format_on_save(bufnr)
+  -- Respect the global autoformat toggle (<leader>uf).
+  if vim.g.autoformat == false then
+    return
+  end
+
   -- Only auto-format specific file types.
   local enable_filetypes = { lua = true }
   if enable_filetypes[vim.bo[bufnr].filetype] then
