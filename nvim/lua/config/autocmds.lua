@@ -86,6 +86,19 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
+-- Close helper windows with `q`.
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup('close_with_q'),
+  pattern = {
+    'help', 'man', 'qf', 'notify', 'checkhealth',
+    'lspinfo', 'startuptime', 'gitsigns-blame', 'grug-far', 'trouble',
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+  end,
+})
+
 -- LazyVim's pre-defined autocmds are:
 -- 1. Automatically reload the file when it changes (triggered on certain events like focus gain).
 -- 2. Highlights text when yanked (copied).
