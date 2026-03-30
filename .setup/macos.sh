@@ -46,6 +46,7 @@ for p in ${TOOLS[@]}; do
 done
 brew install koekeishiya/formulae/yabai
 brew install koekeishiya/formulae/skhd
+brew install cormacrelf/tap/dark-notify
 brew install ${INSTALL}
 
 # TODO: symlink or alias?
@@ -62,6 +63,33 @@ yabai --start-service
 
 # Clone common config.
 git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git ${CONFIG_DIR}
+
+# Create Alacritty color symlink (dark-notify swaps this).
+ln -sf light.toml "${CONFIG_DIR}/alacritty/color/color.toml"
+
+# Install dark-notify launchd service for automatic light/dark switching.
+mkdir -p ~/Library/LaunchAgents
+cat > ~/Library/LaunchAgents/com.user.dark-notify.plist << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.dark-notify</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>$(command -v dark-notify)</string>
+        <string>-c</string>
+        <string>${CONFIG_DIR}/bin/alacritty-theme-swap</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+</dict>
+</plist>
+EOF
+launchctl load ~/Library/LaunchAgents/com.user.dark-notify.plist
 
 # Handle MacOS weirdness.
 

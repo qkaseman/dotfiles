@@ -1,2 +1,1 @@
-[general]
-    import = ["~/.config/alacritty/color/papercolor-light.toml"]
+light.toml

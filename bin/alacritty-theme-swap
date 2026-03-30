@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Switch Alacritty theme between light and dark.
+# Called by dark-notify: dark-notify -c 'path/to/switch-theme'
+# Argument: "dark" or "light"
+set -e
+
+COLOR_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/alacritty/color"
+
+case "$1" in
+  dark)  ln -sf dark.toml  "$COLOR_DIR/color.toml" ;;
+  light) ln -sf light.toml "$COLOR_DIR/color.toml" ;;
+esac
