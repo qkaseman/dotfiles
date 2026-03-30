@@ -47,6 +47,7 @@ done
 brew install koekeishiya/formulae/yabai
 brew install koekeishiya/formulae/skhd
 brew install cormacrelf/tap/dark-notify
+brew tap homebrew/command-not-found
 brew install ${INSTALL}
 
 # TODO: symlink or alias?

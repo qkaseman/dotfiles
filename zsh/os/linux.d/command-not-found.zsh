@@ -1,0 +1,2 @@
+# Debian/Ubuntu command-not-found handler.
+[[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found

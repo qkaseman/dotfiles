@@ -32,5 +32,3 @@ setopt incappendhistory     # Append to global history immediately.
 # Job Control
 setopt checkjobs            # Don't exit with bg jobs.
 setopt longlistjobs         # Default to long job format.
-
-[[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
