@@ -93,3 +93,5 @@ o.confirm = false -- If operation would fail, ask for confirm first.
 -- o.shell = "zsh"                      -- Set default shell to zsh
 -- o.cmdheight = 1                      -- Set height of command line to 1
 -- o.showcmd = false                    -- Hide command in progress in command line
+
+o.background = 'light'
