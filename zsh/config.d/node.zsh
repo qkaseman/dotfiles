@@ -3,9 +3,14 @@
 # Name is a squash of `node-man` --> `nman` but `n` and `m` are annoyingly
 # close together and a bit hard to type quickly when you have to go back to the
 # `n`.
-function nan {
+function nan() {
   local section="${1:-all}"
-  open_command "https://nodejs.org/docs/$(node --version)/api/${section}.html"
+  local url="https://nodejs.org/docs/$(node --version)/api/${section}.html"
+  if (( $+commands[open] )); then
+    open "$url"
+  elif (( $+commands[xdg-open] )); then
+    xdg-open "$url"
+  fi
 }
 
 # Node's REPL doesn't create the directory structure to the history file if it

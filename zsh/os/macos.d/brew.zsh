@@ -14,11 +14,11 @@ case "$(uname -m)" in
 esac
 
 export HOMEBREW_PREFIX="${BREW_PREFIX:-/usr/local}"
-export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
-export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew";
+export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
+export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
 
-export INFOPATH="${HOMEBREW_PREFIX}/usr/local/share/info:${INFOPATH:-}";
-[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
+export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH:-}"
+[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
 
 fpath+=("${HOMEBREW_PREFIX}/share/zsh/site-functions")
-path+=("${HOMEBREW_PREFIX}/bin" '/usr/local/opt/curl/bin')
+path+=("${HOMEBREW_PREFIX}/bin" "${HOMEBREW_PREFIX}/opt/curl/bin")

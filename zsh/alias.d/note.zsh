@@ -1,10 +1,10 @@
 # Easily manage todo lists.
-function todo {
+function todo() {
     vi "${NOTE_HOME}/todo${1:+-$1}.md"
 }
 
 # Easily manage scratchpad notes.
-function scratch {
+function scratch() {
     vi "${NOTE_HOME}/scratch${1:+-$1}.md"
 }
 
@@ -12,16 +12,16 @@ function scratch {
 #
 # Streams all arguments into a date-stamped file for organization. Adds a
 # newline after them all.
-function log {
+function log() {
     local timestamp=$(date +%H:%M)
     local date_stamp=$(date +%Y-%m-%d)
     local fname="${WORKLOG_HOME}/${date_stamp}.md"
-    local msg=""
+    local -a msg=()
     local tag=""
 
     local usage=(
-      "${FUNCNAME[0]} [-h|--help]"
-      "${FUNCNAME[0]} [-t|--tag] [-f|--filename=<file>] [<message...>]"
+      "$0 [-h|--help]"
+      "$0 [-t|--tag] [-f|--filename=<file>] [<message...>]"
     )
 
     while (( $# )); do
@@ -35,8 +35,6 @@ function log {
                 tag=${1:+[$1]}
                 ;;
             -f|--filename)
-                # If want to support `opt=val`, need case like this:
-                # -f=*|--filename=*) filename="${1#*=}" ;;
                 shift
                 fname=$1
                 ;;
@@ -50,24 +48,24 @@ function log {
                 return 2
                 ;;
             *)
-                msg+=($1)
+                msg+=("$1")
                 ;;
         esac
         shift
     done
 
-    [ "${+msg}" -a "${#msg[@]}" -ne 0 ] || { echo "No message provided" && return 3 }
+    (( ${#msg} )) || { echo "No message provided" && return 3 }
 
-    if [ ! -f ${fname} ]; then
-        touch ${fname}
-        printf "# ${date_stamp}\n\n" >> ${fname}
+    if [[ ! -f "${fname}" ]]; then
+        touch "${fname}"
+        printf '# %s\n\n' "${date_stamp}" >> "${fname}"
     fi
-    printf '[%s]%s %s\n\n' "${timestamp}" "${tag}" "${${msg[@]:#}}" >> ${fname}
+    printf '[%s]%s %s\n\n' "${timestamp}" "${tag}" "${(j: :)msg}" >> "${fname}"
 }
 
 # Could store the `date ...` string in a variable and `eval` it, but not sure
 # that's the best idea plus I believe the variable would pollute the general
 # variable closure which isn't great either.
-function worklog-open {
+function worklog-open() {
     vi "${WORKLOG_HOME}/$(date +%Y-%m-%d).md"
 }
