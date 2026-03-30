@@ -79,3 +79,55 @@ end, { noremap = true })
 set('i', ',', ',<c-g>u')
 set('i', '.', '.<c-g>u')
 set('i', ';', ';<c-g>u')
+
+-- UI Toggles (<leader>u prefix)
+set('n', '<leader>uf', function()
+  if vim.g.autoformat == nil then
+    vim.g.autoformat = true
+  end
+  vim.g.autoformat = not vim.g.autoformat
+  vim.notify('Autoformat: ' .. (vim.g.autoformat and 'on' or 'off'))
+end, { desc = 'Toggle Autoformat' })
+
+set('n', '<leader>us', function()
+  vim.o.spell = not vim.o.spell
+  vim.notify('Spell: ' .. (vim.o.spell and 'on' or 'off'))
+end, { desc = 'Toggle Spelling' })
+
+set('n', '<leader>uw', function()
+  vim.o.wrap = not vim.o.wrap
+  vim.notify('Wrap: ' .. (vim.o.wrap and 'on' or 'off'))
+end, { desc = 'Toggle Wrap' })
+
+set('n', '<leader>ul', function()
+  vim.o.number = not vim.o.number
+  vim.notify('Line Numbers: ' .. (vim.o.number and 'on' or 'off'))
+end, { desc = 'Toggle Line Numbers' })
+
+set('n', '<leader>uL', function()
+  vim.o.relativenumber = not vim.o.relativenumber
+  vim.notify('Relative Numbers: ' .. (vim.o.relativenumber and 'on' or 'off'))
+end, { desc = 'Toggle Relative Numbers' })
+
+set('n', '<leader>ud', function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  vim.notify('Diagnostics: ' .. (vim.diagnostic.is_enabled() and 'on' or 'off'))
+end, { desc = 'Toggle Diagnostics' })
+
+set('n', '<leader>uh', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  vim.notify('Inlay Hints: ' .. (vim.lsp.inlay_hint.is_enabled() and 'on' or 'off'))
+end, { desc = 'Toggle Inlay Hints' })
+
+set('n', '<leader>ug', function()
+  local ok, snacks = pcall(require, 'snacks')
+  if ok and snacks.indent then
+    if snacks.indent.enabled then
+      snacks.indent.disable()
+      vim.notify('Indent Guides: off')
+    else
+      snacks.indent.enable()
+      vim.notify('Indent Guides: on')
+    end
+  end
+end, { desc = 'Toggle Indent Guides' })
