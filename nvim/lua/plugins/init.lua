@@ -29,7 +29,6 @@ return {
         QUESTION = {
           icon = '?',
           color = '#d70087',
-          alt = { 'Q' },
         },
       },
       merge_keywords = true,
