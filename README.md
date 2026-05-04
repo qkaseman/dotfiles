@@ -8,7 +8,43 @@ Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-
 1. Clone into `.config`: `git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git ~/.config`
 1. Setup root zshenv from `resources`
 1. Install fonts, or use a local configuration to override the default.
+1. Run `.setup/macos.sh` (macOS) for tool installation and service setup.
 1. Profit?
+
+### macOS Manual Steps
+
+After running the setup script, these manual steps are required:
+
+1. **Hide the macOS menu bar** (SketchyBar replaces it):
+   System Settings → Control Center →
+   "Automatically hide and show the menu bar" → "Always"
+2. **Disable macOS Spaces animations** (AeroSpace uses virtual workspaces):
+   System Settings → Accessibility → Display → "Reduce motion" → ON
+3. **Consolidate to a single macOS Space**: Move all windows to one desktop in
+   Mission Control. AeroSpace manages workspaces — macOS Spaces will conflict.
+4. **Install fonts**: Double-click each `.ttf` in `resources/font/` and click
+   "Install".
+5. **Disable Finder search shortcut** (`alt-cmd-space` conflicts with AeroSpace):
+   System Settings → Keyboard → Keyboard Shortcuts → Spotlight →
+   uncheck "Show Finder search window"
+
+### macOS Keybinding Conflicts
+
+AeroSpace uses `alt` (Option) as its modifier. The following macOS defaults
+may conflict. Verified on macOS 15.7.4 (Sequoia).
+
+| AeroSpace Binding | macOS Default | Notes |
+| ----------------- | ------------- | ----- |
+| `alt-cmd-space` | Finder search window | Rebind or disable in System Settings → Keyboard → Shortcuts |
+| `alt-e` | Accent dead key (´ + next key → é) | Blocks accented character input |
+| `alt-h/j/k/l` | Special characters (ø, ∆, ˚, ¬) | Acceptable — rarely needed |
+| `alt-shift-h/j/k/l` | More special characters | Acceptable |
+| `alt-v` | √ | Acceptable |
+| `alt-s` | ß | Acceptable |
+| `alt-w` | ∑ | Acceptable |
+| `alt-c` | ç | Acceptable |
+| `alt-r` | ® | Acceptable |
+| `alt-1` through `alt-0` | ¡™£¢∞§¶•ªº | Acceptable |
 
 ## Local Configuration
 
