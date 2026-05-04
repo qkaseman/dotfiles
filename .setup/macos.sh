@@ -1,74 +1,106 @@
 #!/usr/bin/env bash
+set -euxo pipefail
 
-CONFIG_DIR=${XDG_CONFIG_HOME:-${HOME}/.config}
+CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}"
+BIN_DIR="${XDG_BIN_HOME:-${HOME}/.local/bin}"
+KIRO_STEERING_DIR="${HOME}/.kiro/steering"
 
-# git is special as MacOS provides a shim to trigger installation if you
-# haven't but that makes it harder to detect if it is installed.
-INSTALL="git"
+# ─── Homebrew ────────────────────────────────────────────────────────────────
+
+if [[ ! -x "$(command -v brew)" ]]; then
+  export HOMEBREW_NO_ANALYTICS=1
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  case "$(uname -m)" in
+    arm64)  BREW_PREFIX="/opt/homebrew" ;;
+    *)      BREW_PREFIX="/usr/local" ;;
+  esac
+  export PATH="${BREW_PREFIX}/bin:${PATH}"
+fi
+
+# ─── Taps ────────────────────────────────────────────────────────────────────
+
+brew tap koekeishiya/formulae
+brew tap cormacrelf/tap
+brew tap FelixKratz/formulae
+brew tap homebrew/command-not-found
+
+# ─── Packages ────────────────────────────────────────────────────────────────
+
 TOOLS=(
-  "tree"
-  "fzf"
-  "alacritty"
-  "ripgrep"
-  "neovim"
-  "skhd"
-  "yabai"
-  "stats"
+  git
+  tree
+  fzf
+  ripgrep
+  alacritty
+  neovim
+  wget
+  jq
+  zoxide
+  prettier
+  markdownlint-cli
+  lazygit
+  bottom
+  gdu
+  stats
+  sketchybar
+  borders
+  # Window management
+  skhd
+  yabai
+  # Theme switching
+  dark-notify
 )
 
-# Install Homebrew.
-#
-# Note: Install Xcode Command Line Tools
-if [[ ! -x "$(command -v brew)" ]]; do
-    export HOMEBREW_NO_ANALYTICS=1
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    case "$(uname -m)" in
-      arm64)
-        BREW_PREFIX="/opt/homebrew"
-        ;;
-      *) # x86_64-*)
-        BREW_PREFIX="/usr/local"
-        ;;
-    esac
-    export PATH="${BREW_PREFIX}/bin:${PATH}";
+# Casks (GUI apps / non-formula packages).
+brew install --cask nikitabobko/tap/aerospace
+brew install --cask itsycal
+
+INSTALL=()
+for p in "${TOOLS[@]}"; do
+  command -v "${p}" &>/dev/null || INSTALL+=("${p}")
 done
 
-# Unfortunately install mise for environment management.
-[[ -x "$(command -v mise)" ]] || \
-    curl https://mise.run | MISE_INSTALL_PATH="${XDG_BIN_HOME:-${HOME}/.local/bin}/mise" sh && ${MISE_INSTALL_PATH} activate zsh
+if (( ${#INSTALL[@]} > 0 )); then
+  brew install "${INSTALL[@]}"
+fi
 
-# Install default version of Node, needed for Neovim plugins.
-[[ -x "$(command -v node)" ]] || mise use -g node@20
+# ─── mise (version management) ──────────────────────────────────────────────
 
-# Install tools.
-for p in ${TOOLS[@]}; do
-    [[ -x "$(command -v ${p})" ]] || INSTALL="${INSTALL} ${p}"
-done
-brew install koekeishiya/formulae/yabai
-brew install koekeishiya/formulae/skhd
-brew install cormacrelf/tap/dark-notify
-brew tap homebrew/command-not-found
-brew install ${INSTALL}
+if [[ ! -x "$(command -v mise)" ]]; then
+  curl https://mise.run | MISE_INSTALL_PATH="${BIN_DIR}/mise" sh
+  eval "$("${BIN_DIR}/mise" activate bash)"
+fi
 
-# TODO: symlink or alias?
-sudo ln -s "$(command -v nvim)" /usr/local/bin/vi
+# Node is needed for Neovim plugins.
+command -v node &>/dev/null || mise use -g node@20
 
-# FIXME: Make smarter
-skhd --start-service
-read -n 1 -p Once you have give a11y permissions, hit any key to continue.
-skhd --start-service
+# ─── Clone dotfiles ─────────────────────────────────────────────────────────
 
-yabai --start-service
-read -n 1 -p Once you have give a11y permissions, hit any key to continue.
-yabai --start-service
+if [[ ! -d "${CONFIG_DIR}/.git" ]]; then
+  git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git "${CONFIG_DIR}"
+fi
 
-# Clone common config.
-git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git ${CONFIG_DIR}
+# ─── Symlinks ────────────────────────────────────────────────────────────────
 
-# Create Alacritty color symlink (dark-notify swaps this).
+# Neovim as vi.
+if [[ ! -e /usr/local/bin/vi ]]; then
+  sudo ln -s "$(command -v nvim)" /usr/local/bin/vi
+fi
+
+# Python convenience alias (macOS ships python3 but not python).
+if [[ ! -e /usr/local/bin/python ]]; then
+  sudo ln -s /usr/bin/python3 /usr/local/bin/python
+fi
+
+# Alacritty color symlink (dark-notify swaps this).
 ln -sf light.toml "${CONFIG_DIR}/alacritty/color/color.toml"
 
-# Install dark-notify launchd service for automatic light/dark switching.
+# Shared steering docs into kiro global steering.
+mkdir -p "${KIRO_STEERING_DIR}"
+ln -sfn "${CONFIG_DIR}/doc/genai/steering/shared" "${KIRO_STEERING_DIR}/public"
+
+# ─── dark-notify launchd service ─────────────────────────────────────────────
+
 mkdir -p ~/Library/LaunchAgents
 cat > ~/Library/LaunchAgents/com.user.dark-notify.plist << EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -92,12 +124,61 @@ cat > ~/Library/LaunchAgents/com.user.dark-notify.plist << EOF
 EOF
 launchctl load ~/Library/LaunchAgents/com.user.dark-notify.plist
 
-# Handle MacOS weirdness.
+# ─── Window management services ─────────────────────────────────────────────
 
-# MacOS's default shell config is weird.
+echo "Starting skhd — grant accessibility permissions when prompted."
+skhd --start-service
+read -rp "Press any key once permissions are granted..." -n 1
+echo
+skhd --restart-service
+
+echo "Starting yabai — grant accessibility permissions when prompted."
+yabai --start-service
+read -rp "Press any key once permissions are granted..." -n 1
+echo
+yabai --restart-service
+
+echo "Starting AeroSpace — grant accessibility permissions when prompted."
+open -a AeroSpace
+read -rp "Press any key once permissions are granted..." -n 1
+echo
+
+# SketchyBar is launched by AeroSpace via after-startup-command.
+brew services start sketchybar
+
+# ─── macOS shell config ─────────────────────────────────────────────────────
+
+# Disable macOS session restoration.
 echo "export SHELL_SESSIONS_DISABLE=1" | sudo tee -a /etc/zprofile > /dev/null
+
+# Set up XDG-compliant zshenv.
 sudo cp "${CONFIG_DIR}/resources/zsh/zshenv.macos" /etc/zshenv
 
-# The "helpers" are annoying.
-sudo ln -s /Library/Developer/CommandLineTools/usr/bin/python3 /Library/Developer/CommandLineTools/usr/bin/python
-sudo ln -s /usr/bin/python3 /usr/local/bin/python
+# ─── Manual steps ────────────────────────────────────────────────────────────
+
+cat << 'MANUAL'
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ Manual steps required:                                                      ║
+║                                                                             ║
+║ 1. Hide the macOS menu bar (SketchyBar replaces it):                        ║
+║    System Settings → Control Center →                                       ║
+║    "Automatically hide and show the menu bar" → "Always"                    ║
+║                                                                             ║
+║ 2. Disable macOS Spaces animations (AeroSpace uses virtual workspaces):     ║
+║    System Settings → Accessibility → Display →                              ║
+║    "Reduce motion" → ON                                                     ║
+║                                                                             ║
+║ 3. Consolidate to a single macOS Space:                                     ║
+║    Move all windows to one desktop in Mission Control.                      ║
+║    AeroSpace manages workspaces — macOS Spaces will conflict.               ║
+║                                                                             ║
+║ 4. Install fonts:                                                           ║
+║    Double-click each .ttf in resources/font/ and click "Install".           ║
+║                                                                             ║
+║ 5. Disable Finder search shortcut (alt-cmd-space conflicts with AeroSpace): ║
+║    System Settings → Keyboard → Keyboard Shortcuts → Spotlight →            ║
+║    uncheck "Show Finder search window"                                      ║
+║                                                                             ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+MANUAL
