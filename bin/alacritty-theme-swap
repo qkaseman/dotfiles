@@ -10,3 +10,6 @@ case "$1" in
   dark)  ln -sf dark.toml  "$COLOR_DIR/color.toml" ;;
   light) ln -sf light.toml "$COLOR_DIR/color.toml" ;;
 esac
+
+# Also swap tmux colors if tmux is running.
+"${XDG_CONFIG_HOME:-$HOME/.config}/bin/tmux-theme-swap" "$1"

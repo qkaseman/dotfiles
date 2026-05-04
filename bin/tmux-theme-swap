@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# Switch tmux colors between light and dark.
+# Called by dark-notify alongside alacritty-theme-swap.
+
+case "$1" in
+  dark)
+    tmux set -g status-style "bg=#262626,fg=#d0d0d0" 2>/dev/null
+    tmux setw -g window-status-current-style "bg=#5f8787,fg=#1c1c1c,bold" 2>/dev/null
+    tmux setw -g window-status-style "fg=#808080" 2>/dev/null
+    tmux set -g pane-border-style "fg=#585858" 2>/dev/null
+    ;;
+  light)
+    tmux set -g status-style "bg=#005f87,fg=#e4e4e4" 2>/dev/null
+    tmux setw -g window-status-current-style "bg=#0087af,fg=#eeeeee,bold" 2>/dev/null
+    tmux setw -g window-status-style "fg=#bcbcbc" 2>/dev/null
+    tmux set -g pane-border-style "fg=#bcbcbc" 2>/dev/null
+    ;;
+esac
