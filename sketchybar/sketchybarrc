@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+# SketchyBar — ported from i3status.conf.
+# Left: AeroSpace workspaces. Right: system stats.
+#
+# i3status order was:
+#   disk / | wireless | ethernet | battery 0 | cpu_usage | load | volume | tztime
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+# ─── Bar ─────────────────────────────────────────────────────────────────────
+
+sketchybar --bar \
+  height=28 \
+  position=top \
+  color=0xff005f87 \
+  border_width=0 \
+  shadow=off \
+  padding_left=8 \
+  padding_right=8 \
+  notch_width=200
+
+# ─── Defaults ────────────────────────────────────────────────────────────────
+
+sketchybar --default \
+  icon.font="Gintronic:Bold:12.0" \
+  icon.color=0xffe4e4e4 \
+  icon.padding_left=6 \
+  icon.padding_right=2 \
+  label.font="Gintronic:Regular:12.0" \
+  label.color=0xffe4e4e4 \
+  label.padding_left=2 \
+  label.padding_right=6 \
+  background.color=0xff0087af \
+  background.corner_radius=4 \
+  background.height=22 \
+  background.drawing=off
+
+# ─── Workspaces (left) ──────────────────────────────────────────────────────
+
+sketchybar --add event aerospace_workspace_change
+
+# Workspace labels.
+# i3 names: 1:code, 2:www, 3:ssh, 4-8:(general), 9:irc, 10:mail
+# Nerd Font icons (requires patched font):
+# SPACE_LABELS=(" " " " " " "4" "5" "6" "7" "8" " " "󰇮 ")
+SPACE_LABELS=("1:code" "2:www" "3:ssh" "4" "5" "6:♪" "7" "8:call" "9:chat" "10:mail")
+
+for sid in 1 2 3 4 5 6 7 8 9 10; do
+  idx=$((sid - 1))
+  sketchybar --add item "space.$sid" left \
+    --set "space.$sid" \
+      icon="${SPACE_LABELS[$idx]}" \
+      icon.padding_right=6 \
+      label.drawing=off \
+      click_script="aerospace workspace $sid" \
+      script="$PLUGIN_DIR/aerospace.sh" \
+      background.drawing=off \
+    --subscribe "space.$sid" aerospace_workspace_change
+done
+
+# ─── Right side (mirrors i3status order, right-to-left) ─────────────────────
+
+# i3status: tztime local — format = "%Y-%m-%d %H:%M:%S"
+sketchybar --add item date right \
+  --set date \
+    icon.drawing=off \
+    label.padding_left=8 \
+    label.padding_right=8 \
+    update_freq=30 \
+    script="$PLUGIN_DIR/date.sh" \
+    click_script="open -a Itsycal"
+
+# i3status: volume master — format = "♪: %volume"
+sketchybar --add item volume right \
+  --set volume \
+    icon="♪" \
+    update_freq=5 \
+    script="$PLUGIN_DIR/volume.sh"
+
+# Load average.
+sketchybar --add item load right \
+  --set load \
+    icon="L" \
+    update_freq=5 \
+    script="$PLUGIN_DIR/load.sh"
+
+# CPU usage.
+sketchybar --add item cpu right \
+  --set cpu \
+    icon="U" \
+    update_freq=5 \
+    script="$PLUGIN_DIR/cpu.sh"
+
+# i3status: battery 0 — format = "%status %percentage %remaining"
+sketchybar --add item battery right \
+  --set battery \
+    icon="⚡" \
+    update_freq=60 \
+    script="$PLUGIN_DIR/battery.sh"
+
+# i3status: wireless/ethernet
+sketchybar --add item network right \
+  --set network \
+    icon="W" \
+    update_freq=10 \
+    script="$PLUGIN_DIR/network.sh"
+
+# i3status: disk "/" — format = "%percentage_used %used/%total"
+sketchybar --add item disk right \
+  --set disk \
+    icon="SSD" \
+    update_freq=120 \
+    script="$PLUGIN_DIR/disk.sh"
+
+# ─── Force initial update ───────────────────────────────────────────────────
+
+sketchybar --update
+
+# Highlight initial workspace after all items are created and scripts have run.
+sleep 0.5
+FOCUSED=$(aerospace list-workspaces --focused 2>/dev/null || echo "1")
+sketchybar --set "space.$FOCUSED" background.drawing=on
