@@ -35,12 +35,6 @@ set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- CTRL+<hjkl> to navigate between splits.
-set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
 -- CTRL+SHIFT+<hjkl> to move windows around, some terminals have colliding
 -- built-in keymaps.
 set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
