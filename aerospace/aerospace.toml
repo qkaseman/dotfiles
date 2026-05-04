@@ -1,0 +1,253 @@
+# AeroSpace — i3-like tiling window manager for macOS.
+# Reference: https://nikitabobko.github.io/AeroSpace/guide
+#
+# Ported from i3wm config. Original i3 bindings shown in comments.
+config-version = 2
+
+# Start at login.
+start-at-login = true
+
+# Launch SketchyBar and JankyBorders for workspace indicators and window borders.
+after-startup-command = [
+  'exec-and-forget sketchybar',
+  'exec-and-forget borders active_color=0xff2e9ef4 inactive_color=0x00000000 width=6.0',
+]
+
+# Notify SketchyBar on workspace change.
+exec-on-workspace-change = [
+  '/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
+# Normalizations keep the layout tree sane.
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# i3: mouse_warping none
+# i3: mouse_warping none
+on-focused-monitor-changed = []
+
+# Force vertical as default — 'auto' picks horizontal on wide screens
+# which causes all windows to stack horizontally on restart.
+default-root-container-orientation = 'auto'
+
+# i3: focus_follows_mouse no (AeroSpace default)
+
+# No gaps — matches i3 default.
+[gaps]
+inner.horizontal = 3
+inner.vertical = 3
+outer.left = 0
+outer.right = 0
+# Laptop display already has notch/menubar space reserved by macOS.
+outer.top = [{ monitor."built-in" = 0 }, 28]
+outer.bottom = 0
+
+# ─── Main mode ───────────────────────────────────────────────────────────────
+
+[mode.main.binding]
+
+# i3: bindsym $mod+Return exec st -e tmux
+alt-enter = 'exec-and-forget open -na Alacritty'
+
+# i3: bindsym $mod+Shift+q kill
+alt-shift-q = 'close'
+
+# i3: bindsym $mod+d exec dmenu_run
+# No direct equivalent — use Spotlight (cmd+space) or Raycast.
+
+# ─── Focus ───────────────────────────────────────────────────────────────────
+# i3: bindsym $mod+h focus left
+# i3: bindsym $mod+j focus down
+# i3: bindsym $mod+k focus up
+# i3: bindsym $mod+l focus right
+alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+# i3: bindsym $mod+space focus mode_toggle
+# Not supported in AeroSpace — no float/tile focus toggle.
+
+# i3: bindsym $mod+a focus parent
+# Not supported in AeroSpace with normalizations enabled.
+
+# i3: bindsym $mod+z focus child
+# Not supported in AeroSpace with normalizations enabled.
+
+# ─── Move windows ────────────────────────────────────────────────────────────
+# i3: bindsym $mod+Shift+h move left
+# i3: bindsym $mod+Shift+j move down
+# i3: bindsym $mod+Shift+k move up
+# i3: bindsym $mod+Shift+l move right
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# ─── Layout ──────────────────────────────────────────────────────────────────
+# i3: bindsym $mod+v split h
+# i3: bindsym $mod+Shift+v split v
+# With normalizations enabled, use join-with instead of split.
+alt-v = 'join-with right'
+alt-shift-v = 'join-with down'
+
+# i3: bindsym $mod+f fullscreen toggle
+alt-f = 'fullscreen'
+
+# i3: bindsym $mod+s layout stacking
+alt-s = 'layout v_accordion'
+# i3: bindsym $mod+w layout tabbed
+alt-w = 'layout h_accordion'
+# i3: bindsym $mod+e layout toggle split
+alt-e = 'layout tiles horizontal vertical'
+
+# i3: bindsym $mod+$sup+space floating toggle
+alt-cmd-space = 'layout floating tiling'
+
+# ─── Workspaces ──────────────────────────────────────────────────────────────
+# i3 used named workspaces: "1:code", "2:www", etc.
+# AeroSpace uses simple numbers. SketchyBar shows the indicators.
+#
+# i3: bindsym $mod+1 workspace "1:code"
+# i3: bindsym $mod+2 workspace "2:www"
+# ...
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+# i3: bindsym $mod+Shift+1 move container to workspace "1:code"
+# ...
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+
+# i3: bindsym $mod+c move workspace to output right
+# i3: bindsym $mod+x move workspace to output left
+alt-c = 'move-workspace-to-monitor next'
+alt-x = 'move-workspace-to-monitor prev'
+
+# ─── Reload ──────────────────────────────────────────────────────────────────
+# i3: bindsym $mod+Shift+c reload
+alt-shift-c = 'reload-config'
+
+# i3: bindsym $mod+r mode "resize"
+alt-r = 'mode resize'
+
+# ─── Resize mode ─────────────────────────────────────────────────────────────
+# i3: bindsym h resize shrink width 10 px or 10 ppt
+# i3: bindsym j resize grow height 10 px or 10 ppt
+# i3: bindsym k resize shrink height 10 px or 10 ppt
+# i3: bindsym l resize grow width 10 px or 10 ppt
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+# i3: bindsym Return mode "default"
+# i3: bindsym Escape mode "default"
+enter = 'mode main'
+esc = 'mode main'
+
+# ─── Window rules ────────────────────────────────────────────────────────────
+# i3: for_window [class="(?i)spotify"] move to workspace $music
+# i3: assign [class="(?i)slack"] → $tag9
+# i3: assign [class="(?i)firefox"] → $tag2
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+run = 'layout floating'
+
+# Browsers to workspace 2.
+# Float untitled Firefox windows (popups, dialogs, extension windows).
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+if.window-title-regex-substring = '^Untitled$|^$'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 2'
+
+# Chat to workspace 9.
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 9'
+
+# Music to workspace 6.
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace 6'
+
+# Outlook: float all windows, move to workspace 10.
+# Main window can be tiled manually with alt-cmd-space.
+# TODO: identify popup titles to selectively float only popups.
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = 'move-node-to-workspace 10'
+
+# Zoom: float all windows, move to workspace 8.
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace 8'
+
+# Chime: float all windows, move to workspace 8.
+[[on-window-detected]]
+if.app-id = 'com.amazon.Amazon-Chime'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.amazon.Amazon-Chime'
+run = 'move-node-to-workspace 8'
+
+# Cisco AnyConnect: unmanaged — just float, don't tile or move.
+[[on-window-detected]]
+if.app-id = 'com.cisco.anyconnect.gui'
+run = 'layout floating'
+
+# ACME: unmanaged — just float, don't tile or move.
+[[on-window-detected]]
+if.app-id = 'com.amazon.ACME'
+run = 'layout floating'
+
+# Pyroclasm: tile on workspace 3.
+[[on-window-detected]]
+if.app-id = 'dev.pyroclasm.app'
+run = 'move-node-to-workspace 3'
