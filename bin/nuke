@@ -2,20 +2,18 @@
 # Force-kill all processes matching a name.
 # Usage: nuke <name>
 # Example: nuke Outlook
-set -e
 
 if [ -z "$1" ]; then
   echo "Usage: nuke <process-name>" >&2
   exit 1
 fi
 
-pattern="[${1%"${1#?}"}]${1#?}"
-pids=$(ps aux | awk "/$pattern/ { print \$2 }")
+pids=$(pgrep -fi "$1")
 
 if [ -z "$pids" ]; then
   echo "No processes matching '$1'"
   exit 0
 fi
 
-echo "$pids" | xargs kill -9
-echo "Killed: $1 ($pids)"
+echo "$pids" | xargs kill -9 2>/dev/null
+echo "Killed: $1"
