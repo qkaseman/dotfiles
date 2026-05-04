@@ -43,9 +43,10 @@ cr
 kata
 builder-mcp
 
-# NeoVim Spelling
+# NeoVim
 mvim/spell
 nvim/spell
+avim
 
 # Node/Npm
 node
@@ -54,7 +55,5 @@ npm
 # Alacritty light/darkmode symlink, generated
 alacritty/color/color.toml
 
-# Temporary tools
-# Unsure if these tools will stick around or not, don't want to commit
-# anything to start though.
-avim
+# Kiro saved chat sessions
+*.kiro.json
