@@ -44,9 +44,6 @@ TOOLS=(
   stats
   sketchybar
   borders
-  # Window management
-  skhd
-  yabai
   # Theme switching
   dark-notify
 )
@@ -125,18 +122,6 @@ EOF
 launchctl load ~/Library/LaunchAgents/com.user.dark-notify.plist
 
 # ─── Window management services ─────────────────────────────────────────────
-
-echo "Starting skhd — grant accessibility permissions when prompted."
-skhd --start-service
-read -rp "Press any key once permissions are granted..." -n 1
-echo
-skhd --restart-service
-
-echo "Starting yabai — grant accessibility permissions when prompted."
-yabai --start-service
-read -rp "Press any key once permissions are granted..." -n 1
-echo
-yabai --restart-service
 
 echo "Starting AeroSpace — grant accessibility permissions when prompted."
 open -a AeroSpace
