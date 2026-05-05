@@ -38,7 +38,7 @@ return {
     { '<F7>', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' }, desc = 'Toggle Last Terminal' },
     { '<c-\'>', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' }, desc = 'Toggle Last Terminal' },
     { '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', desc = 'Float Terminal' },
-    { '<leader>th', '<cmd>ToggleTerm direction=horizontal<cr>', desc = 'Horizontal Terminal' },
+    { '<leader>tH', '<cmd>ToggleTerm direction=horizontal<cr>', desc = 'Horizontal Terminal' },
     { '<leader>tv', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'Vertical Terminal' },
     { '<leader>tn', function()
       require('toggleterm.terminal').Terminal:new({ cmd = 'node', direction = 'vertical' }):toggle()
