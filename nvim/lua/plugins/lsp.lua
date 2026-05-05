@@ -202,16 +202,16 @@ return {
         'bashls',
         'cssls',
         'cucumber_language_server',
-        'eslint-lsp', -- JS/TS
+        'eslint', -- JS/TS
         'gradle_ls',
-        'html-lsp',
+        'html',
         -- 'java-language-server',
         'jsonls',
         -- 'kotlin-language-server',
-        'python-lsp-server',
+        'pylsp',
         -- 'rubocop', -- Ruby
         'somesass_ls',
-        'stylelint-lsp', -- CSS/Sass
+        'stylelint_lsp', -- CSS/Sass
         'yamlls',
 
         -- Linters (some also format)
