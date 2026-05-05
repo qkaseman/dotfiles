@@ -35,7 +35,6 @@ return {
   },
   keys = {
     { '<c-/>', desc = 'Toggle Terminal (float)' },
-    { '<F7>', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' }, desc = 'Toggle Last Terminal' },
     { '<c-\'>', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' }, desc = 'Toggle Last Terminal' },
     { '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', desc = 'Float Terminal' },
     { '<leader>tH', '<cmd>ToggleTerm direction=horizontal<cr>', desc = 'Horizontal Terminal' },
