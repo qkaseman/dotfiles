@@ -18,9 +18,6 @@ set('', ';', ':', { noremap = true, silent = true })
 -- Clear highlights on search when pressing <Esc> in normal mode
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -54,7 +51,7 @@ set('v', '<', '<gv')
 set('v', '>', '>gv')
 
 -- Keep paste buffer after pasting once.
-vim.keymap.set('v', 'p', 'pgvy')
+set('v', 'p', 'pgvy')
 
 -- Copy to system clipboard
 set({ 'n', 'v' }, '<leader>y', '"+y')
@@ -76,6 +73,7 @@ set('i', ';', ';<c-g>u')
 
 -- UI Toggles (<leader>u prefix)
 set('n', '<leader>uf', function()
+  -- nil means enabled (conform.nvim default); initialize to true before toggling.
   if vim.g.autoformat == nil then
     vim.g.autoformat = true
   end
