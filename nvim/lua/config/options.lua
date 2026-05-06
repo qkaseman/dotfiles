@@ -94,4 +94,4 @@ o.confirm = false -- If operation would fail, ask for confirm first.
 -- o.cmdheight = 1                      -- Set height of command line to 1
 -- o.showcmd = false                    -- Hide command in progress in command line
 
-o.background = 'light'
+vim.cmd.colorscheme('wildcharm')
