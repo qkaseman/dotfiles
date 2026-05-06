@@ -12,3 +12,18 @@ up, so repo-specific prob better.
 ## `fzf` command line completion
 
 Should work but doesn't seem to? At least not with `fzf-tab`.
+
+## Sketchybar Light/Dark Theme Swap
+
+Currently sketchybar colors are hardcoded (`0xff005f87` etc.) and don't
+respond to system appearance changes. To integrate:
+
+1. Create `sketchybar/colors-dark.sh` and `sketchybar/colors-light.sh`
+   exporting color variables (`BAR_COLOR`, `ITEM_COLOR`, etc.)
+2. Have `sketchybarrc` source a symlinked `colors.sh`
+3. Add a `sketchybar-theme-swap` script (like `alacritty-theme-swap`)
+   that swaps the symlink and runs `sketchybar --reload`
+4. Call it from `bin/alacritty-theme-swap` alongside tmux-theme-swap
+
+The current neutral blue (`#005f87`) works acceptably in both modes,
+so this is low priority.
