@@ -96,12 +96,10 @@ return {
         end,
       })
 
-      -- Don't update LSP in insert mode.
-      vim.diagnostic.config({ update_in_insert = false })
-
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
       vim.diagnostic.config({
+        update_in_insert = false,
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -116,15 +114,6 @@ return {
         virtual_text = {
           source = 'if_many',
           spacing = 2,
-          format = function(diagnostic)
-            local diagnostic_message = {
-              [vim.diagnostic.severity.ERROR] = diagnostic.message,
-              [vim.diagnostic.severity.WARN] = diagnostic.message,
-              [vim.diagnostic.severity.INFO] = diagnostic.message,
-              [vim.diagnostic.severity.HINT] = diagnostic.message,
-            }
-            return diagnostic_message[diagnostic.severity]
-          end,
         },
       })
 
@@ -132,28 +121,9 @@ return {
       -- from plugins.
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      -- Enable the following language servers
-      --  See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Available keys are:
-      --  - cmd (table): Override the default command used to start the server
-      --  - filetypes (table): Override the default list of associated
-      --    filetypes for the server
-      --  - capabilities (table): Override fields in capabilities. Can be used
-      --    to disable certain LSP features.
-      --  - settings (table): Override the default settings passed when
-      --    initializing the server. What you can do in the settings depends
-      --    on the server. For example, to see the options for `lua_ls`, you
-      --    could go to: https://luals.github.io/wiki/settings/
-      --
-      -- TODO: Create/use a type for this
+      -- Server configurations. Keys are lspconfig server names.
+      -- See `:help lspconfig-all` for the full list.
       local servers = {
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- vtsls wraps the VS Code TypeScript extension as an LSP server,
-        -- providing more code actions, better inlay hints, and server-side
-        -- fuzzy matching over the built-in ts_ls.
         lua_ls = {
           settings = {
             Lua = {
@@ -164,10 +134,13 @@ return {
           },
         },
 
+        -- vtsls wraps the VS Code TypeScript extension as an LSP server,
+        -- providing more code actions, better inlay hints, and server-side
+        -- fuzzy matching over the built-in ts_ls.
         vtsls = {
           filetypes = {
-            'javascript', 'javascriptreact', 'javascript.jsx',
-            'typescript', 'typescriptreact', 'typescript.tsx',
+            'javascript', 'javascriptreact',
+            'typescript', 'typescriptreact',
           },
           settings = {
             complete_function_calls = true,
@@ -195,62 +168,61 @@ return {
             },
           },
         },
+
+        bashls = {},
+        cssls = {},
+        cucumber_language_server = {},
+        eslint = {},
+        gradle_ls = {},
+        html = {},
+        jsonls = {},
+        pylsp = {},
+        somesass_ls = {},
+        stylelint_lsp = {},
+        yamlls = {},
       }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'bashls',
-        'cssls',
-        'cucumber_language_server',
-        'eslint', -- JS/TS
-        'gradle_ls',
-        'html',
-        -- 'java-language-server',
-        'jsonls',
-        -- 'kotlin-language-server',
-        'pylsp',
-        -- 'rubocop', -- Ruby
-        'somesass_ls',
-        'stylelint_lsp', -- CSS/Sass
-        'yamlls',
+      -- Register server configs with Neovim's native LSP (0.11+).
+      for name, config in pairs(servers) do
+        config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
+        vim.lsp.config(name, config)
+      end
+      vim.lsp.enable(vim.tbl_keys(servers))
 
-        -- Linters (some also format)
+      -- Mason handles installation. Use Mason package names here.
+      local ensure_installed = {
+        -- LSP servers (Mason package names)
+        'bash-language-server',
+        'css-lsp',
+        'cucumber-language-server',
+        'eslint-lsp',
+        'gradle-language-server',
+        'html-lsp',
+        'json-lsp',
+        'lua-language-server',
+        'python-lsp-server',
+        'some-sass-language-server',
+        'stylelint-lsp',
+        'vtsls',
+        'yaml-language-server',
+
+        -- Linters
         'commitlint',
         'editorconfig-checker',
-        -- 'erb-lint',
-        -- 'eslint_d', -- JS/TS
-        'ktlint', -- Kotlin
+        'ktlint',
         'markdownlint',
-        -- 'stylelint', -- CSS/Sass
 
         -- Formatters
-        -- 'erb-formatter',
         'prettierd',
         'stylua',
-      })
+      }
       require('mason-tool-installer').setup({
         ensure_installed = ensure_installed,
       })
 
-      -- Override any default LSP server configurations with user-specified
-      -- options.
-      --
-      -- `mason-lspconfig` doesn't provide proper type information, not all
-      -- fields are required.
-      ---@diagnostic disable-next-line: missing-fields
+      -- mason-lspconfig bridges Mason installs to lspconfig server names.
       require('mason-lspconfig').setup({
-        handlers = {
-          function(server_name)
-            local server = vim.tbl_deep_extend('force', {
-              flags = {
-                debounce_text_changes = 150,
-              },
-            }, servers[server_name] or {})
-            server.capabilities =
-              vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        automatic_enable = false,
       })
     end,
   },
