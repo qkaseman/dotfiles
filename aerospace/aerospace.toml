@@ -24,11 +24,10 @@ enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # i3: mouse_warping none
-# i3: mouse_warping none
 on-focused-monitor-changed = []
 
-# Force vertical as default — 'auto' picks horizontal on wide screens
-# which causes all windows to stack horizontally on restart.
+# 'auto' picks horizontal on wide screens, vertical on tall.
+# Consider 'vertical' if all windows stack horizontally on restart.
 default-root-container-orientation = 'auto'
 
 # i3: focus_follows_mouse no (AeroSpace default)
