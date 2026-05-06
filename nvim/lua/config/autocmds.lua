@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup('close_with_q'),
   pattern = {
-    'help', 'man', 'qf', 'notify', 'checkhealth',
+    'help', 'man', 'qf', 'notify', 'snacks_notif', 'snacks_notif_history', 'checkhealth',
     'lspinfo', 'startuptime', 'gitsigns-blame', 'grug-far', 'trouble',
   },
   callback = function(event)
