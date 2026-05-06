@@ -1,8 +1,8 @@
 # This duplicates the `zsd` function but I don't
 # want to source the functions here.
-foreach conf (${ZDOTDIR}/env.d/**/*.zsh)
+for conf in ${ZDOTDIR}/env.d/**/*.zsh(N); do
   source ${conf}
-end
+done
 unset conf
 
-[ -f ${ZSH_LOCAL_HOME}/zshenv ] && . ${ZSH_LOCAL_HOME}/zshenv || true
+[ -f "${ZSH_LOCAL_HOME}/zshenv" ] && . "${ZSH_LOCAL_HOME}/zshenv"
