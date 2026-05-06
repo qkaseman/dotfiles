@@ -5,7 +5,7 @@
 # i3status order was:
 #   disk / | wireless | ethernet | battery 0 | cpu_usage | load | volume | tztime
 
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+PLUGIN_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/sketchybar/plugins"
 
 # ─── Bar ─────────────────────────────────────────────────────────────────────
 
