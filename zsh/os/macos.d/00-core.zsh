@@ -5,7 +5,7 @@ alias ls='ls -G'
 # definitions in `/etc/zshrc` take precedence.
 #
 # So we have to define/source them here again :(
-source ${ZDOTDIR}/env.d/**/*history.zsh
+source "${ZDOTDIR}/env.d/history.zsh"
 
 # MacOS also doesn't create all of the XDG directories, so let's make sure
 # they all exist.
