@@ -4,4 +4,4 @@
 #
 # God I love random letters programs, don't you?
 
-eval "$(mise activate zsh)"
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
