@@ -36,4 +36,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 zstyle '*' single-ignored show
 
 autoload -Uz compinit
+# -u: skip ownership check (ZSH_DISABLE_COMPFIX handles this)
+# -i: silently ignore insecure dirs
 compinit -u -i -d "${ZSH_CACHE_HOME}/zcompdump-${ZSH_VERSION}"
