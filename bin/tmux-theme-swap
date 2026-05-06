@@ -15,4 +15,7 @@ case "$1" in
     tmux setw -g window-status-style "fg=#bcbcbc" 2>/dev/null
     tmux set -g pane-border-style "fg=#bcbcbc" 2>/dev/null
     ;;
+  *)
+    echo "Usage: ${0##*/} {dark|light}" >&2; exit 1
+    ;;
 esac
