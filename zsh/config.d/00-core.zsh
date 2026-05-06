@@ -2,7 +2,7 @@
 # https://linux.die.net/man/1/zshoptions
 
 # All bells must die.
-unsetopt beep nomatch notify
+unsetopt beep notify
 
 # Changing Directories
 setopt autocd               # cd into valid dir names automatically.
