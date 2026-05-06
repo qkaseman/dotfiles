@@ -1,7 +1,7 @@
 -- [[ Bootstrap `lazy.nvim` plugin manager. ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.env.LAZY or vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
+if not (vim.env.LAZY or vim.uv.fs_stat(lazypath)) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system({
     'git',
@@ -86,7 +86,7 @@ lazy.setup({
         'gzip',
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
         'tarPlugin',
         'tohtml',
         'tutor',
