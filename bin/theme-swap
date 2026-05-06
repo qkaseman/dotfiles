@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+# Orchestrate theme switching across all tools.
+# Called by dark-notify: dark-notify -c 'path/to/theme-swap'
+# Argument: "dark" or "light"
+set -e
+
+case "$1" in
+  dark|light) ;;
+  *) echo "Usage: ${0##*/} {dark|light}" >&2; exit 1 ;;
+esac
+
+BIN_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bin"
+
+"$BIN_DIR/theme-swap-alacritty" "$1"
+
+command -v tmux >/dev/null && pgrep -q tmux && \
+  "$BIN_DIR/theme-swap-tmux" "$1"
+
+# Swap themes for local/internal tools if the script exists.
+LOCAL_THEME_SWAP="${XDG_CONFIG_LOCAL_HOME:-$HOME/.local/config}/bin/theme-swap"
+[ -x "$LOCAL_THEME_SWAP" ] && "$LOCAL_THEME_SWAP" "$1"

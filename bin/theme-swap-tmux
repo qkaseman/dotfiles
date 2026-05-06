@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Switch tmux colors between light and dark.
-# Called by dark-notify alongside alacritty-theme-swap.
+# Called by theme-swap orchestrator.
 
 case "$1" in
   dark)

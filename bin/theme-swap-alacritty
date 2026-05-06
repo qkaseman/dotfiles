@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Switch Alacritty color symlink between light and dark.
+# Alacritty's live_config_reload picks up the change instantly.
+set -e
+
+COLOR_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/alacritty/color"
+
+case "$1" in
+  dark)  ln -sf dark.toml  "$COLOR_DIR/color.toml" ;;
+  light) ln -sf light.toml "$COLOR_DIR/color.toml" ;;
+  *)     echo "Usage: ${0##*/} {dark|light}" >&2; exit 1 ;;
+esac

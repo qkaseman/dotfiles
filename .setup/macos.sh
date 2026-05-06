@@ -122,7 +122,7 @@ else
     <array>
         <string>${dark_notify_path}</string>
         <string>-c</string>
-        <string>${CONFIG_DIR}/bin/alacritty-theme-swap</string>
+        <string>${CONFIG_DIR}/bin/theme-swap</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

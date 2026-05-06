@@ -21,9 +21,9 @@ respond to system appearance changes. To integrate:
 1. Create `sketchybar/colors-dark.sh` and `sketchybar/colors-light.sh`
    exporting color variables (`BAR_COLOR`, `ITEM_COLOR`, etc.)
 2. Have `sketchybarrc` source a symlinked `colors.sh`
-3. Add a `sketchybar-theme-swap` script (like `alacritty-theme-swap`)
+3. Create `bin/theme-swap-sketchybar` (like `theme-swap-tmux`)
    that swaps the symlink and runs `sketchybar --reload`
-4. Call it from `bin/alacritty-theme-swap` alongside tmux-theme-swap
+4. Call it from `bin/theme-swap` orchestrator
 
 The current neutral blue (`#005f87`) works acceptably in both modes,
 so this is low priority.
