@@ -21,4 +21,4 @@ export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH:-}"
 [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
 
 fpath+=("${HOMEBREW_PREFIX}/share/zsh/site-functions")
-path+=("${HOMEBREW_PREFIX}/bin" "${HOMEBREW_PREFIX}/opt/curl/bin")
+path=("${HOMEBREW_PREFIX}/bin" "${HOMEBREW_PREFIX}/opt/curl/bin" $path)
