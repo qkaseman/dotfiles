@@ -14,8 +14,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # `zsh` won't create these if they don't already exist.
-[[ -d ${ZSH_DATA_HOME} ]] || mkdir -p ${ZSH_DATA_HOME}
-[[ -d ${ZSH_CACHE_HOME} ]] || mkdir -p ${ZSH_CACHE_HOME}
+[[ -d "${ZSH_DATA_HOME}" ]] || mkdir -p "${ZSH_DATA_HOME}"
+[[ -d "${ZSH_CACHE_HOME}" ]] || mkdir -p "${ZSH_CACHE_HOME}"
 
 source ${ZDOTDIR}/functions.zsh
 
@@ -38,9 +38,11 @@ esac
 # Add/source local configs if they exist. Alternatively we could copy things
 # from the local `bin` into `$XDG_BIN_HOME` but then we have to do it for every
 # new script which is just annoying.
-LOCAL_CFG_BIN="${XDG_CONFIG_LOCAL_HOME:-~/.local/config}/bin"
-[ -d ${LOCAL_CFG_BIN} ] && path+=("${LOCAL_CFG_BIN}") || true
-[ -f ${ZSH_LOCAL_HOME}/zshrc ] && . ${ZSH_LOCAL_HOME}/zshrc || true
+() {
+  local cfg_bin="${XDG_CONFIG_LOCAL_HOME:-${HOME}/.local/config}/bin"
+  [ -d "${cfg_bin}" ] && path+=("${cfg_bin}")
+}
+[ -f "${ZSH_LOCAL_HOME}/zshrc" ] && . "${ZSH_LOCAL_HOME}/zshrc"
 
 # Dedupe and export PATH.
 typeset -U path
