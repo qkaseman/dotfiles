@@ -87,7 +87,7 @@ each `.ttf` file.
 Copy fonts into `~/.local/share/fonts/`:
 
 ```bash
-> cp ${XDG_CONFIG_HOME}/resources/font/* ~/.local/share/fonts/
+cp ${XDG_CONFIG_HOME}/resources/font/* ~/.local/share/fonts/
 ```
 
 # Applications
@@ -170,13 +170,6 @@ Thankfully `mise` respects the XDG specification, so as long as you have those
 set everything will work properly, just follow the [Quick Start
 Guide](https://mise.jdx.dev/getting-started.html).
 
-### Why do you still have `asdf` files?
-
-[`powerlevel10k`](https://github.com/romkatv/powerlevel10k) has some
-integrations with `asdf` I don't want to lose. Until I modify it to support
-`mise`, `asdf` will stay around for that purpose unless it causes functional
-issues with `mise`.
-
 ### How to use Node code names with `mise`?
 
 Add this to `${XDG_CONFIG_HOME}/mise/config.toml`:
@@ -237,7 +230,7 @@ Locations to go look at for organization or useful features.
 
 * [Big ol' list](https://dotfiles.github.io/inspiration/)
 * [owl4ce/dotfiles](https://github.com/owl4ce/dotfiles)
-* [jessarcher/dotfiles](https://github.com/owl4ce/dotfiles)
+* [jessarcher/dotfiles](https://github.com/jessarcher/dotfiles)
   * [YT mini-walkthrough](https://www.youtube.com/watch?v=434tljD-5C8)
 * [kazhala/dotfiles](https://github.com/kazhala/dotfiles)
 * [MyPickles/dotfiles](https://github.com/MrPickles/dotfiles)
