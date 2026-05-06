@@ -112,3 +112,29 @@ example but I'm sure it applies to more.
 
 The tab completion seems to be broken now? Git gives an error about `hint:
 Waiting for your editor to close the file...` which might indicate something.
+
+## From init.lua (moved here)
+
+- fix `gqq` for all buf types
+- Figure out auto-install of LSP like Treesitter has for grammar
+- Evaluate complexity of LSP module and determine if should be submodules
+- Figure out why fidget.nvim isn't showing LSP updates sometimes
+- submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
+  `:help wo`, it takes you to `wildmenu` not set `window-local` options
+- Figure out why resuming workspace froze nvim for a while. Seems like it
+  is the LSP struggling when a file has been deleted or changed while
+  Neovim is suspended. Seems weird as that should be async.
+- Set up TypeScript/JavaScript DAP
+- Figure out why prettier support isn't working right
+- make keybind to generate hover window of diag error
+- make keybind to make hoverwindow of type
+- make/figure out keybind to move in completion window without arrows
+- figure out the `mini.surround` and `mini.ai` uses
+
+## Keybind Namespace Cleanup
+
+`<leader>t` group mixes terminals (toggleterm: tf/tH/tv/tn/tp/tl/tt/tu/ts)
+and toggles (gitsigns: tb/tD, LSP: th). Consider splitting:
+- Terminals stay under `<leader>t` (rename group to [T]erminal)
+- Move gitsigns toggles (tb, tD) to `<leader>u` (UI Toggle)
+- LSP inlay hints (`th`) could also move to `<leader>uh`

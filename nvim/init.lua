@@ -6,27 +6,4 @@
 -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 -- `ANSI Shadow` text art!
 
--- TODO:
--- - fix `gqq` for all buf types
--- - Figure out auto-install of LSP like Treesitter has for grammar
--- - Evaluate complexity of LSP module and determine if should be submodules
--- - Figure out why fidget.nvim isn't showing LSP updates sometimes
--- - submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
---   `:help wo`, it takes you to `wildmenu` not set `window-local` options
--- - Figure out why resuming workspace froze nvim for a while. Seems like it
---   is the LSP struggling when a file has been deleted or changed while
---   Neovim is suspended. Seems weird as that should be async.
--- - Set up TypeScript/JavaScript DAP
--- - Look at LazyVim/LazyVim and AstroNvim's config/plugins
--- - Fix colorscheme so it's not using tokyonight to set it to a different
---   scheme
--- - Look at treesitter stuff in the future
--- - Explore other statuslines
--- - Figure out why prettier support isn't working right
--- - make keybind to generate hover window of diag error
--- - make keybind to make hoverwindow of type
--- - make/figure out keybind to move in completion window without arrows
--- - figure out the `mini.surround` and `mini.ai` uses
---
-
 require('config')
