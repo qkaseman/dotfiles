@@ -15,4 +15,4 @@ function nan() {
 
 # Node's REPL doesn't create the directory structure to the history file if it
 # doesn't exist.
-mkdir -p $(dirname ${NODE_REPL_HISTORY})
+mkdir -p "$(dirname "${NODE_REPL_HISTORY}")"
