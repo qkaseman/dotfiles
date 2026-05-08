@@ -1,1 +1,1 @@
-export SQLITE_HISTORY="${XDG_STATE_HOME}/sqlite/history"
+export SQLITE_HISTORY="${XDG_STATE_HOME:-$HOME/.local/state}/sqlite/history"

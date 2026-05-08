@@ -11,7 +11,7 @@
 #   regenerable. Ideally XDG_RUNTIME_DIR, but that is unreliable on
 #   macOS (set to /tmp/$UID, not always present). CACHE is the
 #   pragmatic choice — ephemeral and acceptable if deleted.
-export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
-export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME}/aws/credentials"
-export AWS_CLI_HISTORY_FILE="${XDG_STATE_HOME}/aws/history"
-export AWS_WEB_IDENTITY_TOKEN_FILE="${XDG_CACHE_HOME}/aws/token"
+export AWS_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aws/config"
+export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aws/credentials"
+export AWS_CLI_HISTORY_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/aws/history"
+export AWS_WEB_IDENTITY_TOKEN_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/aws/token"

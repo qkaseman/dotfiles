@@ -1,1 +1,1 @@
-export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
