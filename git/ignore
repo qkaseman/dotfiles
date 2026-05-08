@@ -61,3 +61,6 @@ desktop.ini
 
 # AI agent scratch
 .sisyphus
+
+# Claude Code personal overrides (settings.json is the shared project config)
+**/.claude/settings.local.json
