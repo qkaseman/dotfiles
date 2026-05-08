@@ -15,6 +15,7 @@ fi
 
 # `zsh` won't create these if they don't already exist.
 [[ -d "${ZSH_DATA_HOME}" ]] || mkdir -p "${ZSH_DATA_HOME}"
+[[ -d "${ZSH_STATE_HOME}" ]] || mkdir -p "${ZSH_STATE_HOME}"
 [[ -d "${ZSH_CACHE_HOME}" ]] || mkdir -p "${ZSH_CACHE_HOME}"
 
 source ${ZDOTDIR}/functions.zsh

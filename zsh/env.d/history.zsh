@@ -1,3 +1,3 @@
-export HISTFILE="${ZSH_DATA_HOME}/history"
+export HISTFILE="${ZSH_STATE_HOME}/history"
 export HISTSIZE=50000
 export SAVEHIST=50000
