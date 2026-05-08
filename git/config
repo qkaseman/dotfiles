@@ -28,9 +28,9 @@
     # Pretty logs.
     lg = log --pretty=oneline --abbrev-commit --graph --decorate --all
     last = log -1 HEAD
+    dh = diff HEAD~1
     # NPM sucks
     al = add package-lock.json
-    dh = diff HEAD~1
 
 [merge]
     conflictstyle = zdiff3
