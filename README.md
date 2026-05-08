@@ -3,6 +3,14 @@
 My configuration files that (mostly) follow the [XDG Base Directory
 Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html).
 
+## Contents
+
+- [Installation](#installation)
+- [Architecture](#architecture)
+- [Applications](#applications)
+- [Resources](#resources)
+- [Inspiration](#inspiration)
+
 ## Installation
 
 1. Clone into `.config`: `git clone --recurse-submodules https://github.com/qkaseman/dotfiles.git ~/.config`
@@ -20,13 +28,13 @@ After running the setup script, these manual steps are required:
 1. **Hide the macOS menu bar** (SketchyBar replaces it):
    System Settings → Control Center →
    "Automatically hide and show the menu bar" → "Always"
-2. **Disable macOS Spaces animations** (AeroSpace uses virtual workspaces):
+1. **Disable macOS Spaces animations** (AeroSpace uses virtual workspaces):
    System Settings → Accessibility → Display → "Reduce motion" → ON
-3. **Consolidate to a single macOS Space**: Move all windows to one desktop in
+1. **Consolidate to a single macOS Space**: Move all windows to one desktop in
    Mission Control. AeroSpace manages workspaces — macOS Spaces will conflict.
-4. **Install fonts**: Double-click each `.ttf` in `resources/font/` and click
+1. **Install fonts**: Double-click each `.ttf` in `resources/font/` and click
    "Install".
-5. **Disable Finder search shortcut** (`alt-cmd-space` conflicts with AeroSpace):
+1. **Disable Finder search shortcut** (`alt-cmd-space` conflicts with AeroSpace):
    System Settings → Keyboard → Keyboard Shortcuts → Spotlight →
    uncheck "Show Finder search window"
 
@@ -82,17 +90,16 @@ the same naming pattern as `$XDG_CONFIG_HOME` for sanity.
 
 `$XDG_CONFIG_LOCAL_HOME` defaults to `${HOME}/.local/config`.
 
-I recommend running the global `.setup/` scripts first to ensure base tools are
-installed, which simplifies local setup scripts by letting them assume things
-like brew, git, and mise are already available. But the local config is entirely
-its own thing -- structure it however makes sense for your environment.
+If you have/want local setup scripts, I recommend running the global `.setup/`
+scripts first so you can safely assume a set of tools (`brew`, `git`, `mise`,
+etc.) are already installed.
 
 #### ZSH
 
 The global `zshrc` sources `${ZSH_LOCAL_HOME}/zshrc` as the very last thing it
-does. What happens inside that file is up to you. I recommend following the
-same `zsd` pattern (sourcing `.d/` directories) for consistency, but it's not
-required.
+does. `$ZSH_LOCAL_HOME` defaults to `${XDG_CONFIG_LOCAL_HOME}/zsh`. Beyond the
+entry point, this repo's config files don't care how the local configuration is
+structured but I'd obviously recommend the same pattern I have in this repo.
 
 ### ZSH
 
@@ -102,12 +109,13 @@ required.
 1. `${ZSH_LOCAL_HOME}/zshenv`
 1. `${ZDOTDIR}/zshrc`
    1. `zsd alias.d`
-   2. `zsd config.d`
-   3. `zsd os/{macos,linux}.d`
+   1. `zsd config.d`
+   1. `zsd os/{macos,linux}.d`
 1. `${ZSH_LOCAL_HOME}/zshrc` (whatever you put here)
 
-The entire global config is fully loaded before the local `zshrc` runs. The
-local config can reference any variable or function defined globally.
+The local `zshenv` is sourced early (step 2) so it can override environment
+variables that the global alias and config scripts depend on. The local `zshrc`
+runs last (step 4) so it can reference or adjust anything defined globally.
 
 #### File Numbering Convention
 
@@ -122,16 +130,17 @@ ordering:
 - `50-completion.zsh` -- completion system
 - `90-zsh-syntax-highlighting.zsh` -- must be last
 
-Gaps between numbers exist so I don't have to `git mv` things and pollute
-history every time something new needs to slot in.
+Gaps between numbers aren't technically necessary in a repository where you own
+all of the files, I have them so it's not necessary to `git mv` things and
+pollute history every time something new needs to slot in.
 
 #### Platform Dispatch
 
 Platform-specific config lives in `os/{macos,linux,freebsd}.d/` directories.
-Architecture differences (arm64 vs x86_64) are handled inside those files. I
+Architecture differences (`arm64` vs `x86_64`) are handled inside those files. I
 recommend following the same pattern in your local configuration repo.
 
-#### PATH
+#### `$PATH`
 
 The global `zshrc` automatically adds `${XDG_CONFIG_LOCAL_HOME}/bin` to `$PATH`
 if the directory exists. Scripts placed there are available without further
@@ -146,7 +155,7 @@ repository but specifics (i.e. email) or overrides should be set in
 
 At a minimum, `~/.gitconfig` should contain:
 
-```
+```gitconfig
 [user]
     email = <email>
     name = <username>
@@ -165,17 +174,17 @@ Slack, though less successful than within the legacy theming system.
 
 | Property              | Hex     | Swatch                                                       |
 |-----------------------|---------|--------------------------------------------------------------|
-| Window background     | #005f87 |![#005f87](https://place-hold.it/100x40/005f87/000000?text=+) |
-| Selected items        | #0087af |![#0087af](https://place-hold.it/100x40/0087af/000000?text=+) |
-| Presence indication   | #008700 |![#008700](https://place-hold.it/100x40/008700/000000?text=+) |
-| Notifications         | #af0000 |![#af0000](https://place-hold.it/100x40/af0000/000000?text=+) |
+| Window background     | #005f87 | ![#005f87](https://img.shields.io/badge/-_-005f87)           |
+| Selected items        | #0087af | ![#0087af](https://img.shields.io/badge/-_-0087af)           |
+| Presence indication   | #008700 | ![#008700](https://img.shields.io/badge/-_-008700)           |
+| Notifications         | #af0000 | ![#af0000](https://img.shields.io/badge/-_-af0000)           |
 
 #### Legacy Slack Theme
 
 This is the legacy theme string. You can just put this in as the string to
 import in `Theme colors`, but I have no faith that process won't change.
 
-```
+```text
 #005F87,#350d36,#0087AF,#E4E4E4,#00AFAF,#E4E4E4,#008700,#AF0000,#005F87,#E4E4E4
 ```
 
@@ -193,9 +202,10 @@ window:
 
 ### `mise`
 
-> DO NOT USE `mise`. The maintainer is dismissive and unreceptive to feedback and
-> that should not be supported. I am required to use it because of my job
-> otherwise I would kill it.
+> DO NOT USE `mise`. The maintainer is dismissive and unreceptive to feedback
+> and that should not be supported. I am required to use it because of my job
+> otherwise I would kill it. Though it appears to have superseded `asdf` in the
+> community so there might not be a good alternative anymore.
 
 [`mise`](https://mise.jdx.dev/), formerly `rtx`, is the new agnostic version
 management tool, similar to [`asdf`](https://asdf-vm.com/). It is a bit more
@@ -225,36 +235,15 @@ Add this to `${XDG_CONFIG_HOME}/mise/config.toml`:
     jod = '22'
 ```
 
-### `fzf`
-
-[`fzf`](https://github.com/junegunn/fzf) is a fuzzy file finder that is quite useful.
-
-If the installation is done via a package manager or you just want to install
-it into a different location, set `FZF_HOME` in your local `zshenv`, just like
-with `asdf`.
-
-For the install itself, all we want is for the binary to be downloaded,
-everything else is already configured/included in this repository:
-
-```bash
-> git clone --depth 1 https://github.com/junegunn/fzf.git ${FZF_HOME}
-> ${FZF_HOME}/install --bin
-```
-
-#### `ripgrep`
-
-`fzf` is configured to use [`ripgrep`](https://github.com/BurntSushi/ripgrep),
-if installed. Highly recommend.
-
 ### ZSH Aliases
 
 I don't generally rely on plugins for my aliases as I add them too piecemeal
 for a plugin that provides a large number to be useful. But, here are some
 places to look for inspiration if desired:
 
-* [Common Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases)
-* [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
-* [MacOS Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos)
+- [Common Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases)
+- [Ubuntu Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
+- [MacOS Aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos)
 
 ## Resources
 
@@ -288,13 +277,13 @@ cp ${XDG_CONFIG_HOME}/resources/font/* ~/.local/share/fonts/
 
 Locations to go look at for organization or useful features.
 
-* [Big ol' list](https://dotfiles.github.io/inspiration/)
-* [owl4ce/dotfiles](https://github.com/owl4ce/dotfiles)
-* [jessarcher/dotfiles](https://github.com/jessarcher/dotfiles)
-  * [YT mini-walkthrough](https://www.youtube.com/watch?v=434tljD-5C8)
-* [kazhala/dotfiles](https://github.com/kazhala/dotfiles)
-* [MyPickles/dotfiles](https://github.com/MrPickles/dotfiles)
-* [EdenEast/dots](https://github.com/EdenEast/dots)
-* [dotfiles](https://dotfiles.github.io/inspiration/)
-* [mattmc3/zshrc](https://github.com/mattmc3/zshrc.d)
-* [ibnunes/zshrc](https://github.com/ibnunes/zshrc)
+- [Big ol' list](https://dotfiles.github.io/inspiration/)
+- [owl4ce/dotfiles](https://github.com/owl4ce/dotfiles)
+- [jessarcher/dotfiles](https://github.com/jessarcher/dotfiles)
+  - [YT mini-walkthrough](https://www.youtube.com/watch?v=434tljD-5C8)
+- [kazhala/dotfiles](https://github.com/kazhala/dotfiles)
+- [MyPickles/dotfiles](https://github.com/MrPickles/dotfiles)
+- [EdenEast/dots](https://github.com/EdenEast/dots)
+- [dotfiles](https://dotfiles.github.io/inspiration/)
+- [mattmc3/zshrc](https://github.com/mattmc3/zshrc.d)
+- [ibnunes/zshrc](https://github.com/ibnunes/zshrc)
