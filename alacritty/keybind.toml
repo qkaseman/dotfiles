@@ -3,4 +3,6 @@
         # Keep a way to spawn a new instance at least.
         { key = "N",  mods = "Control|Shift", action = "SpawnNewInstance" },
         { key = "N",  mods = "Command|Shift", action = "SpawnNewInstance" },
+        # Send ESC + CR so terminal apps can distinguish Shift+Enter from Enter.
+        { key = "Return", mods = "Shift", chars = "\u001B\r" },
     ]
