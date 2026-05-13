@@ -64,3 +64,6 @@ desktop.ini
 
 # Claude Code personal overrides (settings.json is the shared project config)
 **/.claude/settings.local.json
+
+# Git worktrees for parallel development
+.worktrees

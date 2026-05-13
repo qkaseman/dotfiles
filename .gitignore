@@ -57,6 +57,3 @@ alacritty/color/color.toml
 
 # Kiro saved chat sessions
 *.kiro.json
-
-# Git worktrees for parallel development
-.worktrees
