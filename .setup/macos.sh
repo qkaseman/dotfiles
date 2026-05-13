@@ -135,6 +135,32 @@ EOF
   launchctl load ~/Library/LaunchAgents/com.user.dark-notify.plist
 fi
 
+# ─── launchd env vars for GUI-launched processes ────────────────────────────
+
+# Sets XDG + tool-specific env vars in the launchd user session so GUI apps
+# (Kiro, IDEs, etc.) inherit them when they spawn child processes like npm
+# or gradle. Without this, those tools fall back to polluting $HOME.
+
+mkdir -p ~/Library/LaunchAgents
+cat > ~/Library/LaunchAgents/com.user.env.plist << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.env</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>${CONFIG_DIR}/bin/launchd-env</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+EOF
+launchctl unload ~/Library/LaunchAgents/com.user.env.plist 2>/dev/null || true
+launchctl load ~/Library/LaunchAgents/com.user.env.plist
+
 # ─── Window management services ─────────────────────────────────────────────
 
 echo "Starting AeroSpace — grant accessibility permissions when prompted."

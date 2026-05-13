@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+# Set XDG and tool-specific env vars in the launchd user session so GUI-
+# launched apps (Tauri apps like Kiro, IDEs, etc.) see them. Without this,
+# tools spawned outside a zsh shell fall back to polluting $HOME (e.g.
+# kiro-cli writing better-sqlite3 prebuilds to ~/.npm/_prebuilds).
+#
+# Invoked by ~/Library/LaunchAgents/com.user.env.plist at login.
+# Can also be run manually to refresh the launchd env after editing this
+# script, without needing to log out.
+#
+# Keep the tool-specific list in sync with zsh/env.d/ for any var that
+# also needs to be visible to non-zsh processes.
+
+set -eu
+
+# XDG base directories (mirror resources/zsh/zshenv.macos).
+XDG_CONFIG_HOME="${HOME}/.config"
+XDG_DATA_HOME="${HOME}/.local/share"
+XDG_STATE_HOME="${HOME}/.local/state"
+XDG_CACHE_HOME="${HOME}/.cache"
+XDG_BIN_HOME="${HOME}/.local/bin"
+XDG_CONFIG_LOCAL_HOME="${HOME}/.local/config"
+XDG_RUNTIME_DIR="/tmp/$(id -u)"
+
+launchctl setenv XDG_CONFIG_HOME       "${XDG_CONFIG_HOME}"
+launchctl setenv XDG_DATA_HOME         "${XDG_DATA_HOME}"
+launchctl setenv XDG_STATE_HOME        "${XDG_STATE_HOME}"
+launchctl setenv XDG_CACHE_HOME        "${XDG_CACHE_HOME}"
+launchctl setenv XDG_BIN_HOME          "${XDG_BIN_HOME}"
+launchctl setenv XDG_CONFIG_LOCAL_HOME "${XDG_CONFIG_LOCAL_HOME}"
+launchctl setenv XDG_RUNTIME_DIR       "${XDG_RUNTIME_DIR}"
+
+# Tool-specific vars for tools that:
+#   (a) don't read XDG_* natively, AND
+#   (b) are invoked by GUI-launched apps that don't inherit zsh's env.
+#
+# Keep this list minimal — add entries only when a tool is observed
+# polluting $HOME from a GUI context. Most XDG redirects can stay in
+# zsh/env.d/ only.
+
+# better-sqlite3 prebuilds from kiro-cli (Tauri) and similar.
+launchctl setenv NPM_CONFIG_CACHE  "${XDG_CACHE_HOME}/npm"
+# IntelliJ, Android Studio, any GUI-spawned gradle.
+launchctl setenv GRADLE_USER_HOME  "${XDG_DATA_HOME}/gradle"
+# Android Studio and emulator.
+launchctl setenv ANDROID_HOME      "${XDG_DATA_HOME}/android"
+launchctl setenv ANDROID_USER_HOME "${XDG_DATA_HOME}/android"
+# Docker Desktop.
+launchctl setenv DOCKER_CONFIG     "${XDG_CONFIG_HOME}/docker"
