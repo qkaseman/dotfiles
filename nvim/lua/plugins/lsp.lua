@@ -99,18 +99,26 @@ return {
   },
 
   -----------------------------------------------------------
-  -- markdownlint config flag (preserve XDG path; deferred decision item)
+  -- markdownlint-cli2 config flag
   -----------------------------------------------------------
+  -- LazyVim's `lang.markdown` extra uses `markdownlint-cli2` (not the older
+  -- `markdownlint` cli). Point it at the existing config in this dotfiles
+  -- repo at `$XDG_CONFIG_HOME/markdownlint/config.json`.
+  --
+  -- nvim-lint's default args for markdownlint-cli2 are `{ "-" }` -- the dash
+  -- tells the cli to read from stdin (which nvim-lint pipes the buffer
+  -- through). We prepend `--config <path>` and keep the stdin marker.
+  --
+  -- Long-term home for the config file is a deferred decision (item 8).
   {
     'mfussenegger/nvim-lint',
     opts = function(_, opts)
       opts.linters = opts.linters or {}
-      opts.linters.markdownlint = vim.tbl_deep_extend('force', opts.linters.markdownlint or {}, {
+      opts.linters['markdownlint-cli2'] = vim.tbl_deep_extend('force', opts.linters['markdownlint-cli2'] or {}, {
         args = {
-          '--disable=line-length',
           '--config',
           (vim.env.XDG_CONFIG_HOME or vim.fn.expand('~/.config')) .. '/markdownlint/config.json',
-          '--',
+          '-',
         },
       })
     end,
