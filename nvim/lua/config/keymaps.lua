@@ -145,7 +145,7 @@ map('n', '<leader>sk', function() Snacks.picker.keymaps() end, { desc = 'Keymaps
 map('n', '<leader>sn', function()
   Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
 end, { desc = 'Search Neovim config files' })
-map('n', '<leader>sw', function() Snacks.picker.grep_word() end, { desc = 'Grep word (root)', mode = { 'n', 'v' } })
+map({ 'n', 'v' }, '<leader>sw', function() Snacks.picker.grep_word() end, { desc = 'Grep word (root)' })
 map('n', '<leader>sd', function() Snacks.picker.diagnostics() end, { desc = 'Diagnostics' })
 -- Resume picker stays at LazyVim's `<leader>sR`; kickstart used lowercase
 -- `<leader>sr`. Both work; we add lowercase for muscle memory.
