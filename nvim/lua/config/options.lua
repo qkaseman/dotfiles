@@ -50,3 +50,10 @@ o.wildmode = 'longest:full,full'
 -- Disable snacks animations globally. Pickers, terminals, and explorers
 -- will still work, just without movement animation.
 vim.g.snacks_animate = false
+
+-- Format-on-save: globally disabled by default. The matching FileType
+-- autocmd in `lua/config/autocmds.lua` enables it for `lua` buffers via
+-- `vim.b.autoformat = true`. Other filetypes can be enabled per-buffer
+-- with `<leader>uf` or globally with `<leader>uF`. Migration plan item
+-- D64 (lua-only).
+vim.g.autoformat = false
