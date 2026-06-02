@@ -12,6 +12,9 @@ return {
     opts = {
       terminal = { enabled = false },
       animate = { enabled = false },
+      -- Disable snacks notifier so vim.notify falls back to vim's default
+      -- bottom-row :echomsg style instead of floating snacks toasts.
+      notifier = { enabled = false },
       picker = {
         sources = {
           explorer = {
@@ -20,6 +23,14 @@ return {
           },
         },
       },
+    },
+    -- LazyVim's `<leader>n` opens snacks notification history. With notifier
+    -- disabled there's nothing in that history; redirect to vim's :messages
+    -- buffer instead, matching the pattern from mvim.
+    keys = {
+      { '<leader>n', '<cmd>messages<cr>', desc = 'Message History' },
+      -- LazyVim's `<leader>un` (dismiss notifications) becomes a no-op too.
+      { '<leader>un', false },
     },
   },
 
