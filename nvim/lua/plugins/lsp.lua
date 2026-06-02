@@ -2,9 +2,10 @@
 -- "what's installed" view lives in a single place.
 --
 -- Strategy:
--- 1. Enable LazyVim language extras for langs that have them. Each extra
---    pulls in the right LSP, formatter, linter, treesitter parsers, and
---    sometimes DAP adapters with sensible defaults.
+-- 1. LazyVim language extras are enabled in `lua/config/lazy.lua` (between
+--    LazyVim core and user plugins) so they load in the correct order.
+--    Currently enabled: lang.typescript, lang.python, lang.json, lang.yaml,
+--    lang.markdown, lang.java, dap.core.
 -- 2. Add to mason `ensure_installed` for tools the extras don't cover.
 -- 3. Override LazyVim's default LSP keymaps via `lspconfig.opts.servers["*"]
 --    .keys` to switch from LazyVim's two-letter keys to kickstart's `gr*`
@@ -13,17 +14,6 @@
 --    removing keys.
 
 return {
-  -----------------------------------------------------------
-  -- Language extras (enable LazyVim's curated language packs)
-  -----------------------------------------------------------
-  { import = 'lazyvim.plugins.extras.lang.typescript' }, -- vtsls + eslint
-  { import = 'lazyvim.plugins.extras.lang.python' },     -- basedpyright + ruff
-  { import = 'lazyvim.plugins.extras.lang.json' },       -- jsonls + SchemaStore
-  { import = 'lazyvim.plugins.extras.lang.yaml' },       -- yamlls + SchemaStore
-  { import = 'lazyvim.plugins.extras.lang.markdown' },   -- marksman + markdownlint-cli2 + markdown-toc
-  { import = 'lazyvim.plugins.extras.lang.java' },       -- jdtls
-  { import = 'lazyvim.plugins.extras.dap.core' },        -- nvim-dap + nvim-dap-ui + mason-nvim-dap
-
   -----------------------------------------------------------
   -- Mason ensure_installed for languages without an extra
   -----------------------------------------------------------
