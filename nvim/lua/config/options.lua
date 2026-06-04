@@ -51,9 +51,10 @@ o.wildmode = 'longest:full,full'
 -- will still work, just without movement animation.
 vim.g.snacks_animate = false
 
--- Format-on-save: globally disabled by default. The matching FileType
--- autocmd in `lua/config/autocmds.lua` enables it for `lua` buffers via
--- `vim.b.autoformat = true`. Other filetypes can be enabled per-buffer
--- with `<leader>uf` or globally with `<leader>uF`. Migration plan item
--- D64 (lua-only).
+-- Format-on-save: globally disabled, no exceptions. LazyVim's auto-format
+-- mechanism reads `vim.g.autoformat` (and per-buffer `vim.b.autoformat`).
+-- We never set `vim.b.autoformat`, so nothing reformats on save under any
+-- circumstance. Manual format via `<leader>f` (kickstart-style) still works.
+-- Migration plan item D64 (was originally lua-only; revised to off-entirely
+-- per user preference -- never any autoformat).
 vim.g.autoformat = false

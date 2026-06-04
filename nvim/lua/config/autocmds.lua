@@ -18,16 +18,3 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     vim.fn.winrestview(view)
   end,
 })
-
--- Enable format-on-save for `lua` buffers only. `vim.g.autoformat = false`
--- in options.lua disables it globally; this autocmd flips `vim.b.autoformat`
--- to true on lua buffers, which LazyVim's format autocmd checks (`vim.b`
--- takes precedence over `vim.g`). Migration plan item D64.
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('user_lua_autoformat', { clear = true }),
-  pattern = 'lua',
-  desc = 'Enable format-on-save for Lua buffers',
-  callback = function(args)
-    vim.b[args.buf].autoformat = true
-  end,
-})
