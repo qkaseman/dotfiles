@@ -17,17 +17,24 @@
 --   <C-e>            hide menu
 --   <C-k>            toggle signature help
 --
--- We additionally override `<Tab>`/`<S-Tab>` to `{ "fallback" }` so they ALWAYS
--- insert a tab character (or spaces, with `expandtab`) -- never accept
--- completions, never navigate snippet placeholders. Trade-off: snippet
--- placeholder navigation needs a different key if/when you use snippets.
+-- Custom overrides:
 --
--- Setting `<Tab>` explicitly also prevents LazyVim's `config = function`
--- from injecting its own Tab handler that would do `snippet_forward,
--- ai_nes, ai_accept` before falling through.
+-- 1. `<Tab>` and `<S-Tab>` -> `{ "fallback" }`. Always insert a tab character
+--    (or spaces, with `expandtab`). Never accept completions, never navigate
+--    snippet placeholders. Setting these explicitly also prevents LazyVim's
+--    `config = function` from injecting an auto-Tab handler that would chain
+--    `snippet_forward, ai_nes, ai_accept` before fallback.
 --
--- Use the function form so we fully replace `opts.keymap` rather than merging
--- with LazyVim's `<C-y>` override.
+-- 2. `<C-n>` and `<C-p>` -> snippet placeholder navigation FIRST, completion
+--    menu navigation SECOND. blink.cmp keymap entries are chains: each
+--    function returns true if it handled the event, false otherwise. So
+--    when inside an active snippet, C-n moves to the next placeholder; if
+--    no snippet is active (or you've reached the end), it falls through to
+--    cycling the completion menu. Same for C-p in reverse.
+--
+--    This puts snippet nav on the same C-n/C-p keys used elsewhere for
+--    next/prev navigation (search, hunks, etc.) -- consistent across
+--    contexts -- and keeps Tab strictly as a tab character.
 
 return {
   'saghen/blink.cmp',
@@ -36,6 +43,8 @@ return {
       preset = 'default',
       ['<Tab>'] = { 'fallback' },
       ['<S-Tab>'] = { 'fallback' },
+      ['<C-n>'] = { 'snippet_forward', 'select_next' },
+      ['<C-p>'] = { 'snippet_backward', 'select_prev' },
     }
   end,
 }
