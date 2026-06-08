@@ -58,3 +58,12 @@ vim.g.snacks_animate = false
 -- Migration plan item D64 (was originally lua-only; revised to off-entirely
 -- per user preference -- never any autoformat).
 vim.g.autoformat = false
+
+-- Disable eslint LSP's server-side format-on-save hook. LazyVim's eslint
+-- extra (loaded transitively via `lang.typescript`) defaults this to true,
+-- which (a) sends `format = true` to the eslint server so it advertises
+-- itself as a formatter, and (b) registers `willSaveWaitUntil` inside the
+-- LSP framework to run `eslint --fix` before every save. That LSP hook
+-- runs INSIDE the LSP framework, NOT through LazyVim's format autocmd, so
+-- `vim.g.autoformat = false` doesn't reach it. Disable explicitly.
+vim.g.lazyvim_eslint_auto_format = false
