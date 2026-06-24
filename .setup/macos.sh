@@ -168,8 +168,9 @@ open -a AeroSpace
 read -rp "Press any key once permissions are granted..." -n 1
 echo
 
-# SketchyBar is launched by AeroSpace via after-startup-command.
-brew services start sketchybar
+# SketchyBar and JankyBorders are launched by AeroSpace via after-startup-command
+# (see aerospace/aerospace.toml). They are only useful in an AeroSpace session,
+# so AeroSpace owns their lifecycle — no separate brew service required.
 
 # ─── macOS shell config ─────────────────────────────────────────────────────
 
