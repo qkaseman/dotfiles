@@ -8,15 +8,20 @@ config-version = 2
 start-at-login = true
 
 # Launch SketchyBar and JankyBorders for workspace indicators and window borders.
+# Absolute paths required: AeroSpace's `exec-and-forget` silently fails to find
+# binaries from PATH despite `list-exec-env-vars` claiming /opt/homebrew/bin is
+# present. Upstream bug: https://github.com/nikitabobko/AeroSpace/issues/556.
+# Apple Silicon Homebrew prefix; change to /usr/local/bin on Intel.
 after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xff2e9ef4 inactive_color=0x00000000 width=6.0',
+  'exec-and-forget /opt/homebrew/bin/sketchybar',
+  'exec-and-forget /opt/homebrew/bin/borders active_color=0xff2e9ef4 inactive_color=0x00000000 width=6.0',
 ]
 
-# Notify SketchyBar on workspace change.
+# Notify SketchyBar on workspace change. Absolute path for the same reason as
+# above (issue #556).
 exec-on-workspace-change = [
   '/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+  '/opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # Normalizations keep the layout tree sane.
