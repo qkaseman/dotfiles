@@ -20,8 +20,9 @@ zsh/.zcompdump
 
 # MacOS Stuff
 configstore
-## ZSH session file that MacOS creates from ReactNative things
+## ZSH session/history files that macOS sometimes creates in ${ZDOTDIR}
 zsh/.zsh_sessions
+zsh/.zsh_history
 
 # Tools that shouldn't be saved
 htop
