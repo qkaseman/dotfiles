@@ -26,12 +26,10 @@ setopt histignorespace      # Don't save commands starting with a space.
 setopt histverify           # When user enters a line with history.
                             # expansion, put into editing buffer rather
                             # than execute.
-setopt incappendhistory     # Append to global history immediately.
-setopt sharehistory         # Share history across running shells.
+setopt appendhistory        # Append to global history on shell exit.
 setopt histignorealldups    # Remove older duplicate when a new dup is added.
 setopt histsavenodups       # Don't write duplicates to history file.
 setopt histfindnodups       # Skip duplicates when searching history.
-# setopt appendhistory      # Append to global history on exit.
 
 # Job Control
 setopt checkjobs            # Don't exit with bg jobs.
