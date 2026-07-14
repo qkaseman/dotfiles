@@ -3,5 +3,6 @@ set -euo pipefail
 shopt -s nullglob
 
 for d in */; do
+  printf '==> %s\n' "$d" >&2
   (cd "$d" && "$@")
 done
