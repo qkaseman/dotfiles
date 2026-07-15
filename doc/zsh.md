@@ -109,3 +109,21 @@ fix this by adding `|| true`:
 ```bash
 [ -f ${ZSH_LOCAL_HOME}/zshrc ] && . ${ZSH_LOCAL_HOME}/zshrc || true
 ```
+
+## Plugin candidates to look at
+
+Reference list of zsh plugins/tools worth considering when tweaking the setup,
+analogous to the "Inspiration" section in the top-level `README.md`.
+
+- [`fz`](https://github.com/changyuheng/fz) -- likely replicated by having
+  `fzf-tab` installed.
+- [`fzf-tab-completion`](https://github.com/lincheney/fzf-tab-completion) --
+  overlaps with `fzf-tab`; worth trying if `fzf-tab` annoyances persist.
+- [`you-should-use`](https://github.com/MichaelAquilina/zsh-you-should-use) --
+  suggests aliases matching typed commands. `tipz` is a similar plugin.
+- [`fzf.plugin.zsh`](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh)
+  -- possibly useful `fzf`-associated helpers from ohmyzsh.
+- [`Zsh Zephyr`](https://github.com/mattmc3/zephyr) -- source of good default
+  settings to steal after living with the current setup.
+- [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+  -- claimed better/faster than `zsh-syntax-highlighting`.

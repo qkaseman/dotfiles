@@ -1,80 +1,54 @@
 # ZSH
 
-## Major
+TODOs and open questions for the ZSH config.
 
-### Fix init errors that only exist on linux
+## fzf-tab
 
+### `sudo` tab completion doesn't work
+
+`sudo <cmd><TAB>` produces no completions at all. Standard `_sudo` completion
+is a known friction point. Look at whether `fzf-tab` needs a `sudo`-specific
+rule, whether zsh's `_sudo` completion isn't loading, or whether it's a
+`securesudo` interaction.
+
+### Single-child directory auto-fills too eagerly
+
+When only one entry exists in the directory being completed, `fzf-tab` fills
+it in and immediately opens the next completion menu without a pause.
+Frustrating in practice. Look for a config option to suppress -- likely
+`continuous-trigger` or `accept-line` in the `fzf-tab` config.
+
+## Completions
+
+### Install `ripgrep`'s official zsh completions
+
+Prefer `rg`'s built-in generator over the ohmyzsh plugin:
+
+```zsh
+rg --generate=complete-zsh > "${XDG_DATA_HOME}/zsh/completions/_rg"
 ```
-touch: cannot touch ‘/home/quillank/.local/share/asdf/tool-versions’: No such file or directory
-ln: failed to create symbolic link ‘/home/quillank/.tool-versions’: File exists
-```
 
-### `fzf-tab-completion`
+Make sure `${XDG_DATA_HOME}/zsh/completions` is on `$fpath` before
+`compinit` runs. Add the generation step to `.setup/` and the fpath entry
+to `env.d/`.
 
-#### is slow
+## Plugins
 
-Noticable lab when hitting `<TAB>`.
+### Reevaluate `zsh-autosuggestions`
 
-### `fzf-tab`
+Always think I like them, but seeing them I'm never quite sure. Live
+without for a week and decide.
 
-#### `sudo` Tab Completion
+### Try `fzf-tab-completion` as an alternative to `fzf-tab`
 
-Just doesn't seem to work at all.
+[lincheney/fzf-tab-completion](https://github.com/lincheney/fzf-tab-completion)
+looks redundant with `fzf-tab` but may address the annoyances above. Worth a
+trial if the `fzf-tab` issues persist.
 
-#### Tab Completion jump
+### Consider `zsh-unplugged`-style plugin management
 
-When there is only one directory (option?) inside of the directory you are
-completing to, `fzf-tab` automatically fills that in and then opens a new
-completion menu, which is really frustrating.
-
-#### Tab completion `npm`
-
-`npm` tab completion doesn't work `npm <TAB>` or with any amount of leading `-`
-will also fail.
-
-### Tab Completion color
-
-The color of the tab completion is dark grey background with black text which is
-impossible to read. The general background is fine but the selection is bad.
-
-## Minor
-
-### `ripgrep` completions
-
-Add
-[`ripgrep completions`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep)
-
-### Reevaluate `autosuggestions`
-
-Always think I like them, but when seeeing them I'm never quite sure I do.
-
-### Try `fzf-tab-complete`
-
-Seemed redundant with `fzf-tab` (and might be) and with less features but the
-annoyances in `fzf-tab` might make it worth trying.
-
-### Plugin/module relayout
-
-Could do something like
-[`zsh-unplugged`](https://github.com/mattmc3/zsh_unplugged) rather than have
-them as git submodules. Would be more consistent with `nvim` and might be easier
-to deal with. Could also automate the installing of tools like `fzf` and `asdf`.
-
-### Moar plugins!
-
-- [`fz`](https://github.com/changyuheng/fz) might be replicated by having
-  `fzf-tab` installed.
-- [`fzf-tab-completion`](https://github.com/lincheney/fzf-tab-completion) seems
-  to be the same thing as `fzf-tab` pretty much (and the additional change of
-  the `zsh` completion to `fzf` seemed unneeded). Maybe change in the future if
-  issues come up with `fzf-tab`.
-- [`you-should-use`](https://github.com/MichaelAquilina/zsh-you-should-use) for
-  suggestions on aliases that are defined that match the command you just ran.
-  There is also a plugin with the name `tipz` or something that looks similar.
-- [`fzf.plugin.zsh`](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh)
-  possibly useful things associated with `fzf`
-- [`Zsh Zephyr`](https://github.com/mattmc3/zephyr) seems to have a lot of good
-  default settings so I should look at those and pull out what seems nice after
-  I live with these settings for a while.
-- [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting)
-  apparently has better and faster highlighting so should try that.
+Move away from git submodules toward
+[`zsh-unplugged`](https://github.com/mattmc3/zsh_unplugged)-style loading.
+Would match `nvim`'s lazy-loading paradigm and simplify plugin
+add/update/remove. Could also fold in installation of tools like `fzf` and
+`mise`.

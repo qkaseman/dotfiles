@@ -37,3 +37,14 @@ Treesitter
 
 As far as I know, the top-level syntax kind gets applied but the others can
 briefly show up in flashes while things are initially loading.
+
+## Neovim configs to look at for plugin ideas
+
+Reference list of other people's Neovim configs -- source material when looking
+for plugin ideas or config patterns. Analogous to the "Inspiration" section in
+the top-level `README.md`, but scoped to Neovim.
+
+- [williamboman/nvim-config](https://github.com/williamboman/nvim-config/tree/main/plugin)
+- [LunarVim/LunarVim](https://github.com/LunarVim/LunarVim)
+- Jess Archer -- known nvim tinkerer, config location TBD
+- Two others from a past machine, contents forgotten

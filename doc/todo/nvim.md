@@ -1,145 +1,120 @@
 # NeoVim
 
-## LSP Things
+TODOs and open questions for the Neovim config.
 
-- `toml`
+## LSP
 
-## Other things
+### Add `taplo` LSP for TOML files
 
-- `git` isn't using `nvim` nor my config on new laptop, maybe need to handle in
-  setup scripts?
+Not currently in `ensure_installed`. Add to `nvim/lua/plugins/lsp.lua` and
+verify `.toml` files get syntax-aware editing (hover, completion, diagnostics).
 
-### Major
+## Editor integration
 
-#### `.d.ts` filetype detection
+### `git commit` message highlighting on new machines
 
-See title.
+On a fresh laptop, `git commit` opens the commit-message buffer with broken or
+absent syntax highlighting even after Neovim and this config are in place.
+Investigate whether it's `EDITOR`/`VISUAL` pointing somewhere unexpected, a
+missing `gitcommit` treesitter parser, or a filetype-detection race during
+setup-script bootstrap.
 
-#### Tab completion in file search breaks sometimes
+## Plugins
 
-`:tabe <file>` tab completion sometimes stops working (why, no idea). Super
-super annoying though.
+### Filetype-triggered treesitter parser install
 
-#### pink as the error highlight with red text is bad.
+Some Neovim distro (name forgotten) auto-installed the correct treesitter
+parser when a new filetype was detected, rather than requiring parsers to be
+pre-declared in `ensure_installed`. Nice ergonomic. Worth prototyping if it
+fits with LazyVim's `nvim-treesitter` config model. Low priority.
 
-Ewwwwww on colors.
+## Syntax / rendering
 
-#### menu tab completion sometimes doesn't work
+### Markdown syntax highlighting breaks on multiple backticks
 
-It seems to think it's a `variable` (by the completion source) but not sure if
-that's just how that kind of thing is "sourced").
+Broken when three sets of backticks appear on a single line, especially with
+`<>` mixed in. Treesitter markdown parser edge case. May not reproduce on the
+current parser -- verify before spending time on it.
 
-### Minor
+### `lua` indent wrong after `then` newline
 
-#### Spelling cache into `.local/share`
-
-So that git ignore can be removed.
-
-#### Markdown syntax highlighting
-
-Is broken if there are 3 sets of backticks on a single line, but maybe only if
-there are `<>`?
-
-#### `lua` indent bad
-
-Treesitter seems to indent incorrectly as this:
+Treesitter indents this way:
 
 ```lua
-if not ok then<ENTER>
+if not ok then
 <CURSOR>
 ```
 
-When you would expect:
+Should indent one shiftwidth:
 
 ```lua
-if not ok then<ENTER>
-    <CURSOR>
+if not ok then
+  <CURSOR>
 ```
 
-#### Plugin simplification
+Verify still reproduces on current treesitter / nvim.
 
-If `plugin.lua` has the proper dependency modeling, then I can only do the
-`pcall` crap on the final one at the top of the file. Much cleaner.
+## Storage
 
-#### tpope surround
+### Move spelling additions to `$XDG_DATA_HOME`
 
-I finally see the use of this, look into it.
+Currently `nvim/spell/` is gitignored in the repo. Redirect via
+`vim.opt.spellfile = "$XDG_DATA_HOME/nvim/spell/en.utf-8.add"` (data, not
+state -- spell additions are portable user dictionary content that should
+sync across machines) so the gitignore entry can drop.
 
-#### tpope commentary
+### Split spell dictionary: general vs work-specific
 
-Look into this as well, pretty sure I used it in the past and liked it.
+Investigate whether `spellfile` accepts multiple paths (comma-separated? `+=`?)
+so a portable "public" dictionary can live under `$XDG_DATA_HOME/nvim/spell`
+and a work/private one under `$XDG_CONFIG_LOCAL_HOME/nvim/spell` without
+leaking company terms across machines.
 
-#### Line highlight not working
+## Config
 
-Should be highlighting but not underlining the current buffer....
+### `autochdir` vs LazyVim's `root_dir`
 
-#### Title flicker
+Vim's `autochdir` changes cwd to match each buffer's directory on switch.
+LazyVim's `root_dir` logic detects a project marker (`.git`, `package.json`,
+`pyproject.toml`, LSP root) and keeps cwd stable at the detected project root
+instead. Modern tooling assumes a stable root, so `autochdir` conflicts with:
 
-The terminal title bar and the vim tab title both flicker a bunch when the
-autocomplete extra buffers come up.
+- LSPs cache their workspace on startup; bouncing cwd re-triggers workspace
+  detection and can double-load servers.
+- Pickers (`<leader>ff`, `<leader>fg`) scope to root, so `autochdir` makes the
+  same key mean different things depending on which buffer is focused.
+- Terminal splits inherit cwd from Neovim.
+- `persistence.nvim` keys sessions by cwd.
 
-#### Column Marker
+Almost certainly not worth enabling. Kept here so the decision is explicit
+rather than reflexive.
 
-`80` chars and maybe a lighter one at `100`?
+## Deferred from LazyVim migration
 
-#### `autochdir`
+Three items marked as "deferred discussions" in the LazyVim migration plan
+(removed 2026-07-15) that still warrant later attention:
 
-Maybe want, maybe don't. I'll see how it is without it for a while.
+### markdownlint config location
 
-#### Telescope plugin
+nvim-lint's `markdownlint` linter reads
+`.markdownlint.{jsonc,json,yaml,yml,cjs}` walking up from the file's directory.
+Config currently lives at `$XDG_CONFIG_HOME/markdownlint/config.json` and
+`nvim/lua/plugins/lint.lua` passes it via `--config` flag. Decide whether to
+(a) keep the `--config` flag long-term, (b) move to a per-repo
+`.markdownlint.jsonc`, or (c) symlink to `~/.markdownlint.jsonc` (home
+pollution; not preferred).
 
-Try it.
+### Prefix-meaning audit
 
-#### Other Plugins
+Walk through the `<leader>` group prefixes and confirm semantic consistency
+after living with them. Current assignments: `c` (code), `b` (buffer),
+`d` (debug), `s` (search/find), `g` (git), `h` (hunks), `Q` (session),
+`T` (terminal), `u` (UI toggle), `w` (window), `x` (diagnostics/quickfix),
+`t` (free for toggles or the `extras.test.core` extra if enabled). Adjust if
+any feel off.
 
-The ones these people have:
+### Tabs vs buffers vs marks/jumplist
 
-- https://github.com/williamboman/nvim-config/tree/main/plugin
-- https://github.com/LunarVim/LunarVim
-- Jess Archer
-- Two others from my PC I don't recall
-
-#### Markdown syntax
-
-`npm` tab completion doesn't work `npm <TAB>`
-
-That highlights the middle as code due to the `<`.
-
-#### Look into autopairs plugins
-
-I don't generally like them but it looks like there are a number of indentation
-things that only _really_ work with that being setup. (`lua` is a current
-example but I'm sure it applies to more.
-
-#### `gitcommit` tab completion
-
-The tab completion seems to be broken now? Git gives an error about
-`hint: Waiting for your editor to close the file...` which might indicate
-something.
-
-## From init.lua (moved here)
-
-- fix `gqq` for all buf types
-- Figure out auto-install of LSP like Treesitter has for grammar
-- Evaluate complexity of LSP module and determine if should be submodules
-- Figure out why fidget.nvim isn't showing LSP updates sometimes
-- submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
-  `:help wo`, it takes you to `wildmenu` not set `window-local` options
-- Figure out why resuming workspace froze nvim for a while. Seems like it is the
-  LSP struggling when a file has been deleted or changed while Neovim is
-  suspended. Seems weird as that should be async.
-- Set up TypeScript/JavaScript DAP
-- Figure out why prettier support isn't working right
-- make keybind to generate hover window of diag error
-- make keybind to make hoverwindow of type
-- make/figure out keybind to move in completion window without arrows
-- figure out the `mini.surround` and `mini.ai` uses
-
-## Keybind Namespace Cleanup
-
-`<leader>t` group mixes terminals (toggleterm: tf/tH/tv/tn/tp/tl/tt/tu/ts) and
-toggles (gitsigns: tb/tD, LSP: th). Consider splitting:
-
-- Terminals stay under `<leader>t` (rename group to [T]erminal)
-- Move gitsigns toggles (tb, tD) to `<leader>u` (UI Toggle)
-- LSP inlay hints (`th`) could also move to `<leader>uh`
+Revisit navigation patterns. Historical habit is tabs; marks and the jumplist
+are underused. Worth exploring: buffer + split + jumplist workflow, or a
+harpoon-style pin list, as alternatives to tabs.
