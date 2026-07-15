@@ -8,9 +8,11 @@ The most popular universal ergo layout system. Works on any 36+ key board
 including Corne. Enabling the vi nav option gives you hjkl-aligned cursor keys
 on the nav layer out of the box.
 
-- **Repo**: https://github.com/manna-harbour/miryoku
-- **ZMK Corne implementation**: https://github.com/manna-harbour/miryoku_zmk
-- **Home row mods guide**: https://precondition.github.io/home-row-mods
+- **Repo**: [manna-harbour/miryoku](https://github.com/manna-harbour/miryoku)
+- **ZMK Corne implementation**:
+  [manna-harbour/miryoku_zmk](https://github.com/manna-harbour/miryoku_zmk)
+- **Home row mods guide**:
+  [precondition.github.io/home-row-mods](https://precondition.github.io/home-row-mods)
 
 Key features:
 
@@ -28,7 +30,7 @@ Key features:
 Straightforward QWERTY+vim layout with 4 layers max, designed around mnemonics
 for learnability.
 
-- **Repo**: https://github.com/niqodea/crkbd
+- **Repo**: [niqodea/crkbd](https://github.com/niqodea/crkbd)
 - **Layer diagrams**: PNG images in `images/` directory (layer-0.png through
   layer-3.png)
 
@@ -40,17 +42,19 @@ Vim design choices:
 - Escape replaces Caps Lock (standard vim ergonomic)
 - Media layer volume controls mirror vim arrow positions
 - Modifiers and layers on thumb cluster
-- Uses VIA for configuration (https://usevia.app)
+- Uses VIA for configuration ([usevia.app](https://usevia.app))
 
 ### qmk-vim — Actual vim modal editing in firmware
 
 Implements real vim Normal/Visual mode directly in QMK. Works on any QMK
 keyboard including Corne.
 
-- **Repo**: https://github.com/andrewjrae/qmk-vim (178 stars)
+- **Repo**: [andrewjrae/qmk-vim](https://github.com/andrewjrae/qmk-vim) (178
+  stars)
 - **Author's full keymap** (Kyria, similar to Corne):
-  https://github.com/andrewjrae/kyria-keymap
-- **keymapdb entry**: https://keymapdb.com/keymaps/andrewjrae/
+  [andrewjrae/kyria-keymap](https://github.com/andrewjrae/kyria-keymap)
+- **keymapdb entry**:
+  [keymapdb.com/keymaps/andrewjrae](https://keymapdb.com/keymaps/andrewjrae/)
 
 Features:
 
@@ -66,7 +70,8 @@ Features:
 
 ### darren-dooley/corne-config — macOS + vim optimized
 
-- **Repo**: https://github.com/darren-dooley/corne-config
+- **Repo**:
+  [darren-dooley/corne-config](https://github.com/darren-dooley/corne-config)
 - **Layer diagrams**: 3 keymap images in README
 
 Vim design choices:
@@ -79,8 +84,9 @@ Vim design choices:
 
 ### rafaelromao/keyboards — ZMK, explicitly vim-optimized
 
-- **Repo**: https://github.com/rafaelromao/keyboards
-- **Documentation site with diagrams**: https://rafaelromao.github.io/keyboards
+- **Repo**: [rafaelromao/keyboards](https://github.com/rafaelromao/keyboards)
+- **Documentation site with diagrams**:
+  [rafaelromao.github.io/keyboards](https://rafaelromao.github.io/keyboards)
 
 Designed for "software programming with VIM plugins." Uses external ZMK modules
 including Leader Key, Adaptive Key, Auto Layer, and Layer Morph. Workflows
@@ -89,7 +95,8 @@ and Programming. Keymap Drawer SVGs at 300 DPI.
 
 ### MSNBBC layout (sergioruiiz91) — Vim + Hyprland
 
-- **Repo**: https://github.com/sergioruiiz91/MSNBBC-layout-
+- **Repo**:
+  [sergioruiiz91/MSNBBC-layout-](https://github.com/sergioruiiz91/MSNBBC-layout-)
 
 Vim + tiling WM design:
 
@@ -106,15 +113,16 @@ Vim + tiling WM design:
 The standout resource for vim on Glove80. The symbol layer is explicitly
 designed around vim operators.
 
-- **Repo**: https://github.com/sunaku/glove80-keymaps
+- **Repo**: [sunaku/glove80-keymaps](https://github.com/sunaku/glove80-keymaps)
 - **Interactive layer map** (hover over keys):
-  https://sunaku.github.io/moergo-glove80-keyboard.html#layers
+  [sunaku.github.io/moergo-glove80-keyboard.html#layers](https://sunaku.github.io/moergo-glove80-keyboard.html#layers)
 - **MoErgo Layout Editor**:
-  https://my.moergo.com/glove80/#/layout/user/909a8599-903f-44f3-a51e-5130ecdf2999
+  [my.moergo.com/glove80/#/layout/user/909a8599-903f-44f3-a51e-5130ecdf2999](https://my.moergo.com/glove80/#/layout/user/909a8599-903f-44f3-a51e-5130ecdf2999)
 - **Symbol layer video tour** (vim operators at 10:14):
-  https://www.youtube.com/watch?v=uuSR81wc6WQ
-- **Coding demo video**: https://youtu.be/fPcO5NGoDao
-- **Home row mods article**: https://sunaku.github.io/home-row-mods.html
+  [youtube.com/watch?v=uuSR81wc6WQ](https://www.youtube.com/watch?v=uuSR81wc6WQ)
+- **Coding demo video**: [youtu.be/fPcO5NGoDao](https://youtu.be/fPcO5NGoDao)
+- **Home row mods article**:
+  [sunaku.github.io/home-row-mods.html](https://sunaku.github.io/home-row-mods.html)
 
 Symbol layer vim operator placement:
 
@@ -141,7 +149,8 @@ Architecture:
 
 Fork of sunaku's layout with additional Neovim-specific optimizations.
 
-- **Repo**: https://github.com/Mathijs-Bakker/glove80-keymaps
+- **Repo**:
+  [Mathijs-Bakker/glove80-keymaps](https://github.com/Mathijs-Bakker/glove80-keymaps)
 
 Added vim/Neovim features:
 
@@ -156,7 +165,7 @@ Added vim/Neovim features:
 
 ### jcf/digitum — Engrammer on Glove80 (zmk-nix)
 
-- **Repo**: https://github.com/jcf/digitum
+- **Repo**: [jcf/digitum](https://github.com/jcf/digitum)
 
 Features:
 
@@ -171,21 +180,21 @@ Features:
 
 ### Visualization Tools
 
-| Tool                      | URL                                                 | What it does                                                |
-| ------------------------- | --------------------------------------------------- | ----------------------------------------------------------- |
-| Keymap Drawer             | https://caksoylar.github.io/keymap-drawer           | Paste any ZMK/QMK keymap, get SVG visualization             |
-| Keymap Drawer (repo)      | https://github.com/caksoylar/keymap-drawer          | Install: `pipx install keymap-drawer`                       |
-| Glove80 Keymap Visualizer | https://pypi.org/project/glove80-keymap-visualizer/ | Converts Glove80 ZMK exports to PDF/SVG with color coding   |
-| MoErgo Layout Editor      | https://my.moergo.com/glove80/                      | Official Glove80 layout editor, exports ZMK keymaps         |
-| keymapdb.com              | https://keymapdb.com                                | Searchable catalog of 146+ visual keymaps (filter by "vim") |
+| Tool                      | URL                                                                                               | What it does                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Keymap Drawer             | [caksoylar.github.io/keymap-drawer](https://caksoylar.github.io/keymap-drawer)                    | Paste any ZMK/QMK keymap, get SVG visualization             |
+| Keymap Drawer (repo)      | [caksoylar/keymap-drawer](https://github.com/caksoylar/keymap-drawer)                             | Install: `pipx install keymap-drawer`                       |
+| Glove80 Keymap Visualizer | [pypi.org/project/glove80-keymap-visualizer](https://pypi.org/project/glove80-keymap-visualizer/) | Converts Glove80 ZMK exports to PDF/SVG with color coding   |
+| MoErgo Layout Editor      | [my.moergo.com/glove80](https://my.moergo.com/glove80/)                                           | Official Glove80 layout editor, exports ZMK keymaps         |
+| keymapdb.com              | [keymapdb.com](https://keymapdb.com)                                                              | Searchable catalog of 146+ visual keymaps (filter by "vim") |
 
 ### Design References
 
-| Resource                  | URL                                                           | Description                                                   |
-| ------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| Symbol Layer Design Guide | https://getreuer.info/posts/keyboards/symbol-layer/index.html | Symbol frequency analysis + vim-aware layer design strategies |
-| Home Row Mods Guide       | https://precondition.github.io/home-row-mods                  | Definitive guide to HRM orderings (GASC, GACS, SCGA, CAGS)    |
-| keymapdb vim filter       | https://keymapdb.com/?q=vim                                   | All keymaps tagged with vim keybinding scheme                 |
+| Resource                  | URL                                                                                                                    | Description                                                   |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Symbol Layer Design Guide | [getreuer.info/posts/keyboards/symbol-layer/index.html](https://getreuer.info/posts/keyboards/symbol-layer/index.html) | Symbol frequency analysis + vim-aware layer design strategies |
+| Home Row Mods Guide       | [precondition.github.io/home-row-mods](https://precondition.github.io/home-row-mods)                                   | Definitive guide to HRM orderings (GASC, GACS, SCGA, CAGS)    |
+| keymapdb vim filter       | [keymapdb.com/?q=vim](https://keymapdb.com/?q=vim)                                                                     | All keymaps tagged with vim keybinding scheme                 |
 
 ## Recommendations
 

@@ -67,7 +67,7 @@ indicated by `-s` in the definition.
 ### Safer Scripts with `set -euxo pipefail`
 
 > More detailed explanation:
-> https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+> [vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail](https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/)
 
 Adding `set -euxo pipefail` to the top of shell scripts is useful for catching
 errors:
