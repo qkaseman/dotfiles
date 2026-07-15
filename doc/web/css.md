@@ -4,39 +4,27 @@ CSS is weird and here is where quirks I don't want to forget go.
 
 ## CSS Variables are fully resolved when encountered.
 
-> [JSFiddle](https://jsfiddle.net/km43hopw/) for an example, code for it is
-> also below.
+> [JSFiddle](https://jsfiddle.net/km43hopw/) for an example, code for it is also
+> below.
 
 CSS variables are useful, but they lose all of their references when they are
 encountered. If you have two variables in `:root` with `baz` is a pointer to
 `foo` and change `foo`'s meaning outside of `:root`, `baz` won't get updated.
 
 ```html
-<div class=''>
-  <div class='class-foo'>
-    This is red.
-  </div>
+<div class="">
+  <div class="class-foo">This is red.</div>
 
-  <div class='class-bar'>
-    This is green.
-  </div>
+  <div class="class-bar">This is green.</div>
 
-  <div class='class-baz'>
-    This is red too.
-  </div>
+  <div class="class-baz">This is red too.</div>
 </div>
-<div class='theme-purple-foo'>
-  <div class='class-foo'>
-    This was red but now purple.
-  </div>
+<div class="theme-purple-foo">
+  <div class="class-foo">This was red but now purple.</div>
 
-  <div class='class-bar'>
-    This is green.
-  </div>
+  <div class="class-bar">This is green.</div>
 
-  <div class='class-baz'>
-    This was red but still red?
-  </div>
+  <div class="class-baz">This was red but still red?</div>
 </div>
 ```
 
@@ -75,9 +63,9 @@ Before getting into the scripts, let's cover a few caveats:
 
 1. These aren't intended to be exhaustive and almost assuredly miss things. They
    exist to give a rough idea of declarations, counts, etc...
-1. These scripts consider `!important` as part of the value, so `0` and `0
-   !important` are not the same declaration.
-1. These scripts *will* miss any declarations that don't end in `;`. Properly
+1. These scripts consider `!important` as part of the value, so `0` and
+   `0 !important` are not the same declaration.
+1. These scripts _will_ miss any declarations that don't end in `;`. Properly
    formatting your CSS files is easier than a more complicated parser.
 
 macOS loves to be weird and its `re_format` doesn't support extended literals,

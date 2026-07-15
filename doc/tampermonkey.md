@@ -1,9 +1,9 @@
 # Tampermonkey
 
-[Tampermonkey](https://www.tampermonkey.net/) is a browser extension that
-allows writing custom JavaScript. It has essentially no utilities though, so
-this is my repository of "snippets" essentially. Some are stupidly simple but
-common enough I don't want to have to think about them.
+[Tampermonkey](https://www.tampermonkey.net/) is a browser extension that allows
+writing custom JavaScript. It has essentially no utilities though, so this is my
+repository of "snippets" essentially. Some are stupidly simple but common enough
+I don't want to have to think about them.
 
 ## Sleep
 
@@ -13,11 +13,11 @@ common enough I don't want to have to think about them.
  *
  * @param ms - milliseconds to sleep
  */
-function sleep(ms){
+function sleep(ms) {
   return new Promise(function (resolve) {
-    setTimeout(()=>resolve(), ms)
-  }
-)}
+    setTimeout(() => resolve(), ms);
+  });
+}
 ```
 
 ## Mouse Events
@@ -49,14 +49,14 @@ async function simulateUserTyping(e, s) {
   const event = {
     focus: new Event('focus', { bubbles: true }),
     down: new Event('keydown', { bubbles: true }),
-    up : new Event('keyup', { bubbles: true }),
+    up: new Event('keyup', { bubbles: true }),
     change: new Event('change', { bubbles: true }),
-  }
+  };
   let value = e.value;
 
   e.focus();
   for (let ii = 0; ii < s.length; ii++) {
-    await sleep((Math.floor(Math.random() * 50)) + 2);
+    await sleep(Math.floor(Math.random() * 50) + 2);
     value += s.charAt(ii);
     e.value = value;
     e.dispatchEvent(event.focus);
@@ -90,16 +90,13 @@ function createFAB(id, text, onClick, cId) {
   n.setAttribute('id', containerId);
   document.body.appendChild(n);
 
-  document.getElementById(id).addEventListener(
-      'click',
-      onClick,
-      false
-  );
+  document.getElementById(id).addEventListener('click', onClick, false);
 
   const neonGreen = '#3EFF15';
   const neonPink = '#ff12f0';
-  const neonPurple = '#be00fe'
-  GM_addStyle(`
+  const neonPurple = '#be00fe';
+  GM_addStyle(
+    `
 #${containerId} {
     position:   fixed;
     top:        0;
@@ -116,6 +113,7 @@ function createFAB(id, text, onClick, cId) {
     cursor:     pointer;
     background: ${neonPurple};
     color:      ${neonGreen}
-}`.trim());
+}`.trim(),
+  );
 }
 ```

@@ -4,7 +4,8 @@ Document for "fun" (i.e. useful) `zsh` tricks.
 
 ## Previous command expansion
 
-`zsh` has a built-in way to expand the arguments from the previous command into your current line.
+`zsh` has a built-in way to expand the arguments from the previous command into
+your current line.
 
 ```bash
 > ls /path/to/dir
@@ -12,15 +13,16 @@ Document for "fun" (i.e. useful) `zsh` tricks.
 > cd /path/to/dir
 ```
 
-* `!!<TAB>` -- entire previous line, including command name
-* `!!*<TAB>` -- all argument in previous line
-* `!!X<TAB>` -- get `X` positional argument of the previous line
-* `!!$<TAB>` -- get last argument of the previous line
-* `!!X*<TAB>` -- skip `X` arguments of the previous line and expand the rest
+- `!!<TAB>` -- entire previous line, including command name
+- `!!*<TAB>` -- all argument in previous line
+- `!!X<TAB>` -- get `X` positional argument of the previous line
+- `!!$<TAB>` -- get last argument of the previous line
+- `!!X*<TAB>` -- skip `X` arguments of the previous line and expand the rest
 
 ## `pwd` path replacement
 
-`zsh` has a built-in option to swap parts of the current working directory path. `cd <arg1> <arg2>` will swap `arg1` and `arg2` in `pwd`.
+`zsh` has a built-in option to swap parts of the current working directory path.
+`cd <arg1> <arg2>` will swap `arg1` and `arg2` in `pwd`.
 
 ```bash
 > pwd
@@ -32,7 +34,10 @@ Document for "fun" (i.e. useful) `zsh` tricks.
 
 ## `zmv`: easy file renaming
 
-`zmv` is an easy way to change file names with globbing and replacement. For example, if you want to change the extension of all `.txt` files to `.html`, you can do `zmv '(*).txt' '$1.html'`. I believe the `$1` (and likely any other `$X` variables correspond to the glob match as defined by the `()`.
+`zmv` is an easy way to change file names with globbing and replacement. For
+example, if you want to change the extension of all `.txt` files to `.html`, you
+can do `zmv '(*).txt' '$1.html'`. I believe the `$1` (and likely any other `$X`
+variables correspond to the glob match as defined by the `()`.
 
 ```bash
 > ls
@@ -48,7 +53,9 @@ file1.html file2.html
 
 ## Suffix aliases
 
-`zsh` provides a way to create "suffix aliases" where the last part of a command indicates the alias to expand at the **start** of the command. A suffix alias is indicated by `-s` in the definition.
+`zsh` provides a way to create "suffix aliases" where the last part of a command
+indicates the alias to expand at the **start** of the command. A suffix alias is
+indicated by `-s` in the definition.
 
 ```bash
 > alias -s ts=vim
@@ -59,7 +66,8 @@ file1.html file2.html
 
 ### Safer Scripts with `set -euxo pipefail`
 
-> More detailed explanation: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+> More detailed explanation:
+> https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 
 Adding `set -euxo pipefail` to the top of shell scripts is useful for catching
 errors:
@@ -86,9 +94,9 @@ There are two important facts to be aware of doing this:
 1. `[ ${TEST_EXPR} ]` will be `0` if `${TEST_EXPR}` evaluates to`true` and `1`
    if it evaluates to `false`. This is the opposite of most programming
    languages where `0` is `false` and any non-`0` is `true`.
-1. You *must* do `&& ${TRUE_EXPR} || ${FALSE_EXPR}`. Doing it reverse will
+1. You _must_ do `&& ${TRUE_EXPR} || ${FALSE_EXPR}`. Doing it reverse will
    execute `${TRUE_EXPR}` if `${FALSE_EXPR}` executes successfully (non-`0` exit
-   code), which is *not* what you want.
+   code), which is _not_ what you want.
 
 #### Terniary with `set -e`
 

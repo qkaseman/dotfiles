@@ -16,14 +16,13 @@
 
 1. At the top, select "Unlock Expert Options"
 1. Under "Tree Behavior", deselect
-    1. "When a new tree appears, collapse others automatically"
-    1. "When a tab gets focus, expand its tree and collapse others
-       automatically"
-    1. "Except focus moving caused by closing of the current tab"
+   1. "When a new tree appears, collapse others automatically"
+   1. "When a tab gets focus, expand its tree and collapse others automatically"
+   1. "Except focus moving caused by closing of the current tab"
 1. Under "Advanced", deselect
-    1. "Warn me when I attempt to close multiple tabs"
-    1. "Warn me when I attempt to close multiple tabs by a normal click on a
-       closebox"
+   1. "Warn me when I attempt to close multiple tabs"
+   1. "Warn me when I attempt to close multiple tabs by a normal click on a
+      closebox"
 
 #### Hide Native Tabs
 
@@ -35,22 +34,25 @@
 1. Restart Firefox.
 
 ```css
-#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar>.toolbar-items {
-    opacity: 0;
-    pointer-events: none;
+#main-window[tabsintitlebar='true']:not([extradragspace='true'])
+  #TabsToolbar
+  > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
 }
 
-#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
-    visibility: collapse !important;
+#main-window:not([tabsintitlebar='true']) #TabsToolbar {
+  visibility: collapse !important;
 }
 
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-    display: none;
+#sidebar-box[sidebarcommand='treestyletab_piro_sakura_ne_jp-sidebar-action']
+  #sidebar-header {
+  display: none;
 }
 
 .tab {
-    margin-left: 1px;
-    margin-right: 1px;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 ```
 

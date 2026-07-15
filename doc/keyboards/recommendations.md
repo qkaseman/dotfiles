@@ -9,7 +9,8 @@
 - QMK/ZMK support, hotswap kits ~$130 from [splitkb.com](https://splitkb.com)
 - Steep learning curve (no number row — relies entirely on layers)
 - Wireless builds possible (nice!nano controllers)
-- Best if you want maximum long-term efficiency and are willing to invest in learning layers
+- Best if you want maximum long-term efficiency and are willing to invest in
+  learning layers
 
 ### Sofle v2 — 58 keys
 
@@ -24,7 +25,8 @@
 
 - Ultra-portable, low-profile (Choc switches)
 - Magnetic tenting legs + tripod mount
-- Hotswap, QMK with [Oryx configurator](https://configure.zsa.io/) (no coding needed)
+- Hotswap, QMK with [Oryx configurator](https://configure.zsa.io/) (no coding
+  needed)
 - Steel plate, carrying case included, 2-year warranty
 - ~$365
 - Best for: travel/hot-desking programmers who prefer low-profile feel
@@ -76,10 +78,15 @@
 
 ## Top Picks
 
-- **Best overall**: Glove80 — most keys (less layer juggling), wireless, sculpted, strong community consensus
-- **Easiest transition**: Moonlander — 70 MX keys feels closest to a normal board
+- **Best overall**: Glove80 — most keys (less layer juggling), wireless,
+  sculpted, strong community consensus
+- **Easiest transition**: Moonlander — 70 MX keys feels closest to a normal
+  board
 - **Best portable**: Voyager — unmatched travel-friendliness with premium build
-- **Best budget entry**: Corne — forces proper layer habits that pay off long-term
+- **Best budget entry**: Corne — forces proper layer habits that pay off
+  long-term
 - **Best for RSI**: Kinesis Advantage360 — deepest keywell sculpting available
 
-All of these support programmable firmware (QMK or ZMK), which is the real unlock for programming — you can put brackets, arrows, and symbols wherever makes sense for your workflow.
+All of these support programmable firmware (QMK or ZMK), which is the real
+unlock for programming — you can put brackets, arrows, and symbols wherever
+makes sense for your workflow.

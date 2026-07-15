@@ -4,7 +4,9 @@
 
 ### Miryoku with Vi Nav (`MIRYOKU_NAV=VI`)
 
-The most popular universal ergo layout system. Works on any 36+ key board including Corne. Enabling the vi nav option gives you hjkl-aligned cursor keys on the nav layer out of the box.
+The most popular universal ergo layout system. Works on any 36+ key board
+including Corne. Enabling the vi nav option gives you hjkl-aligned cursor keys
+on the nav layer out of the box.
 
 - **Repo**: https://github.com/manna-harbour/miryoku
 - **ZMK Corne implementation**: https://github.com/manna-harbour/miryoku_zmk
@@ -23,10 +25,12 @@ Key features:
 
 ### niqodea/crkbd — Clean 4-layer vim layout
 
-Straightforward QWERTY+vim layout with 4 layers max, designed around mnemonics for learnability.
+Straightforward QWERTY+vim layout with 4 layers max, designed around mnemonics
+for learnability.
 
 - **Repo**: https://github.com/niqodea/crkbd
-- **Layer diagrams**: PNG images in `images/` directory (layer-0.png through layer-3.png)
+- **Layer diagrams**: PNG images in `images/` directory (layer-0.png through
+  layer-3.png)
 
 Vim design choices:
 
@@ -40,10 +44,12 @@ Vim design choices:
 
 ### qmk-vim — Actual vim modal editing in firmware
 
-Implements real vim Normal/Visual mode directly in QMK. Works on any QMK keyboard including Corne.
+Implements real vim Normal/Visual mode directly in QMK. Works on any QMK
+keyboard including Corne.
 
 - **Repo**: https://github.com/andrewjrae/qmk-vim (178 stars)
-- **Author's full keymap** (Kyria, similar to Corne): https://github.com/andrewjrae/kyria-keymap
+- **Author's full keymap** (Kyria, similar to Corne):
+  https://github.com/andrewjrae/kyria-keymap
 - **keymapdb entry**: https://keymapdb.com/keymaps/andrewjrae/
 
 Features:
@@ -76,7 +82,10 @@ Vim design choices:
 - **Repo**: https://github.com/rafaelromao/keyboards
 - **Documentation site with diagrams**: https://rafaelromao.github.io/keyboards
 
-Designed for "software programming with VIM plugins." Uses external ZMK modules including Leader Key, Adaptive Key, Auto Layer, and Layer Morph. Workflows organized around: Typing, Numbers, Shortcuts, Navigation (with mouse emulation), and Programming. Keymap Drawer SVGs at 300 DPI.
+Designed for "software programming with VIM plugins." Uses external ZMK modules
+including Leader Key, Adaptive Key, Auto Layer, and Layer Morph. Workflows
+organized around: Typing, Numbers, Shortcuts, Navigation (with mouse emulation),
+and Programming. Keymap Drawer SVGs at 300 DPI.
 
 ### MSNBBC layout (sergioruiiz91) — Vim + Hyprland
 
@@ -94,12 +103,16 @@ Vim + tiling WM design:
 
 ### sunaku/glove80-keymaps — "Glorious Engrammer" (742 stars)
 
-The standout resource for vim on Glove80. The symbol layer is explicitly designed around vim operators.
+The standout resource for vim on Glove80. The symbol layer is explicitly
+designed around vim operators.
 
 - **Repo**: https://github.com/sunaku/glove80-keymaps
-- **Interactive layer map** (hover over keys): https://sunaku.github.io/moergo-glove80-keyboard.html#layers
-- **MoErgo Layout Editor**: https://my.moergo.com/glove80/#/layout/user/909a8599-903f-44f3-a51e-5130ecdf2999
-- **Symbol layer video tour** (vim operators at 10:14): https://www.youtube.com/watch?v=uuSR81wc6WQ
+- **Interactive layer map** (hover over keys):
+  https://sunaku.github.io/moergo-glove80-keyboard.html#layers
+- **MoErgo Layout Editor**:
+  https://my.moergo.com/glove80/#/layout/user/909a8599-903f-44f3-a51e-5130ecdf2999
+- **Symbol layer video tour** (vim operators at 10:14):
+  https://www.youtube.com/watch?v=uuSR81wc6WQ
 - **Coding demo video**: https://youtu.be/fPcO5NGoDao
 - **Home row mods article**: https://sunaku.github.io/home-row-mods.html
 
@@ -132,7 +145,8 @@ Fork of sunaku's layout with additional Neovim-specific optimizations.
 
 Added vim/Neovim features:
 
-- Swapped Up/Down to match default vi behavior on Cursor, Symbol, and Arrow layers
+- Swapped Up/Down to match default vi behavior on Cursor, Symbol, and Arrow
+  layers
 - Harpoon marks mapped to Cursor layer (Backspace + L/D/W/V/Z)
 - LSP Diagnostics navigation with severity-based filtering
 - Telescope integration for file searching
@@ -177,11 +191,16 @@ Features:
 
 ### For Corne + Vim
 
-1. **Start with Miryoku + `MIRYOKU_NAV=VI`** — battle-tested, hjkl out of the box, massive community
-2. **Browse niqodea/crkbd** — clean 4-layer visual reference if Miryoku feels too opinionated
-3. **Consider qmk-vim** — if you want actual modal editing in firmware (toggle-able)
+1. **Start with Miryoku + `MIRYOKU_NAV=VI`** — battle-tested, hjkl out of the
+   box, massive community
+2. **Browse niqodea/crkbd** — clean 4-layer visual reference if Miryoku feels
+   too opinionated
+3. **Consider qmk-vim** — if you want actual modal editing in firmware
+   (toggle-able)
 
 ### For Glove80 + Vim
 
-1. **Start with sunaku's Glorious Engrammer** — interactive layer map is the single best visual resource, symbol layer is purpose-built for vim
-2. **Fork Mathijs-Bakker's variant** — if you use Neovim with Harpoon/Telescope and want those integrated at the firmware level
+1. **Start with sunaku's Glorious Engrammer** — interactive layer map is the
+   single best visual resource, symbol layer is purpose-built for vim
+2. **Fork Mathijs-Bakker's variant** — if you use Neovim with Harpoon/Telescope
+   and want those integrated at the firmware level

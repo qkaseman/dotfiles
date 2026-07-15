@@ -6,8 +6,8 @@
 
 ## Other things
 
-- `git` isn't using `nvim` nor my config on new laptop, maybe need to handle
-  in setup scripts?
+- `git` isn't using `nvim` nor my config on new laptop, maybe need to handle in
+  setup scripts?
 
 ### Major
 
@@ -17,7 +17,8 @@ See title.
 
 #### Tab completion in file search breaks sometimes
 
-`:tabe <file>` tab completion sometimes stops working (why, no idea). Super super annoying though.
+`:tabe <file>` tab completion sometimes stops working (why, no idea). Super
+super annoying though.
 
 #### pink as the error highlight with red text is bad.
 
@@ -36,7 +37,8 @@ So that git ignore can be removed.
 
 #### Markdown syntax highlighting
 
-Is broken if there are 3 sets of backticks on a single line, but maybe only if there are `<>`?
+Is broken if there are 3 sets of backticks on a single line, but maybe only if
+there are `<>`?
 
 #### `lua` indent bad
 
@@ -91,10 +93,11 @@ Try it.
 #### Other Plugins
 
 The ones these people have:
-* https://github.com/williamboman/nvim-config/tree/main/plugin
-* https://github.com/LunarVim/LunarVim
-* Jess Archer
-* Two others from my PC I don't recall
+
+- https://github.com/williamboman/nvim-config/tree/main/plugin
+- https://github.com/LunarVim/LunarVim
+- Jess Archer
+- Two others from my PC I don't recall
 
 #### Markdown syntax
 
@@ -105,13 +108,14 @@ That highlights the middle as code due to the `<`.
 #### Look into autopairs plugins
 
 I don't generally like them but it looks like there are a number of indentation
-things that only *really* work with that being setup. (`lua` is a current
+things that only _really_ work with that being setup. (`lua` is a current
 example but I'm sure it applies to more.
 
 #### `gitcommit` tab completion
 
-The tab completion seems to be broken now? Git gives an error about `hint:
-Waiting for your editor to close the file...` which might indicate something.
+The tab completion seems to be broken now? Git gives an error about
+`hint: Waiting for your editor to close the file...` which might indicate
+something.
 
 ## From init.lua (moved here)
 
@@ -121,9 +125,9 @@ Waiting for your editor to close the file...` which might indicate something.
 - Figure out why fidget.nvim isn't showing LSP updates sometimes
 - submit help page bug to Neovim `vim.wo.diff` doesn't have anything for
   `:help wo`, it takes you to `wildmenu` not set `window-local` options
-- Figure out why resuming workspace froze nvim for a while. Seems like it
-  is the LSP struggling when a file has been deleted or changed while
-  Neovim is suspended. Seems weird as that should be async.
+- Figure out why resuming workspace froze nvim for a while. Seems like it is the
+  LSP struggling when a file has been deleted or changed while Neovim is
+  suspended. Seems weird as that should be async.
 - Set up TypeScript/JavaScript DAP
 - Figure out why prettier support isn't working right
 - make keybind to generate hover window of diag error
@@ -133,8 +137,9 @@ Waiting for your editor to close the file...` which might indicate something.
 
 ## Keybind Namespace Cleanup
 
-`<leader>t` group mixes terminals (toggleterm: tf/tH/tv/tn/tp/tl/tt/tu/ts)
-and toggles (gitsigns: tb/tD, LSP: th). Consider splitting:
+`<leader>t` group mixes terminals (toggleterm: tf/tH/tv/tn/tp/tl/tt/tu/ts) and
+toggles (gitsigns: tb/tD, LSP: th). Consider splitting:
+
 - Terminals stay under `<leader>t` (rename group to [T]erminal)
 - Move gitsigns toggles (tb, tD) to `<leader>u` (UI Toggle)
 - LSP inlay hints (`th`) could also move to `<leader>uh`

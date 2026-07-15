@@ -1,12 +1,16 @@
 # Keybind Comparison: nvim / kickstart / LazyVim 15.x
 
-Reference for the LazyVim migration. Compares Neovim 0.11.x built-in defaults, kickstart.nvim's init.lua mappings, and LazyVim core (extras noted where relevant).
+Reference for the LazyVim migration. Compares Neovim 0.11.x built-in defaults,
+kickstart.nvim's init.lua mappings, and LazyVim core (extras noted where
+relevant).
 
 ## Mode Legend
 
-`n`=normal `v`=visual `x`=visual-block `o`=op-pending `i`=insert `t`=terminal `s`=select `c`=cmdline
+`n`=normal `v`=visual `x`=visual-block `o`=op-pending `i`=insert `t`=terminal
+`s`=select `c`=cmdline
 
-> "plain nvim" = Neovim 0.11.x built-ins (incl. native `gc`/`gcc` commenting and 0.11 LSP `LspAttach` defaults). Items flagged `?` are not 100% certain.
+> "plain nvim" = Neovim 0.11.x built-ins (incl. native `gc`/`gcc` commenting and
+> 0.11 LSP `LspAttach` defaults). Items flagged `?` are not 100% certain.
 
 ## Group: Top-level / non-leader
 
@@ -157,7 +161,8 @@ Reference for the LazyVim migration. Compares Neovim 0.11.x built-in defaults, k
 | `<leader>fe` `<leader>fE` | n    | --         | --        | snacks explorer          | LazyVim |
 | `<leader>ft` `<leader>fT` | n    | --         | --        | terminal                 | LazyVim |
 
-Kickstart equivalents lived under `<leader>s` (e.g. `sf`, `s.`). LazyVim duplicates many in `<leader>s*` too.
+Kickstart equivalents lived under `<leader>s` (e.g. `sf`, `s.`). LazyVim
+duplicates many in `<leader>s*` too.
 
 ## Group: `<leader>g*` (git)
 
@@ -329,22 +334,58 @@ Kickstart equivalents lived under `<leader>s` (e.g. `sf`, `s.`). LazyVim duplica
 
 The biggest user-visible changes when migrating from kickstart-derived:
 
-- **Buffer cycling on `<S-h>`/`<S-l>`** -- LazyVim shadows the vim defaults H/L (top/bottom of screen). Kickstart leaves them alone.
-- **Buffer/file finding moved to `<leader>f*`** -- kickstart puts everything under `<leader>s*` (e.g. `sf`, `s.`). LazyVim splits: file/find under `<leader>f*`, search/grep under `<leader>s*`. Many `<leader>s*` keys exist in both with different meanings (e.g. `<leader>sr` = telescope resume in kickstart, but in LazyVim resume is `<leader>sR`).
-- **`<leader>q` collision** -- kickstart binds it directly to "open diagnostic loclist." LazyVim claims `<leader>q` as the quit/session group prefix. The kickstart action has no direct LazyVim equivalent (closest: `<leader>xl` for loclist toggle, `<leader>xq` for quickfix, or `<leader>cd` for line diagnostics float).
-- **`<leader>/` flips meaning** -- kickstart: fuzzy find in current buffer. LazyVim: live grep (root dir). The buffer-fuzzy equivalent in LazyVim is `<leader>sb` (snacks buffer lines).
-- **Gitsigns prefix renamed `<leader>h*` -> `<leader>gh*`** -- every hunk op (`hs`, `hr`, `hp`, `hb`, etc.) gains a `g` prefix in LazyVim. Your migration plan rebinds these back to `<leader>h*`.
-- **LSP `gr*` series replaced** -- kickstart and Neovim 0.11 both ship `grn`/`gra`/`grr`/`gri` defaults. LazyVim removes those and rebinds to `<leader>cr` (rename), `<leader>ca` (code action), `gr` (references), `gI` (implementation), `gd` (definition), `gy` (type def), `gD` (declaration).
-- **Inlay hints toggle** `<leader>th` -> `<leader>uh`. The whole `<leader>t*` ("toggle") prefix is gone in LazyVim -- toggles live under `<leader>u*` (UI).
-- **`<leader>f` no longer formats** -- kickstart binds `<leader>f` to conform format. LazyVim uses `<leader>cf` for force-format and auto-formats on save by default. `<leader>f*` becomes the file/find group.
-- **LazyVim adds heavy `<C-*>` and `<A-*>` usage** -- `<C-h/j/k/l>` window nav (with `remap=true`), `<C-Up/Down/Left/Right>` resize, `<A-j>/<A-k>` move lines, `<C-s>` save, `<C-/>` terminal toggle, `<C-Space>` ts incremental selection.
-- **`s`/`S` shadowed by flash** -- kickstart users still get vim's substitute on `s`/`S` (unless they install flash). LazyVim makes flash a default, breaking muscle memory.
-- **Many new bracket motions** -- `[b/]b` buffers, `[h/]h` hunks, `[t/]t` todo, `[q/]q` quickfix, `[e/]e` errors, `[w/]w` warnings, plus `[f/]f`, `[c/]c`, `[a/]a` from ts-textobjects. Plain nvim and kickstart only ship `[d/]d`, `[c/]c` (diff), `[s/]s` (spell), `[m/]m` (method), `[[/]]` (section).
-- **`[[`/`]]` repurposed** -- LazyVim binds them to "next/prev LSP reference" (snacks.words) when LSP is attached, shadowing vim's section motion.
-- **Visual `p` differs** -- kickstart-style configs (yours included) bind visual `p` to "paste and re-yank." LazyVim does NOT bind it; vim default applies.
-- **Terminal `<Esc><Esc>`** -- kickstart binds it to exit terminal mode. LazyVim does not -- you must use `<C-\><C-n>` unless your terminal plugin (toggleterm/snacks) maps it.
-- **LazyVim adds `<leader>w*` window proxy** -- every `<C-w>x` is reachable as `<leader>wx` with which-key hints.
+- **Buffer cycling on `<S-h>`/`<S-l>`** -- LazyVim shadows the vim defaults H/L
+  (top/bottom of screen). Kickstart leaves them alone.
+- **Buffer/file finding moved to `<leader>f*`** -- kickstart puts everything
+  under `<leader>s*` (e.g. `sf`, `s.`). LazyVim splits: file/find under
+  `<leader>f*`, search/grep under `<leader>s*`. Many `<leader>s*` keys exist in
+  both with different meanings (e.g. `<leader>sr` = telescope resume in
+  kickstart, but in LazyVim resume is `<leader>sR`).
+- **`<leader>q` collision** -- kickstart binds it directly to "open diagnostic
+  loclist." LazyVim claims `<leader>q` as the quit/session group prefix. The
+  kickstart action has no direct LazyVim equivalent (closest: `<leader>xl` for
+  loclist toggle, `<leader>xq` for quickfix, or `<leader>cd` for line
+  diagnostics float).
+- **`<leader>/` flips meaning** -- kickstart: fuzzy find in current buffer.
+  LazyVim: live grep (root dir). The buffer-fuzzy equivalent in LazyVim is
+  `<leader>sb` (snacks buffer lines).
+- **Gitsigns prefix renamed `<leader>h*` -> `<leader>gh*`** -- every hunk op
+  (`hs`, `hr`, `hp`, `hb`, etc.) gains a `g` prefix in LazyVim. Your migration
+  plan rebinds these back to `<leader>h*`.
+- **LSP `gr*` series replaced** -- kickstart and Neovim 0.11 both ship
+  `grn`/`gra`/`grr`/`gri` defaults. LazyVim removes those and rebinds to
+  `<leader>cr` (rename), `<leader>ca` (code action), `gr` (references), `gI`
+  (implementation), `gd` (definition), `gy` (type def), `gD` (declaration).
+- **Inlay hints toggle** `<leader>th` -> `<leader>uh`. The whole `<leader>t*`
+  ("toggle") prefix is gone in LazyVim -- toggles live under `<leader>u*` (UI).
+- **`<leader>f` no longer formats** -- kickstart binds `<leader>f` to conform
+  format. LazyVim uses `<leader>cf` for force-format and auto-formats on save by
+  default. `<leader>f*` becomes the file/find group.
+- **LazyVim adds heavy `<C-*>` and `<A-*>` usage** -- `<C-h/j/k/l>` window nav
+  (with `remap=true`), `<C-Up/Down/Left/Right>` resize, `<A-j>/<A-k>` move
+  lines, `<C-s>` save, `<C-/>` terminal toggle, `<C-Space>` ts incremental
+  selection.
+- **`s`/`S` shadowed by flash** -- kickstart users still get vim's substitute on
+  `s`/`S` (unless they install flash). LazyVim makes flash a default, breaking
+  muscle memory.
+- **Many new bracket motions** -- `[b/]b` buffers, `[h/]h` hunks, `[t/]t` todo,
+  `[q/]q` quickfix, `[e/]e` errors, `[w/]w` warnings, plus `[f/]f`, `[c/]c`,
+  `[a/]a` from ts-textobjects. Plain nvim and kickstart only ship `[d/]d`,
+  `[c/]c` (diff), `[s/]s` (spell), `[m/]m` (method), `[[/]]` (section).
+- **`[[`/`]]` repurposed** -- LazyVim binds them to "next/prev LSP reference"
+  (snacks.words) when LSP is attached, shadowing vim's section motion.
+- **Visual `p` differs** -- kickstart-style configs (yours included) bind visual
+  `p` to "paste and re-yank." LazyVim does NOT bind it; vim default applies.
+- **Terminal `<Esc><Esc>`** -- kickstart binds it to exit terminal mode. LazyVim
+  does not -- you must use `<C-\><C-n>` unless your terminal plugin
+  (toggleterm/snacks) maps it.
+- **LazyVim adds `<leader>w*` window proxy** -- every `<C-w>x` is reachable as
+  `<leader>wx` with which-key hints.
 - **LazyVim adds `<leader>b*` buffer ops** -- kickstart provides nothing here.
-- **`gco`/`gcO`** (add comment line below/above) -- LazyVim only. Plain nvim's native commenting (since 0.10) only ships `gc` and `gcc`.
+- **`gco`/`gcO`** (add comment line below/above) -- LazyVim only. Plain nvim's
+  native commenting (since 0.10) only ships `gc` and `gcc`.
 
-Caveats: Plain Neovim 0.11 LSP-attach defaults: `grn`, `gra`, `grr`, `gri`, `gO`, `K`, and `<C-s>` (insert sig help). Not certain whether `grt`/`grd`/`grD` are 0.11 defaults; to my knowledge they aren't (kickstart adds them). `:help lsp-defaults` on a fresh nvim install confirms.
+Caveats: Plain Neovim 0.11 LSP-attach defaults: `grn`, `gra`, `grr`, `gri`,
+`gO`, `K`, and `<C-s>` (insert sig help). Not certain whether `grt`/`grd`/`grD`
+are 0.11 defaults; to my knowledge they aren't (kickstart adds them).
+`:help lsp-defaults` on a fresh nvim install confirms.

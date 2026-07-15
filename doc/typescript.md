@@ -37,30 +37,29 @@ you're exporting. Consider
 /* Filename: foobar.ts */
 
 type ArgObj = {
-  a: string,
-  b: string,
-  c: number,
+  a: string;
+  b: string;
+  c: number;
 };
 
 function baz(args: ArgObj) {
   /* ... */
-};
+}
 
-export const foo = (b: string) => (baz({a: 'default', b, c: 0}));
-export const bar = (a: string) => (baz({a, b: 'other-default', c: 10}));
+export const foo = (b: string) => baz({ a: 'default', b, c: 0 });
+export const bar = (a: string) => baz({ a, b: 'other-default', c: 10 });
 ```
 
 You could test everything through `foo` and `bar`, which is perfectly valid, but
-they may not cover every case you want `baz` to support. In that
-case, how do you test it?
+they may not cover every case you want `baz` to support. In that case, how do
+you test it?
 
 ### 1. Export it
 
 You could just export it and access it in your tests. This adds it to your
-public API in a way you may not want and allows developers to call
-`baz` directly. This is by far the simplest option, but also the
-most consequential as it could limit changes you can make to
-`baz` in the future.
+public API in a way you may not want and allows developers to call `baz`
+directly. This is by far the simplest option, but also the most consequential as
+it could limit changes you can make to `baz` in the future.
 
 ### 2. Export a testing-only object
 
@@ -105,8 +104,9 @@ to one like:
 
 Making the function available for unit testing has the universal downside of it
 becomes accessible to someone who is really trying: in option 1 they could
-simply `import { baz } from 'foobar'`; option 2, `import { __FOR_TESTING_ONLY__
-} from 'foobar'`; option 3, `import { baz } from 'foobar/baz'`.
+simply `import { baz } from 'foobar'`; option 2,
+`import { __FOR_TESTING_ONLY__ } from 'foobar'`; option 3,
+`import { baz } from 'foobar/baz'`.
 
 I find the third option, modules, to be the nicest and most "private" way to
 export the function for testing. Anything the module has as a public API should
@@ -114,7 +114,7 @@ be exported by `index.ts`, allowing you to freely organize, reorganize, and
 change intra-module code.
 
 If people access the internals of a module, they're bypassing the API contract
-and are at danger of being unexpectedly broken by changes that *aren't* breaking
+and are at danger of being unexpectedly broken by changes that _aren't_ breaking
 API changes.
 
 ##

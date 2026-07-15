@@ -15,15 +15,15 @@ Should work but doesn't seem to? At least not with `fzf-tab`.
 
 ## Sketchybar Light/Dark Theme Swap
 
-Currently sketchybar colors are hardcoded (`0xff005f87` etc.) and don't
-respond to system appearance changes. To integrate:
+Currently sketchybar colors are hardcoded (`0xff005f87` etc.) and don't respond
+to system appearance changes. To integrate:
 
-1. Create `sketchybar/colors-dark.sh` and `sketchybar/colors-light.sh`
-   exporting color variables (`BAR_COLOR`, `ITEM_COLOR`, etc.)
+1. Create `sketchybar/colors-dark.sh` and `sketchybar/colors-light.sh` exporting
+   color variables (`BAR_COLOR`, `ITEM_COLOR`, etc.)
 2. Have `sketchybarrc` source a symlinked `colors.sh`
-3. Create `bin/theme-swap-sketchybar` (like `theme-swap-tmux`)
-   that swaps the symlink and runs `sketchybar --reload`
+3. Create `bin/theme-swap-sketchybar` (like `theme-swap-tmux`) that swaps the
+   symlink and runs `sketchybar --reload`
 4. Call it from `bin/theme-swap` orchestrator
 
-The current neutral blue (`#005f87`) works acceptably in both modes,
-so this is low priority.
+The current neutral blue (`#005f87`) works acceptably in both modes, so this is
+low priority.

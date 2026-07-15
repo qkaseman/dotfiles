@@ -23,8 +23,8 @@ pretty format it.
 
 ## Get the LSP syntax kind for highlighting
 
-> `kind` is used instead of `type` with syntax identifiers as the tree
-> may store or identify `type` as well.
+> `kind` is used instead of `type` with syntax identifiers as the tree may store
+> or identify `type` as well.
 
 You can use the `:Inspect` command to do this. For example, `:Inspect` on
 `syntax` in the heading above gives:
