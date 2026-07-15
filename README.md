@@ -172,12 +172,12 @@ This set of colours is an attempt to have a
 [`PaperColor`](https://github.com/NLKNguyen/papercolor-theme)-esque theme in
 Slack, though less successful than within the legacy theming system.
 
-| Property            | Hex     | Swatch                                             |
-| ------------------- | ------- | -------------------------------------------------- |
-| Window background   | #005f87 | ![#005f87](https://img.shields.io/badge/-_-005f87) |
-| Selected items      | #0087af | ![#0087af](https://img.shields.io/badge/-_-0087af) |
-| Presence indication | #008700 | ![#008700](https://img.shields.io/badge/-_-008700) |
-| Notifications       | #af0000 | ![#af0000](https://img.shields.io/badge/-_-af0000) |
+| Property            | Hex     | Swatch                                                   |
+| ------------------- | ------- | -------------------------------------------------------- |
+| Window background   | #005f87 | ![#005f87](https://placehold.co/15x15/005f87/005f87.svg) |
+| Selected items      | #0087af | ![#0087af](https://placehold.co/15x15/0087af/0087af.svg) |
+| Presence indication | #008700 | ![#008700](https://placehold.co/15x15/008700/008700.svg) |
+| Notifications       | #af0000 | ![#af0000](https://placehold.co/15x15/af0000/af0000.svg) |
 
 #### Legacy Slack Theme
 
