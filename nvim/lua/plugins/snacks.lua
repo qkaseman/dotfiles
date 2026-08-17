@@ -3,8 +3,7 @@
 -- - Disable terminal: toggleterm replaces it (`<C-/>`, `<C-'>`, `<leader>T*`).
 -- - Animate already disabled globally via `vim.g.snacks_animate = false` in
 --   options.lua; mirroring it here for explicitness.
--- - Explorer: show hidden + gitignored entries by default (matches the
---   `filtered_items.visible = true` behavior from mvim's neo-tree config).
+-- - Explorer: show hidden + gitignored entries by default.
 
 return {
   {
@@ -26,7 +25,7 @@ return {
     },
     -- LazyVim's `<leader>n` opens snacks notification history. With notifier
     -- disabled there's nothing in that history; redirect to vim's :messages
-    -- buffer instead, matching the pattern from mvim.
+    -- buffer instead.
     keys = {
       { '<leader>n', '<cmd>messages<cr>', desc = 'Message History' },
       -- LazyVim's `<leader>un` (dismiss notifications) becomes a no-op too.

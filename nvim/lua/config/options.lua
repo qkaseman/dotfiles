@@ -36,8 +36,7 @@ o.confirm = false
 o.relativenumber = false
 
 -- Treesitter-based folds via LazyVim's helper, with `0` fallback for
--- buffers without a parser or folds.scm query. Replaces mvim's
--- `lua/config/util/fold.lua` (LazyVim's implementation is more rigorous).
+-- buffers without a parser or folds.scm query.
 o.foldmethod = 'expr'
 o.foldexpr = "v:lua.LazyVim.treesitter.foldexpr()"
 
