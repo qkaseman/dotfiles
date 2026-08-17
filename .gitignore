@@ -45,9 +45,7 @@ kata
 builder-mcp
 
 # NeoVim
-mvim/spell
 nvim/spell
-avim
 
 # Node/Npm
 node
