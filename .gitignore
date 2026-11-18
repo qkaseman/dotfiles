@@ -28,6 +28,7 @@ zsh/.zsh_history
 htop
 aws
 ada
+systemd
 
 # Tools that maybe shouldn't be saved (unsure).
 #
